@@ -3,7 +3,6 @@ new-page: true
 
 = Dijkstra Dry
 
-- @start: Start game
+Wyzima
 
-@start
-go-to: hello
+- @hello: Start game
