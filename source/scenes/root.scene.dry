@@ -3,6 +3,23 @@ new-page: true
 
 = Dijkstra Dry
 
-Wyzima
+Choose scenario:
 
-- @hello: Start game
+- @dijsktra_start: Build uniterd North as Dijkstra, who killed Radovid, took over Redania and won the war
+- @radovid_start: Consolidate your power as tyrannical Radovid V, who survived the war and subdued his neighbours
+- @nilfgaard_start: Stay loyal to the Emperor or fight for independence 
+
+@dijsktra_start
+subtitle: -1 resources
+
+Dijkstra był super i chuj
+
+@radovid_start
+subtitle: -1 resources
+
+Dijkstra był super i chuj
+
+@nilfgaard_start
+subtitle: -1 resources
+
+Dijkstra był super i chuj
