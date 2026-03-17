@@ -5,7 +5,7 @@ new-page: true
 
 Choose scenario:
 
-- @dijsktra_start: Build uniterd North as Dijkstra, who killed Radovid, took over Redania and won the war
+- @dijkstra_start: Build uniterd North as Dijkstra, who killed Radovid, took over Redania and won the war
 - @radovid_start: Consolidate your power as tyrannical Radovid V, who survived the war and subdued his neighbours
 - @nilfgaard_start: Stay loyal to the Emperor or fight for independence after Nilfgaard conquered most of the North
 
