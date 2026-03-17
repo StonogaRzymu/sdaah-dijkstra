@@ -9,21 +9,21 @@ Choose scenario:
 - @radovid_start: Consolidate your power as tyrannical Radovid V, who survived the war and subdued his neighbours
 - @nilfgaard_start: Stay loyal to the Emperor or fight for independence after Nilfgaard conquered most of the North
 
-@dijkstra_start: Dijkstra campaign
+@dijkstra_start
 subtitle: -1 resources
 
 = Dijkstra was awesome
 
 - @root: Back
 
-@radovid_start: Radovid campaign
+@radovid_start
 subtitle: -1 resources
 
 = Radovid was awesome
 
 - @root: Back
 
-@nilfgaard_start: Nilfgaard campaign
+@nilfgaard_start
 subtitle: -1 resources
 
 = Nilfgaard was awesome
