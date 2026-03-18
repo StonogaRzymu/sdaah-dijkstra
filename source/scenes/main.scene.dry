@@ -1,0 +1,8 @@
+title: Main
+new-page: true
+
+= 1273
+
+Hello world
+
+- @main: End turn
