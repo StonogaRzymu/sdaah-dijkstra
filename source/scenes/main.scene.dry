@@ -1,5 +1,7 @@
 title: Main
+set-bg: img/bg.jpg
 new-page: true
+is-hand: true
 
 = 1273
 

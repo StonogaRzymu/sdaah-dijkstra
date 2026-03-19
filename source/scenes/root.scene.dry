@@ -1,6 +1,5 @@
 title: Root Scene
 new-page: true
-set-bg: img/bg.jpg
 go-to: start_menu_1
 
 @start_menu_1
