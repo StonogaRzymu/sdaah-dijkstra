@@ -1,10 +1,29 @@
 title: Main
-set-bg: img/bg.jpg
 new-page: true
 is-hand: true
+max-cards: 3
 
 = 1273
 
 Hello world
 
-- @main: End turn
+- @internal
+- @foreign
+- #cabinet
+- @end_turn
+
+@internal
+title: Internal Affairs
+is-deck: true
+
+- #internal_affairs
+
+@foreign
+title: Foreign Affairs
+is-deck: true
+
+- #foreign_affairs
+
+@end_turn
+title: End Turn
+go-to: main
