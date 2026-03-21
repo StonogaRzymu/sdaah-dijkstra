@@ -14,14 +14,14 @@ Hello world
 
 @internal
 title: Internal Affairs
-card-image: /img/novigrad.jpg
+card-image: img/novigrad.jpg
 is-deck: true
 
 - #internal_affairs
 
 @foreign
 title: Foreign Affairs
-card-image: /img/foreign.jpg
+card-image: img/foreign.jpg
 is-deck: true
 
 - #foreign_affairs
