@@ -28,5 +28,5 @@ is-deck: true
 
 @end_turn
 title: End Turn
-on-arrival: time += 1;  year += if month = 4; month += 1 if month < 4; month = 1 if month = 4;
+is-pinned-card: true
 go-to: main
