@@ -18,7 +18,7 @@ go-to: main
 @allow_moderate_riots
 go-to: main
 
-@allow_moderate_riots
+@allow_all_riots
 go-to: main
 
 @encourage_riots
