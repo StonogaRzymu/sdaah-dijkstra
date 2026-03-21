@@ -1,36 +1,36 @@
 title: Dijkstra Dry
 new-page: true
 
-- @start_menu_1: Start new game
-- @main: Start and skip introduction
+- @intro_1: Start new game
 - @credits: Credits
 - @achievements: Achievements
 
-@start_menu_1
+@intro_1
 
 = Dijkstra Dry
 
 In 1272 king Radovid V the Stern fell to the blows of assassins on St. Gregory's Bridge in Novigrad, and a coup d’état that had been in the making for years brought Chancellor Sigismund Dijkstra to power.
 
-- @start_menu_2: There still was a war to be won.
+- @intro_2: There still was a war to be won.
+- @initiate_game: Skip intro
 
-@start_menu_2
+@intro_2
 
 The Redanian elites reluctantly recognised his leadership when news reached them that Nilfgaard had crossed the Pontar near Rinbe and was marching on Tretogor, seeking to exploit the chaos in the enemy state. The Imperial forces were unable to secure a decisive victory – they were repelled on the outskirts of the capital, and when attempted to retreat, they were cut off by a surprise naval attack by forces of Novigrad, which had sided with the Chancellor.
 
 Trapped in a pincer movement on the banks of the Pontar, the 6th Army surrendered, leading to a breach in the front line through which poured forces of the North, re-armed and reinforced with mercenary troops thanks to generous loans from the Hierarch’s treasury.
 
-- @start_menu_3: It was time to deal a final blow.
+- @intro_3: It was time to deal a final blow.
 
-@start_menu_3
+@intro_3
 
 Unable to secure its lines and suffering from constant manpower shortages, Nilfgaard retreated on all fronts. Emhyr var Emreis demanded that the fighting continue, along with counter-offensives, new tributes and conscription in the provinces; however, in the eyes of the army command, this only served to demonstrate that his supposed genius could no longer be relied upon.
 
 When Dijkstra captured Vizima and uprisings swept across most of the lands between the Jaruga and the Pontar, news arrived from Cintra of the Emperor’s death – the cause was said to be a heart attack, though intelligence reports pointed to the involvement of third parties.
 
-- @start_menu_4: The Empire cannot tolerate a weak ruler.
+- @intro_4: The Empire cannot tolerate a weak ruler.
 
-@start_menu_4
+@intro_4
 
 Morvran Voorhis became the new emperor.
 
@@ -38,4 +38,4 @@ A man who surrounded himself mainly with like-minded military figures, he immedi
 
 Where uprisings did break out, they were inevitably successful. Now their leaders are fighting for power in the liberated territories, and Sigismund Dijkstra faces a challenge. He must consolidate his power in Redania, curb the ambitions of the nobility and the bourgeoisie, and at the same time protect the North from descending into chaos. If he succeeds, he may realise his great dream – a North that is united, modern and strong.
 
-- @main: Begin
+- @initiate_game: Begin

@@ -3,7 +3,7 @@ new-page: true
 is-hand: true
 max-cards: 3
 
-= 1273
+= [+ month : month +] of [+ year +]
 
 Hello world
 
@@ -28,4 +28,5 @@ is-deck: true
 
 @end_turn
 title: End Turn
+on-arrival: time += 1;  year += if month = 4; month += 1 if month < 4; month = 1 if month = 4;
 go-to: main
