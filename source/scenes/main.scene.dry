@@ -5,8 +5,6 @@ max-cards: 3
 
 = [+ season : season +] of [+ year +]
 
-It is.
-
 - @internal
 - @foreign
 - #cabinet
@@ -30,5 +28,5 @@ is-deck: true
 title: End Turn
 card-image: img/novigrad.jpg
 is-pinned-card: true
-on-arrival: time += 1; year += 1 if season = 4; season += 1 if season < 4; season = 1 if season = 4
+on-arrival: time += 1; year += 1 if season >= 4; season += 1 if season < 4; season = 1 if season >= 4
 go-to: main
