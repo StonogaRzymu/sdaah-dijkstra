@@ -31,10 +31,10 @@ is-pinned-card: true
 on-arrival: {!
 Q.time += 1;
 if (Q.season < 4) {
-    season += 1;
+    Q.season += 1;
 } else {
-    season = 1;
-    year += 1;
+    Q.season = 1;
+    Q.year += 1;
     }
 !}
 go-to: main
