@@ -3,9 +3,9 @@ new-page: true
 is-hand: true
 max-cards: 3
 
-= [+ season : season +] of [+ year +]
+= Hello
 
-Hello world
+It is [+ season : season +] of [+ year +]
 
 - @internal
 - @foreign
