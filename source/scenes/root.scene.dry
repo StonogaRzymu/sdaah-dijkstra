@@ -2,6 +2,7 @@ title: Dijkstra Dry
 new-page: true
 
 - @start_menu_1: Start new game
+- @main: Start and skip introduction
 - @credits: Credits
 - @achievements: Achievements
 
