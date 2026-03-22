@@ -1,7 +1,17 @@
 title: Qualities
+new-page: true
+is-special: true
 
 = Status
 
-This is the status bar. Stats can be displayed here.
+Budget: [+ budget +]
 
-Stat 1: [+ stat_1 +]
+Administrative capacity: [+ admin_cap +]
+
+Royal Redanian Army: [+ army +]
+
+Dijktra's intelligence: [+ intel +]
+
+@estates
+
+= Redanian Estates
