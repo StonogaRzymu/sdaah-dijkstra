@@ -5,17 +5,17 @@ Q.time = 1;
 Q.year = 1273;
 Q.season = 1;
 
-Q.aristocracy_inf    = 20;
-Q.petty_nobility_inf = 20;
-Q.guilds_inf         = 20;
+Q.aristocracy_inf    = 40;
+Q.petty_nobility_inf = 30;
+Q.guilds_inf         = 15;
 Q.church_inf         = 20;
-Q.peasants_inf       = 20;
+Q.peasants_inf       =  5;
 
-Q.aristocracy_sat    = 50;
-Q.petty_nobility_sat = 50;
-Q.guilds_sat         = 50;
-Q.church_sat         = 50;
-Q.peasants_sat       = 50;
+Q.aristocracy_sat    = 20;
+Q.petty_nobility_sat = 45;
+Q.guilds_sat         = 45;
+Q.church_sat         = 20;
+Q.peasants_sat       = 30;
 
 Q.budget = 100;
 Q.admin_cap = 100;
