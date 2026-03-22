@@ -12,21 +12,21 @@ max-cards: 3
 
 @internal
 title: Internal Affairs
-card-image: /img/novigrad.jpg
+card-image: out/html/img/novigrad.jpg
 is-deck: true
 
 - #internal_affairs
 
 @foreign
 title: Foreign Affairs
-card-image: img/foreign.jpg
+card-image: out/html/img/foreign.jpg
 is-deck: true
 
 - #foreign_affairs
 
 @end_turn
 title: End Turn
-card-image: img/novigrad.jpg
+card-image: out/html/img/novigrad.jpg
 is-pinned-card: true
 on-arrival: {!
 Q.time += 1;
