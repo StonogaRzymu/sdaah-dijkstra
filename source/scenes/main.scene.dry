@@ -1,6 +1,7 @@
 title: Main
 new-page: true
 is-hand: true
+set-bg: img/bg.jpg
 max-cards: 3
 
 = [+ season : season +] of [+ year +]
@@ -12,14 +13,14 @@ max-cards: 3
 
 @internal
 title: Internal Affairs
-card-image: img/novigrad.jpg
+card-image: img/internal.jpg
 is-deck: true
 
 - #internal_affairs
 
 @foreign
 title: Foreign Affairs
-card-image: /img/foreign.jpg
+card-image: img/foreign.jpg
 is-deck: true
 
 - #foreign_affairs
