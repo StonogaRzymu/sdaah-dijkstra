@@ -43,7 +43,6 @@ body.dark-mode .tools {
 }
 header, #content, footer {
   color: var(--text-color);
-  height: 125px;
   max-width: 540px;
   margin: 0 auto;
   overflow: auto;
@@ -64,7 +63,8 @@ footer a {
   padding-right: 1em;
 }
 header {
-  text-align: right
+  text-align: right;
+  height: 125px;
 }
 #header-links  {
   text-align: left;
