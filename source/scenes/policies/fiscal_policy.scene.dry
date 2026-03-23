@@ -9,15 +9,15 @@ Current taxes:
 
 [? if tax_cities == 1 : – City duties, paid by towns and cities which are direct subjects of the Crown: [+ tax_cities_rev +] thousand crowns ?]
 
-[? if tax_poll == 1 : – Poll tax ?]
+[? if tax_poll == 1 : – Poll tax: [+ tax_poll_rev +] thousand crowns ?]
 
-[? if tax_land == 1 : – Land tax ?]
+[? if tax_land == 1 : – Land tax: [+ tax_land_rev +] thousand crowns ?]
 
-[? if tax_houses == 1 : – Window tax ?]
+[? if tax_houses == 1 : – Window tax: [+ tax_houses_rev +] thousand crowns ?]
 
-[? if tax_consum == 1 : – Luxury goods taxes ?]
+[? if tax_consum == 1 : – Luxury goods taxes: [+ tax_consum_rev +] thousand crowns ?]
 
-[? if tax_income == 1 : – Income tax ?]
+[? if tax_income == 1 : – Income tax: [+ tax_income_rev +] thousand crowns ?]
 
 [? if tax_tithe == 1 : – Royal tithe, collected by the clergy along the tithe <em>proper</em>: [+ tax_tithe_rev +] thousand crowns ?]
 
