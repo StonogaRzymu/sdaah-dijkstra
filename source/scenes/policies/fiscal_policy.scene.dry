@@ -13,7 +13,7 @@ Current taxes:
 
 [? if tax_income == 1 : – Income tax ?]
 
-[? if tax_tithe == 1 : – Royal tithe, collected by the clergy along the tithe *proper* ?]
+[? if tax_tithe == 1 : – Royal tithe, collected by the clergy along the tithe proper ?]
 
 [? if toll_novigrad == 1 or toll_blaviken == 1 or toll_vartburg == 1 : Current tolls: ?]
 

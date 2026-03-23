@@ -139,7 +139,7 @@ p.game-over {
 
 .sidebar-stat strong {
   margin-top: 1em;
-  font-size: large;
+  font-size: normal;
 }
 
 ul.choices {
