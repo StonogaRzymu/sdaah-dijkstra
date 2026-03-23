@@ -40,11 +40,13 @@ Q.coast_gov_allegiance   = "Guilds"
 Q.tridam_gov_allegiance  = "Aristocracy"
 Q.gelibol_gov_allegiance = "Aristocracy"
 
+// are taxes active?
+
 Q.tax_vassals   = 1
 Q.tax_cities    = 1
 Q.tax_poll      = 0
 Q.tax_land      = 0
-Q.tax_consumption = 1
+Q.tax_consum    = 1
 Q.tax_houses    = 0
 Q.tax_income    = 0
 Q.tax_tithe     = 1
@@ -52,6 +54,62 @@ Q.toll_novigrad = 1
 Q.toll_blaviken = 1
 Q.toll_vartburg = 0
 Q.road_tolls    = 1
+
+// tax rate: value determines revenue gain per 100 of relevant metric (pop, land, wealth, trade) for 100% efficacy
+// e.g. tithe gain on start is 2 (rate) * 6070/100 (land metric) * 0.5 which is ~60 gold
+
+Q.tax_vassals_rate   = 0.5
+Q.tax_cities_rate    = 0.5
+Q.tax_poll_rate      = 1
+Q.tax_land_rate      = 1
+Q.tax_consum_rate    = 0
+Q.tax_houses_rate    = 0
+Q.tax_income_rate    = 0
+Q.tax_tithe_rate     = 2
+Q.toll_novigrad_rate = 0.5
+Q.toll_blaviken_rate = 1
+Q.toll_vartburg_rate = 0.5
+Q.road_tolls_rate    = 0.5
+
+// efficacy: % of the rate which is actually gained 
+
+Q.tax_vassals_eff    = 0.5
+Q.tax_cities_eff     = 0.5
+Q.tax_poll_eff       = 0
+Q.tax_land_eff       = 0
+Q.tax_consum_eff     = 0
+Q.tax_houses_eff     = 0
+Q.tax_income_eff     = 0
+Q.tax_tithe_eff      = 0.5
+Q.toll_novigrad_eff  = 0.5
+Q.toll_blaviken_eff  = 0.9
+Q.toll_vartburg_eff  = 0.6
+Q.road_tolls_eff     = 0.7
+
+// metrics for relevant taxes, objective values
+
+Q.low_red_pop = 1400
+Q.upp_red_pop = 1100
+Q.coast_pop   =  900
+Q.tridam_pop  =  600
+Q.gelibol_pop =  300
+
+Q.low_red_land = 2140
+Q.upp_red_land = 1690
+Q.coast_land   = 1250
+Q.tridam_land  =  710
+Q.gelibol_land =  280
+
+Q.novigrad_wealth     = 1000
+Q.oxenfurt_wealth     =  250
+Q.blaviken_wealth     =  200
+Q.roggeven_wealth     =  200
+Q.other_cities_wealth =  300
+
+Q.pontar_trade = 2000
+Q.buina_trade  =  300
+Q.braa_trade   =  500
+Q.land_trade   =  800
 
 !}
 go-to: main
