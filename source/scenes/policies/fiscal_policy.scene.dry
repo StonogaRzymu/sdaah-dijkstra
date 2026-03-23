@@ -5,19 +5,207 @@ new-page: true
 
 <table>
 <tr><th>Current taxes:</th></tr>
-[? if tax_vassals == 1 : <tr><td> Feudal duties, paid by nobles owning lands as vassals</td><td> [+ tax_vassals_rev +]&nbsp;thousand crowns</td></tr> ?]
-[? if tax_cities == 1 : <tr><td> City duties, paid by towns and cities which are direct subjects of the Crown</td><td> [+ tax_cities_rev +]&nbsp;thousand crowns</td></tr> ?]
-[? if tax_poll == 1 : <tr><td> Poll tax</td><td> [+ tax_poll_rev +]&nbsp;thousand crowns</td></tr> ?]
-[? if tax_land == 1 : <tr><td> Land tax</td><td> [+ tax_land_rev +]&nbsp;thousand crowns</td></tr> ?]
-[? if tax_houses == 1 : <tr><td> Window tax</td><td> [+ tax_houses_rev +]&nbsp;thousand crowns</td></tr> ?]
-[? if tax_consum == 1 : <tr><td> Luxury goods taxes</td><td> [+ tax_consum_rev +]&nbsp;thousand crowns</td></tr> ?]
-[? if tax_income == 1 : <tr><td> Income tax</td><td> [+ tax_income_rev +]&nbsp;thousand crowns</td></tr> ?]
-[? if tax_tithe == 1 : <tr><td> Royal tithe, collected by the clergy along the tithe <em>proper</em></td><td> [+ tax_tithe_rev +]&nbsp;thousand crowns</td></tr> ?]
+[? if tax_vassals == 1 : <tr><td style="table-label"> Feudal duties</br><small>paid by nobles owning lands as vassals</small></td><td style="table-value"> [+ tax_vassals_rev +]&nbsp;thousand crowns</td></tr> ?]
+[? if tax_cities == 1 : <tr><td style="table-label"> City duties</br><small>paid by towns and cities which are direct subjects of the Crown</small></td><td style="table-value"> [+ tax_cities_rev +]&nbsp;thousand crowns</td></tr> ?]
+[? if tax_poll == 1 : <tr><td style="table-label"> Poll tax</td><td style="table-value"> [+ tax_poll_rev +]&nbsp;thousand crowns</td></tr> ?]
+[? if tax_land == 1 : <tr><td style="table-label"> Land tax</td><td style="table-value"> [+ tax_land_rev +]&nbsp;thousand crowns</td></tr> ?]
+[? if tax_houses == 1 : <tr><td style="table-label"> Window tax</td><td style="table-value"> [+ tax_houses_rev +]&nbsp;thousand crowns</td></tr> ?]
+[? if tax_consum == 1 : <tr><td style="table-label"> Luxury goods taxes</td><td style="table-value"> [+ tax_consum_rev +]&nbsp;thousand crowns</td></tr> ?]
+[? if tax_income == 1 : <tr><td style="table-label"> Income tax</td><td style="table-value"> [+ tax_income_rev +]&nbsp;thousand crowns</td></tr> ?]
+[? if tax_tithe == 1 : <tr><td style="table-label"> Royal tithe</br><small>collected by the clergy along the tithe <em>proper</em></small></td><td style="table-value"> [+ tax_tithe_rev +]&nbsp;thousand crowns</td></tr> ?]
 <tr><th>Current tolls:</th></tr>
-[? if toll_novigrad == 1 : <tr><td> Toll on Pontar river in Novigrad</td><td> [+ toll_novigrad_rev +]&nbsp;thousand crowns</td></tr> ?]
-[? if toll_blaviken == 1 : <tr><td> Toll on Buina river in Blaviken</td><td> [+ toll_blaviken_rev +]&nbsp;thousand crowns</td></tr> ?]
-[? if toll_vartburg == 1 : <tr><td> Toll on Braa river in Vartburg</td><td> [+ toll_vartburg_rev +]&nbsp;thousand crowns</td></tr> ?]
-[? if road_tolls == 1 : <tr><td> Tolls on various royal roads and bridges in the country</td><td> [+ road_tolls_rev +]&nbsp;thousand crowns</td></tr> ?]
+[? if toll_novigrad == 1 : <tr><td style="table-label"> Toll on Pontar river in Novigrad</td><td style="table-value"> [+ toll_novigrad_rev +]&nbsp;thousand crowns</td></tr> ?]
+[? if toll_blaviken == 1 : <tr><td style="table-label"> Toll on Buina river in Blaviken</td><td style="table-value"> [+ toll_blaviken_rev +]&nbsp;thousand crowns</td></tr> ?]
+[? if toll_vartburg == 1 : <tr><td style="table-label"> Toll on Braa river in Vartburg</td><td style="table-value"> [+ toll_vartburg_rev +]&nbsp;thousand crowns</td></tr> ?]
+[? if road_tolls == 1 : <tr><td style="table-label"> Tolls on royal roads and bridges</td><td style="table-value"> [+ road_tolls_rev +]&nbsp;thousand crowns</td></tr> ?]
 </table>
 
+- @change_taxes: Adjust current taxes
+- @new_taxes: Introduce new taxes
+- @tolls: Adjust tolls
 - @dijkstra: Back
+
+@change_taxes
+title: Adjust taxes
+
+- @vassals_tax: Adjust feudal duties
+- @cities_tax: Adjust city duties
+- @poll_tax: Adjust poll tax
+- @land_tax: Adjust land tax
+- @houses_tax: Adjust window tax
+- @income_tax: Adjust income tax
+- @consum_tax: Adjust good taxes
+- @tithe_tax: Adjust tithe tax
+- @fiscal_policy: Back
+
+@vassals_tax
+title: Adjust feudal duties
+view-if: tax_vassals == 1
+on-arrival: tax_changed = "vassals"
+
+- @increase_tax: Increase rates
+- @decrease_tax: Decrease rates
+- @change_taxes: Back
+
+@cities_tax
+title: Adjust city duties
+view-if: tax_cities == 1
+on-arrival: tax_changed = "cities"
+
+- @increase_tax: Increase rates
+- @decrease_tax: Decrease rates
+- @change_taxes: Back
+
+@poll_tax
+title: Adjust poll tax
+view-if: tax_poll == 1
+on-arrival: tax_changed = "poll"
+
+- @increase_tax: Increase rates
+- @decrease_tax: Decrease rates
+- @change_taxes: Back
+
+@land_tax
+title: Adjust land tax
+view-if: tax_land == 1
+on-arrival: tax_changed = "land"
+
+- @increase_tax: Increase rates
+- @decrease_tax: Decrease rates
+- @change_taxes: Back
+
+@houses_tax
+title: Adjust window tax
+view-if: tax_houses == 1
+on-arrival: tax_changed = "window"
+
+- @increase_tax: Increase rates
+- @decrease_tax: Decrease rates
+- @change_taxes: Back
+
+@income_tax
+title: Adjust income tax
+view-if: tax_income == 1
+on-arrival: tax_changed = "income"
+
+- @increase_tax: Increase rates
+- @decrease_tax: Decrease rates
+- @change_taxes: Back
+
+@consum_tax
+title: Adjust tax on goods
+view-if: tax_consum == 1
+on-arrival: tax_changed = "consumption"
+
+- @increase_tax: Increase rates
+- @decrease_tax: Decrease rates
+- @change_taxes: Back
+
+@increase_tax
+title: Increase tax rate
+on-arrival: {!
+switch(Q.tax_changed){
+    case "vassals":
+        Q.tax_vassals_rate += 0.1
+    break;
+    case "cities":
+        Q.tax_cities_rate += 0.1
+    break;
+    case "poll":
+        Q.tax_poll_rate += 0.1
+    break;
+    case "land":
+        Q.tax_land_rate += 0.1
+    break;
+    case "houses":
+        Q.tax_houses_rate += 0.1
+    break;
+    case "income":
+        Q.tax_income_rate += 0.1
+    break;
+    case "consum":
+        Q.tax_consum_rate += 0.1
+    break;
+    case "tithe":
+        Q.tax_tithe_rate += 0.1
+    break;
+}
+!}
+go-to: change_taxes
+
+Tax on [+ tax_changed +] has been increased slightly.
+
+@decrease_tax
+title: Decrease tax rate
+on-arrival: {!
+switch(Q.tax_changed){
+    case "vassals":
+        Q.tax_vassals_rate -= 0.1
+    break;
+    case "cities":
+        Q.tax_cities_rate -= 0.1
+    break;
+    case "poll":
+        Q.tax_poll_rate -= 0.1
+    break;
+    case "land":
+        Q.tax_land_rate -= 0.1
+    break;
+    case "houses":
+        Q.tax_houses_rate -= 0.1
+    break;
+    case "income":
+        Q.tax_income_rate -= 0.1
+    break;
+    case "consum":
+        Q.tax_consum_rate -= 0.1
+    break;
+    case "tithe":
+        Q.tax_tithe_rate -= 0.1
+    break;
+}
+!}
+go-to: change_taxes
+
+Tax on [+ tax_changed +] has been decreased slightly.
+
+@new_taxes
+title: Introduce new taxes
+
+- @intro_poll_tax: Introduce poll tax
+- @intro_land_tax: Introduce land tax
+- @intro_houses_tax: Introduce window tax
+- @intro_income_tax: Introduce income tax
+- @fiscal_policy: Back
+
+@intro_poll_tax
+Title: Introduce poll tax
+view-if: poll_tax == 0
+
+Here is tax description
+
+- @fiscal_policy: Back
+
+@intro_land_tax
+Title: Introduce land tax
+view-if: land_tax == 0
+
+Here is tax description
+
+- @fiscal_policy: Back
+
+@intro_house_tax
+Title: Introduce window tax
+view-if: house_tax == 0
+
+Here is tax description
+
+- @fiscal_policy: Back
+
+@intro_income_tax
+Title: Introduce income tax
+view-if: income_tax == 0
+
+Here is tax description
+
+- @fiscal_policy: Back
