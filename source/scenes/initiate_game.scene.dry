@@ -94,11 +94,15 @@ Q.coast_pop   =  900
 Q.tridam_pop  =  600
 Q.gelibol_pop =  300
 
+Q.country_pop = Q.low_red_pop + Q.upp_red_pop + Q.coast_pop + Q.tridam_pop + Q.gelibol_pop
+
 Q.low_red_land = 2140
 Q.upp_red_land = 1690
 Q.coast_land   = 1250
 Q.tridam_land  =  710
 Q.gelibol_land =  280
+
+Q.country_land = Q.low_red_land + Q.upp_red_land + Q.coast_land + Q.tridam_land + Q.gelibol_land
 
 Q.novigrad_wealth     = 1000
 Q.oxenfurt_wealth     =  250
@@ -106,10 +110,29 @@ Q.blaviken_wealth     =  200
 Q.roggeven_wealth     =  200
 Q.other_cities_wealth =  300
 
+Q.country_wealth = Q.novigrad_wealth + Q.oxenfurt_wealth + Q.blaviken_wealth + Q.roggeven_wealth + Q.other_cities_wealth
+
 Q.pontar_trade = 2000
 Q.buina_trade  =  300
 Q.braa_trade   =  500
 Q.land_trade   =  800
+
+// assign starting values to income vars
+// to-do: they have to be update in end_turn
+// to-do: split revenue calculation between provinces, taking control into consideration
+
+Q.tax_vassals_rev    = Q.tax_vassals_rate * ( Q.country_pop + Q.country_land ) / 200 * Q.tax_vassals_eff
+Q.tax_cities_rev     = Q.tax_cities_rate * Q.country_wealth / 100 * Q.tax_cities_eff
+Q.tax_poll_rev       = 0
+Q.tax_land_rev       = 0
+Q.tax_consum_rev     = 0
+Q.tax_houses_rev     = 0
+Q.tax_income_rev     = 0
+Q.tax_tithe_rev      = Q.tax_tithe_rate * Q.country_land / 100 * Q.tax_tithe_eff
+Q.toll_novigrad_rev  = Q.toll_novigrad_rate * Q.pontar_trade / 100 * Q.toll_novigrad.eff
+Q.toll_blaviken_rev  = Q.toll_blaviken_rate * Q.buina_trade / 100 * Q.toll_blaviken.eff
+Q.toll_vartburg_rev  = Q.toll_vartburg_rate * Q.braa_trade / 100 * Q.toll_vartburg.eff
+Q.road_tolls_rev     = Q.road_tolls_rate * Q.land_trade / 100 * Q.road_tolls.eff
 
 !}
 go-to: main
