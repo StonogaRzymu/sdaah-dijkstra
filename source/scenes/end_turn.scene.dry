@@ -30,7 +30,12 @@ Q.road_tolls_rev     = Math.round( Q.road_tolls_rate * Q.land_trade / 10 * Q.roa
 
 Q.budget_balance = Q.tax_vassals_rev + Q.tax_cities_rev + Q.tax_poll_rev + Q.tax_land_rev + Q.tax_consum_rev + Q.tax_houses_rev  + Q.tax_income_rev +  Q.tax_tithe_rev + Q.toll_novigrad_rev + Q.toll_blaviken_rev + Q.toll_vartburg_rev + Q.road_tolls_rev;
 
+console.log(Q.budget_balance)
+console.log(Q.budget)
+
 Q.budget += Q.budget_balance;
+
+console.log(Q.budget)
 
 !}
 go-to: main
