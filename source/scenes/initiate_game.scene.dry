@@ -44,12 +44,14 @@ Q.tax_vassals   = 1
 Q.tax_cities    = 1
 Q.tax_poll      = 0
 Q.tax_land      = 0
+Q.tax_consumption = 1
 Q.tax_houses    = 0
 Q.tax_income    = 0
 Q.tax_tithe     = 1
 Q.toll_novigrad = 1
 Q.toll_blaviken = 1
 Q.toll_vartburg = 0
+Q.road_tolls    = 1
 
 !}
 go-to: main

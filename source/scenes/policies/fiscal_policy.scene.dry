@@ -5,22 +5,30 @@ new-page: true
 
 Current taxes:
 
+[? if tax_feudal == 1 : – Feudal duties, paid by nobles owning lands as vassals ?]
+
+[? if tax_cities == 1 : – City duties, paid by towns and cities which are direct subjects of the Crown ?]
+
 [? if tax_poll == 1 : – Poll tax ?]
 
 [? if tax_land == 1 : – Land tax ?]
 
 [? if tax_houses == 1 : – Window tax ?]
 
+[? if tax_consumption == 1 : – Luxury goods taxes ?]
+
 [? if tax_income == 1 : – Income tax ?]
 
-[? if tax_tithe == 1 : – Royal tithe, collected by the clergy along the tithe proper ?]
+[? if tax_tithe == 1 : – Royal tithe, collected by the clergy along the tithe <em>proper</em> ?]
 
-[? if toll_novigrad == 1 or toll_blaviken == 1 or toll_vartburg == 1 : Current tolls: ?]
+Current tolls:
 
 [? if toll_novigrad == 1 : – Toll on Pontar river in Novigrad ?]
 
 [? if toll_blaviken == 1 : – Toll on Buina river in Blaviken ?]
 
 [? if toll_vartburg == 1 : – Toll on Braa river in Vartburg ?]
+
+[? if road_tolls == 1 : – Tolls on various royal roads and bridges in the country ?]
 
 - @dijkstra: Back
