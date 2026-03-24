@@ -193,7 +193,7 @@ Here is tax description
 
 - @fiscal_policy: Back
 
-@intro_house_tax
+@intro_houses_tax
 Title: Introduce window tax
 view-if: house_tax == 0
 
