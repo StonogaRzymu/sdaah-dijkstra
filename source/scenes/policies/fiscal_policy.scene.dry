@@ -35,7 +35,6 @@ title: Adjust taxes
 - @houses_tax: Adjust window tax
 - @income_tax: Adjust income tax
 - @consum_tax: Adjust good taxes
-- @tithe_tax: Adjust tithe tax
 - @fiscal_policy: Back
 
 @vassals_tax
