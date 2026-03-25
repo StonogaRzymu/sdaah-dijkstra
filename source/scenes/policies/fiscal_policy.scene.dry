@@ -1,24 +1,51 @@
 title: Fiscal policy
 new-page: true
+on-arrival: {!
+
+Q.taxes.forEach((tax) => {
+    if (tax.active) {
+        let base = 0;
+        Q.provinces.forEach((prov) => {
+            if (tax.metrics.includes("pop")){
+                base += prov.pop * prov.control
+            }
+            if (tax.metrics.includes("land")){
+                base += prov.land * prov.control
+            }
+            if (tax.metrics.includes("wealth")){
+                base += prov.wealth * prov.control
+            }
+            if (tax.metrics.includes("trade")){
+                base += prov.trade * prov.control
+            }
+            if (tax.metrics.includes("novigrad_trade") && ("novigrad_trade" in prov)){
+                base += prov.novigrad_trade * prov.control
+            }
+        })
+        base /= tax.metrics.length  
+        rev = Math.round(base * tax.base * tax.rate * tax.eff) / 100
+        
+        Q.taxes[tax.id].rev = rev
+        Q.budget_balance += rev
+    }
+});
+
+Q.budget_balance = Math.round(Q.budget_balance * 10) / 10;
+
+Q.desc = "<table><tr><th>Current taxes and tolls:</th></tr>"
+Q.taxes.forEach((tax) => {
+    if (tax.active) {
+        Q.desc += '<tr><td style="table-label">' + tax.name + '</td>'
+        Q.desc += '<td style="table-value">' + tax.rev + '&nbsp;thousand crowns</td></tr>'
+    }
+})
+Q.desc += '</table>'
+
+!}
 
 = Fiscal policy
 
-<table>
-<tr><th>Current taxes:</th></tr>
-[? if tax_vassals == 1 : <tr><td style="table-label"> Feudal duties</br><small>paid by nobles owning lands as vassals</small></td><td style="table-value"> [+ tax_vassals_rev +]&nbsp;thousand crowns</td></tr> ?]
-[? if tax_cities == 1 : <tr><td style="table-label"> City duties</br><small>paid by towns and cities directly subject to the Crown</small></td><td style="table-value"> [+ tax_cities_rev +]&nbsp;thousand crowns</td></tr> ?]
-[? if tax_poll == 1 : <tr><td style="table-label"> Poll tax</td><td style="table-value"> [+ tax_poll_rev +]&nbsp;thousand crowns</td></tr> ?]
-[? if tax_land == 1 : <tr><td style="table-label"> Land tax</td><td style="table-value"> [+ tax_land_rev +]&nbsp;thousand crowns</td></tr> ?]
-[? if tax_houses == 1 : <tr><td style="table-label"> Window tax</td><td style="table-value"> [+ tax_houses_rev +]&nbsp;thousand crowns</td></tr> ?]
-[? if tax_consum == 1 : <tr><td style="table-label"> Luxury goods taxes</td><td style="table-value"> [+ tax_consum_rev +]&nbsp;thousand crowns</td></tr> ?]
-[? if tax_income == 1 : <tr><td style="table-label"> Income tax</td><td style="table-value"> [+ tax_income_rev +]&nbsp;thousand crowns</td></tr> ?]
-[? if tax_tithe == 1 : <tr><td style="table-label"> Royal tithe</br><small>collected by the clergy along the tithe <em>proper</em></small></td><td style="table-value"> [+ tax_tithe_rev +]&nbsp;thousand crowns</td></tr> ?]
-<tr><th>Current tolls:</th></tr>
-[? if toll_novigrad == 1 : <tr><td style="table-label"> Toll on Pontar river in Novigrad</td><td style="table-value"> [+ toll_novigrad_rev +]&nbsp;thousand crowns</td></tr> ?]
-[? if toll_blaviken == 1 : <tr><td style="table-label"> Toll on Buina river in Blaviken</td><td style="table-value"> [+ toll_blaviken_rev +]&nbsp;thousand crowns</td></tr> ?]
-[? if toll_vartburg == 1 : <tr><td style="table-label"> Toll on Braa river in Vartburg</td><td style="table-value"> [+ toll_vartburg_rev +]&nbsp;thousand crowns</td></tr> ?]
-[? if road_tolls == 1 : <tr><td style="table-label"> Tolls on royal roads and bridges</td><td style="table-value"> [+ road_tolls_rev +]&nbsp;thousand crowns</td></tr> ?]
-</table>
+[+ desc +]
 
 - @change_taxes: Adjust current taxes
 - @new_taxes: Introduce new taxes
@@ -39,8 +66,12 @@ title: Adjust taxes
 
 @vassals_tax
 title: Adjust feudal duties
-view-if: tax_vassals == 1
-on-arrival: tax_changed = "vassals"
+view-if: {! Q.taxes["vassals"].active !}
+on-arrival: {! Q.tax_changed = "vassals";
+Q.desc = Q.taxes["vassals"].desc !}
+new-page: true
+
+[+ desc +]
 
 - @increase_tax: Increase rates
 - @decrease_tax: Decrease rates
@@ -48,8 +79,12 @@ on-arrival: tax_changed = "vassals"
 
 @cities_tax
 title: Adjust city duties
-view-if: tax_cities == 1
-on-arrival: tax_changed = "cities"
+view-if: {! Q.taxes["cities"].active !}
+on-arrival: {! Q.tax_changed = "cities";
+Q.desc = Q.taxes["cities"].desc !}
+new-page: true
+
+[+ desc +]
 
 - @increase_tax: Increase rates
 - @decrease_tax: Decrease rates
@@ -57,8 +92,12 @@ on-arrival: tax_changed = "cities"
 
 @poll_tax
 title: Adjust poll tax
-view-if: tax_poll == 1
-on-arrival: tax_changed = "poll"
+view-if: {! Q.taxes["poll"].active !}
+on-arrival: {! Q.tax_changed = "poll";
+Q.desc = Q.taxes["poll"].desc !}
+new-page: true
+
+[+ desc +]
 
 - @increase_tax: Increase rates
 - @decrease_tax: Decrease rates
@@ -66,8 +105,12 @@ on-arrival: tax_changed = "poll"
 
 @land_tax
 title: Adjust land tax
-view-if: tax_land == 1
-on-arrival: tax_changed = "land"
+view-if: {! Q.taxes["land"].active !}
+on-arrival: {! Q.tax_changed = "land";
+Q.desc = Q.taxes["land"].desc !}
+new-page: true
+
+[+ desc +]
 
 - @increase_tax: Increase rates
 - @decrease_tax: Decrease rates
@@ -75,8 +118,12 @@ on-arrival: tax_changed = "land"
 
 @houses_tax
 title: Adjust window tax
-view-if: tax_houses == 1
-on-arrival: tax_changed = "window"
+view-if: {! Q.taxes["houses"].active !}
+on-arrival: {! Q.tax_changed = "houses";
+Q.desc = Q.taxes["houses"].desc !}
+new-page: true
+
+[+ desc +]
 
 - @increase_tax: Increase rates
 - @decrease_tax: Decrease rates
@@ -84,8 +131,12 @@ on-arrival: tax_changed = "window"
 
 @income_tax
 title: Adjust income tax
-view-if: tax_income == 1
-on-arrival: tax_changed = "income"
+view-if: {! Q.taxes["income"].active !}
+on-arrival: {! Q.tax_changed = "income";
+Q.desc = Q.taxes["income"].desc !}
+new-page: true
+
+[+ desc +]
 
 - @increase_tax: Increase rates
 - @decrease_tax: Decrease rates
@@ -93,8 +144,12 @@ on-arrival: tax_changed = "income"
 
 @consum_tax
 title: Adjust tax on goods
-view-if: tax_consum == 1
-on-arrival: tax_changed = "consumption"
+view-if: {! Q.taxes["consum"].active !}
+on-arrival: {! Q.tax_changed = "consum";
+Q.desc = Q.taxes["consum"].desc !}
+new-page: true
+
+[+ desc +]
 
 - @increase_tax: Increase rates
 - @decrease_tax: Decrease rates
@@ -102,68 +157,14 @@ on-arrival: tax_changed = "consumption"
 
 @increase_tax
 title: Increase tax rate
-on-arrival: {!
-switch(Q.tax_changed){
-    case "vassals":
-        Q.tax_vassals_rate += 0.1
-    break;
-    case "cities":
-        Q.tax_cities_rate += 0.1
-    break;
-    case "poll":
-        Q.tax_poll_rate += 0.1
-    break;
-    case "land":
-        Q.tax_land_rate += 0.1
-    break;
-    case "houses":
-        Q.tax_houses_rate += 0.1
-    break;
-    case "income":
-        Q.tax_income_rate += 0.1
-    break;
-    case "consum":
-        Q.tax_consum_rate += 0.1
-    break;
-    case "tithe":
-        Q.tax_tithe_rate += 0.1
-    break;
-}
-!}
+on-arrival: {! Q.taxes["Q.tax_changed"].rate += 0.1 !}
 go-to: change_taxes
 
 Tax on [+ tax_changed +] has been increased slightly.
 
 @decrease_tax
 title: Decrease tax rate
-on-arrival: {!
-switch(Q.tax_changed){
-    case "vassals":
-        Q.tax_vassals_rate -= 0.1
-    break;
-    case "cities":
-        Q.tax_cities_rate -= 0.1
-    break;
-    case "poll":
-        Q.tax_poll_rate -= 0.1
-    break;
-    case "land":
-        Q.tax_land_rate -= 0.1
-    break;
-    case "houses":
-        Q.tax_houses_rate -= 0.1
-    break;
-    case "income":
-        Q.tax_income_rate -= 0.1
-    break;
-    case "consum":
-        Q.tax_consum_rate -= 0.1
-    break;
-    case "tithe":
-        Q.tax_tithe_rate -= 0.1
-    break;
-}
-!}
+on-arrival: {! Q.taxes["Q.tax_changed"].rate -= 0.1 !}
 go-to: change_taxes
 
 Tax on [+ tax_changed +] has been decreased slightly.
@@ -179,37 +180,71 @@ title: Introduce new taxes
 
 @intro_poll_tax
 Title: Introduce poll tax
-view-if: poll_tax == 0
+on-arrival: {! Q.desc = Q.taxes["poll"].desc !}
+view-if: {! Q.taxes["poll"].active == false !}
 
-Here is tax description
+[+ desc +]
 
 - @fiscal_policy: Back
 
 @intro_land_tax
 Title: Introduce land tax
-view-if: land_tax == 0
+on-arrival: {! Q.desc = Q.taxes["land"].desc !}
+view-if: {! Q.taxes["land"].active == false !}
 
-Here is tax description
+[+ desc +]
 
 - @fiscal_policy: Back
 
 @intro_houses_tax
 Title: Introduce window tax
-view-if: house_tax == 0
+on-arrival: {! Q.desc = Q.taxes["houses"].desc !}
+view-if: {! Q.taxes["houses"].active == false !}
 
-Here is tax description
+[+ desc +]
 
 - @fiscal_policy: Back
 
 @intro_income_tax
 Title: Introduce income tax
-view-if: income_tax == 0
+on-arrival: {! Q.desc = Q.taxes["income"].desc !}
+view-if: {! Q.taxes["income"].active == false !}
 
-Here is tax description
+[+ desc +]
 
 - @fiscal_policy: Back
 
 @tolls
 Title: Adjust tolls
 
+- @novigrad_toll: Adjust toll on Pontar in Novigrad
+- @other_tolls: Adjust other tolls on roads, bridges and rivers
 - @fiscal_policy: Back
+
+@novigrad_toll
+Title: Adjust Novigrad toll
+on-arrival: {!
+Q.desc = Q.taxes["toll_novigrad"].desc;
+Q.tax_changed = "toll_novigrad"
+!}
+view-if: {! Q.taxes["toll_novigrad"].active !}
+
+[+ desc +]
+
+- @increase_tax: Increase rates
+- @decrease_tax: Decrease rates
+- @tolls: Back
+
+@other_tolls
+Title: Adjust Novigrad toll
+on-arrival: {!
+Q.desc = Q.taxes["tolls"].desc;
+Q.tax_changed = "tolls"
+!}
+view-if: {! Q.taxes["tolls"].active !}
+
+[+ desc +]
+
+- @increase_tax: Increase rates
+- @decrease_tax: Decrease rates
+- @tolls: Back

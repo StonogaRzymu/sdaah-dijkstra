@@ -3,6 +3,7 @@ card-image: img/hourglass.jpg
 is-pinned-card: true
 new-page: true
 on-arrival: {!
+
 Q.time += 1;
 if (Q.season < 4) {
     Q.season += 1;
@@ -11,24 +12,38 @@ if (Q.season < 4) {
     Q.year += 1;
 }
 
-// assign starting values to income vars
-// to-do: split revenue calculation between provinces, taking control into consideration
-// to-do: house and consumption taxes
+// assign values to revenue
+// to-do: consumption taxes
 
-Q.tax_vassals_rev    = Math.round( Q.tax_vassals_rate * ( Q.country_pop + Q.country_land ) / 20 * Q.tax_vassals_eff ) / 10
-Q.tax_cities_rev     = Math.round( Q.tax_cities_rate * Q.country_wealth / 10 * Q.tax_cities_eff  ) / 10
-Q.tax_poll_rev       = Math.round( Q.tax_poll_rate * Q.country_pop / 10 * Q.tax_poll_eff  ) / 10
-Q.tax_land_rev       = Math.round( Q.tax_land_rate * Q.country_land / 10 * Q.tax_land_eff  ) / 10
-Q.tax_consum_rev     = Math.round( Q.tax_consum_rate * Q.country_wealth / 10 * Q.tax_consum_eff  ) / 10
-Q.tax_houses_rev     = Math.round( Q.tax_houses_rate * Q.country_wealth / 10 * Q.tax_houses_eff  ) / 10
-Q.tax_income_rev     = Math.round( Q.tax_income_rate * Q.country_pop / 10 * Q.tax_income_eff  ) / 10
-Q.tax_tithe_rev      = Math.round( Q.tax_tithe_rate * Q.country_land / 10 * Q.tax_tithe_eff  ) / 10
-Q.toll_novigrad_rev  = Math.round( Q.toll_novigrad_rate * Q.pontar_trade / 10 * Q.toll_novigrad_eff  ) / 10
-Q.toll_blaviken_rev  = Math.round( Q.toll_blaviken_rate * Q.buina_trade / 10 * Q.toll_blaviken_eff  ) / 10
-Q.toll_vartburg_rev  = Math.round( Q.toll_vartburg_rate * Q.braa_trade / 10 * Q.toll_vartburg_eff  ) / 10
-Q.road_tolls_rev     = Math.round( Q.road_tolls_rate * Q.land_trade / 10 * Q.road_tolls_eff  ) / 10
+Q.taxes.forEach((tax) => {
+    if (tax.active) {
+        let base = 0;
+        Q.provinces.forEach((prov) => {
+            if (tax.metrics.includes("pop")){
+                base += prov.pop * prov.control
+            }
+            if (tax.metrics.includes("land")){
+                base += prov.land * prov.control
+            }
+            if (tax.metrics.includes("wealth")){
+                base += prov.wealth * prov.control
+            }
+            if (tax.metrics.includes("trade")){
+                base += prov.trade * prov.control
+            }
+            if (tax.metrics.includes("novigrad_trade") && ("novigrad_trade" in prov)){
+                base += prov.novigrad_trade * prov.control
+            }
+        })
+        base /= tax.metrics.length  
+        rev = Math.round(base * tax.base * tax.rate * tax.eff) / 100
+        
+        Q.taxes[tax.id].rev = rev
+        Q.budget_balance += rev
+    }
+});
 
-Q.budget_balance = Math.round((Q.tax_vassals_rev + Q.tax_cities_rev + Q.tax_poll_rev + Q.tax_land_rev + Q.tax_consum_rev + Q.tax_houses_rev  + Q.tax_income_rev +  Q.tax_tithe_rev + Q.toll_novigrad_rev + Q.toll_blaviken_rev + Q.toll_vartburg_rev + Q.road_tolls_rev ) * 10 ) / 10;
+Q.budget_balance = Math.round(Q.budget_balance * 10) / 10;
 
 Q.budget += Q.budget_balance;
 
