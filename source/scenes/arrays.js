@@ -60,13 +60,11 @@ Q.provinces["coast"].wealth   =  200
 Q.provinces["tridam"].wealth  =  200
 Q.provinces["gelibol"].wealth =  300
 
-Q.provinces["low_red"].trade = 500
+Q.provinces["low_red"].trade = 2000
 Q.provinces["upp_red"].trade = 600
 Q.provinces["coast"].trade   = 300
 Q.provinces["tridam"].trade  = 500
 Q.provinces["gelibol"].trade = 200
-
-Q.provinces["low_red"].novigrad_trade = 1500
 
 // taxes
 
@@ -147,7 +145,7 @@ Q.taxes["toll_novigrad"].name    = "Novigradian toll"
 Q.taxes["toll_novigrad"].active  = true
 Q.taxes["toll_novigrad"].base    = 0.5
 Q.taxes["toll_novigrad"].rate    = 1
-Q.taxes["toll_novigrad"].metrics = ["novigrad_trade"]
+Q.taxes["toll_novigrad"].metrics = ["trade"]
 Q.taxes["toll_novigrad"].eff     = 0.5
 Q.taxes["toll_novigrad"].rev     = 0
 
@@ -175,9 +173,6 @@ Q.taxes.forEach((tax) => {
             }
             if (tax.metrics.includes("trade")){
                 base += prov.trade * prov.control
-            }
-            if (tax.metrics.includes("novigrad_trade") && ("novigrad_trade" in prov)){
-                base += prov.novigrad_trade * prov.control
             }
         })
         base /= tax.metrics.length   
