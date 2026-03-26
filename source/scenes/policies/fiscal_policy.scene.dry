@@ -2,10 +2,10 @@ title: Fiscal policy
 new-page: true
 on-arrival: {!
 
-Q.taxes.forEach((tax) => {
+Object.entries(Q.taxes).forEach((tax) => {
     if (tax.active) {
         let base = 0;
-        Q.provinces.forEach((prov) => {
+        Object.entries(Q.provinces).forEach((prov) => {
             if (tax.metrics.includes("pop")){
                 base += prov.pop * prov.control
             }
@@ -33,7 +33,7 @@ Q.taxes.forEach((tax) => {
 Q.budget_balance = Math.round(Q.budget_balance * 10) / 10;
 
 Q.desc = "<table><tr><th>Current taxes and tolls:</th></tr>"
-Q.taxes.forEach((tax) => {
+Object.entries(Q.taxes).forEach((tax) => {
     if (tax.active) {
         Q.desc += '<tr><td style="table-label">' + tax.name + '</td>'
         Q.desc += '<td style="table-value">' + tax.rev + '&nbsp;thousand crowns</td></tr>'
@@ -163,20 +163,6 @@ new-page: true
 - @decrease_tax: Decrease rates
 - @change_taxes: Back
 
-@increase_tax
-title: Increase tax rate
-on-arrival: {! Q.taxes["Q.tax_changed"].rate += 0.1 !}
-go-to: change_taxes
-
-Tax on [+ tax_changed +] has been increased slightly.
-
-@decrease_tax
-title: Decrease tax rate
-on-arrival: {! Q.taxes["Q.tax_changed"].rate -= 0.1 !}
-go-to: change_taxes
-
-Tax on [+ tax_changed +] has been decreased slightly.
-
 @new_taxes
 title: Introduce new taxes
 
@@ -256,3 +242,17 @@ view-if: {! Q.taxes["tolls"].active !}
 - @increase_tax: Increase rates
 - @decrease_tax: Decrease rates
 - @tolls: Back
+
+@increase_tax
+title: Increase tax rate
+on-arrival: {! Q.taxes["Q.tax_changed"].rate += 0.1 !}
+go-to: change_taxes
+
+Tax on [+ tax_changed +] has been increased slightly.
+
+@decrease_tax
+title: Decrease tax rate
+on-arrival: {! Q.taxes["Q.tax_changed"].rate -= 0.1 !}
+go-to: change_taxes
+
+Tax on [+ tax_changed +] has been decreased slightly.

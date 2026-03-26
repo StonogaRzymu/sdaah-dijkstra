@@ -20,7 +20,6 @@ Q.estates = {
     church: {},
     peasants: {}
 };
-console.log(Q.estates)
 
 Q.estates["aristocracy"].inf    = 40;
 Q.estates["petty_nobility"].inf = 30;

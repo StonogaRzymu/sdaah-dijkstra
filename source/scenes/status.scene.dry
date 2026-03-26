@@ -58,9 +58,9 @@ Satisfaction: [+ peasants_sat : sat +]
 
 **Lower Redania**
 
-Crown control: [+ low_red_cont: control +]
+Crown control: [+ estates.low_red.control +]
 
-Governor: [+ low_red_gov +] ([+ low_red_gov_allegiance +])
+Governor: [+ estates['low_red']['control'] +] ([+ low_red_gov_allegiance +])
 
 **Upper Redania**
 
