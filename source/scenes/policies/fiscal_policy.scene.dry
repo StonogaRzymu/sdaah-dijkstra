@@ -73,6 +73,14 @@ new-page: true
 
 [+ desc +]
 
+Feudal duties are a collection of taxes paid by nobles owning lands as vassals. Due to their archaic form nobles have tried and tested tactics of avoiding them. For that reason their efficacy is directly linked to the loyalty of aristocracy and petty nobility.
+
+Current revenue:
+
+Current rate: 
+
+Current efficacy: 
+
 - @increase_tax: Increase rates
 - @decrease_tax: Decrease rates
 - @change_taxes: Back
