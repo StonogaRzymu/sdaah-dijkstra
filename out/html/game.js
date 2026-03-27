@@ -269,19 +269,19 @@
 
     Object.entries(window.dendryUI.dendryEngine.state.qualities.estates).forEach((obj) => {
         Object.entries(obj[1]).forEach((prop) => {
-            Object.defineProperty(window.dendryUI.dendryEngine.state.qualities, "estates_"+obj[0]+"_"+prop[0], {value: prop[1]})
+            Object.defineProperty(window.dendryUI.dendryEngine.state.qualities, "estates_"+obj[0]+"_"+prop[0], {value: prop[1], configurable: true })
         });
     });
 
     Object.entries(window.dendryUI.dendryEngine.state.qualities.provinces).forEach((obj) => {
         Object.entries(obj[1]).forEach((prop) => {
-            Object.defineProperty(window.dendryUI.dendryEngine.state.qualities, "prov_"+obj[0]+"_"+prop[0], {value: prop[1]})
+            Object.defineProperty(window.dendryUI.dendryEngine.state.qualities, "prov_"+obj[0]+"_"+prop[0], {value: prop[1], configurable: true })
         });
     });
 
     Object.entries(window.dendryUI.dendryEngine.state.qualities.taxes).forEach((obj) => {
         Object.entries(obj[1]).forEach((prop) => {
-            Object.defineProperty(window.dendryUI.dendryEngine.state.qualities, "taxes_"+obj[0]+"_"+prop[0], {value: prop[1]})
+            Object.defineProperty(window.dendryUI.dendryEngine.state.qualities, "taxes_"+obj[0]+"_"+prop[0], {value: prop[1], configurable: true })
         });
     });
 
