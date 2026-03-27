@@ -193,7 +193,7 @@ Q.taxes["toll_novigrad"].rev     = 0
 Q.taxes["toll_novigrad"].desc = "Toll on Pontar river in Novigrad"
 
 Q.taxes["tolls"].id      = "tolls"
-Q.taxes["tolls"].name    = "Other tolls"
+Q.taxes["tolls"].name    = "other tolls"
 Q.taxes["tolls"].active  = true
 Q.taxes["tolls"].base    = 1
 Q.taxes["tolls"].rate    = 1

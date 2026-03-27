@@ -32,20 +32,25 @@ Object.entries(Q.taxes).forEach((tax) => {
 
 Q.budget_balance = Math.round(Q.budget_balance * 10) / 10;
 
-Q.desc = "<table><tr><th>Current taxes and tolls:</th></tr>"
-Object.entries(Q.taxes).forEach((tax) => {
-    if (tax.active) {
-        Q.desc += '<tr><td style="table-label">' + tax.name + '</td>'
-        Q.desc += '<td style="table-value">' + tax.rev + '&nbsp;thousand crowns</td></tr>'
-    }
-})
-Q.desc += '</table>'
-
 !}
 
 = Fiscal policy
 
-[+ desc +]
+
+<table>
+<tr><th>Current taxes:</th></tr>
+[? if taxes_vassals_active == 1 : <tr><td style="table-label"> Feudal duties</td><td style="table-value"> [+ taxes_vassals_rev +]&nbsp;thousand crowns</td></tr> ?]
+[? if taxes_cities_active == 1 : <tr><td style="table-label"> City duties</td><td style="table-value"> [+ taxes_cities_rev +]&nbsp;thousand crowns</td></tr> ?]
+[? if taxes_poll_active == 1 : <tr><td style="table-label"> Poll tax</td><td style="table-value"> [+ taxes_poll_rev +]&nbsp;thousand crowns</td></tr> ?]
+[? if taxes_land_active == 1 : <tr><td style="table-label"> Land tax</td><td style="table-value"> [+ taxes_land_rev +]&nbsp;thousand crowns</td></tr> ?]
+[? if taxes_houses_active == 1 : <tr><td style="table-label"> Window tax</td><td style="table-value"> [+ taxes_houses_rev +]&nbsp;thousand crowns</td></tr> ?]
+[? if taxes_consum_active == 1 : <tr><td style="table-label"> Luxury goods taxes</td><td style="table-value"> [+ taxes_consum_rev +]&nbsp;thousand crowns</td></tr> ?]
+[? if taxes_income_active == 1 : <tr><td style="table-label"> Income tax</td><td style="table-value"> [+ taxes_income_rev +]&nbsp;thousand crowns</td></tr> ?]
+[? if taxes_tithe_active == 1 : <tr><td style="table-label"> Royal tithe</td><td style="table-value"> [+ taxes_tithe_rev +]&nbsp;thousand crowns</td></tr> ?]
+<tr><th>Current tolls:</th></tr>
+[? if taxes_toll_novigrad_active == 1 : <tr><td style="table-label"> Toll on Pontar river in Novigrad</td><td style="table-value"> [+ taxes_toll_novigrad_rev +]&nbsp;thousand crowns</td></tr> ?]
+[? if taxes_tolls_active == 1 : <tr><td style="table-label"> Other tolls</td><td style="table-value"> [+ taxes_tolls_rev +]&nbsp;thousand crowns</td></tr> ?]
+</table>
 
 - @change_taxes: Adjust current taxes
 - @new_taxes: Introduce new taxes
@@ -68,18 +73,18 @@ title: Adjust taxes
 title: Adjust feudal duties
 view-if: {! Q.taxes["vassals"].active !}
 on-arrival: {! Q.tax_changed = "vassals";
-Q.desc = Q.taxes["vassals"].desc !}
+Q.name = Q.taxes[Q.tax_changed].name.toUpperCase() !}
 new-page: true
 
-[+ desc +]
+= [+ name +]
 
-Feudal duties are a collection of taxes paid by nobles owning lands as vassals. Due to their archaic form nobles have tried and tested tactics of avoiding them. For that reason their efficacy is directly linked to the loyalty of aristocracy and petty nobility.
+[+ taxes_vassals_desc +]
 
-Current revenue:
+Current revenue: [+ taxes_vassals_rev +]&nbsp;thousand crowns
 
-Current rate: 
+Current rate: [+ taxes_vassals_rate : tax_rates +]
 
-Current efficacy: 
+Current efficacy: [+ taxes_vassals_eff : tax_eff +]
 
 - @increase_tax: Increase rates
 - @decrease_tax: Decrease rates
@@ -89,10 +94,18 @@ Current efficacy:
 title: Adjust city duties
 view-if: {! Q.taxes["cities"].active !}
 on-arrival: {! Q.tax_changed = "cities";
-Q.desc = Q.taxes["cities"].desc !}
+Q.name = Q.taxes[Q.tax_changed].name.toUpperCase() !}
 new-page: true
 
-[+ desc +]
+= [+ name +]
+
+[+ taxes_cities_desc +]
+
+Current revenue: [+ taxes_cities_rev +]&nbsp;thousand crowns
+
+Current rate: [+ taxes_cities_rate : tax_rates +]
+
+Current efficacy: [+ taxes_cities_eff : tax_eff +]
 
 - @increase_tax: Increase rates
 - @decrease_tax: Decrease rates
@@ -102,36 +115,52 @@ new-page: true
 title: Adjust poll tax
 view-if: {! Q.taxes["poll"].active !}
 on-arrival: {! Q.tax_changed = "poll";
-Q.desc = Q.taxes["poll"].desc !}
+Q.name = Q.taxes[Q.tax_changed].name.toUpperCase() !}
 new-page: true
 
-[+ desc +]
+= [+ name +]
 
-- @increase_tax: Increase rates
-- @decrease_tax: Decrease rates
-- @change_taxes: Back
+[+ taxes_poll_desc +]
+
+Current revenue: [+ taxes_poll_rev +]&nbsp;thousand crowns
+
+Current rate: [+ taxes_poll_rate : tax_rates +]
+
+Current efficacy: [+ taxes_poll_eff : tax_eff +]
 
 @land_tax
 title: Adjust land tax
 view-if: {! Q.taxes["land"].active !}
 on-arrival: {! Q.tax_changed = "land";
-Q.desc = Q.taxes["land"].desc !}
+Q.name = Q.taxes[Q.tax_changed].name.toUpperCase() !}
 new-page: true
 
-[+ desc +]
+= [+ name +]
 
-- @increase_tax: Increase rates
-- @decrease_tax: Decrease rates
-- @change_taxes: Back
+[+ taxes_land_desc +]
+
+Current revenue: [+ taxes_land_rev +]&nbsp;thousand crowns
+
+Current rate: [+ taxes_land_rate : tax_rates +]
+
+Current efficacy: [+ taxes_land_eff : tax_eff +]
 
 @houses_tax
 title: Adjust window tax
 view-if: {! Q.taxes["houses"].active !}
 on-arrival: {! Q.tax_changed = "houses";
-Q.desc = Q.taxes["houses"].desc !}
+Q.name = Q.taxes[Q.tax_changed].name.toUpperCase() !}
 new-page: true
 
-[+ desc +]
+= [+ name +]
+
+[+ taxes_houses_desc +]
+
+Current revenue: [+ taxes_houses_rev +]&nbsp;thousand crowns
+
+Current rate: [+ taxes_houses_rate : tax_rates +]
+
+Current efficacy: [+ taxes_houses_eff : tax_eff +]
 
 - @increase_tax: Increase rates
 - @decrease_tax: Decrease rates
@@ -141,10 +170,18 @@ new-page: true
 title: Adjust income tax
 view-if: {! Q.taxes["income"].active !}
 on-arrival: {! Q.tax_changed = "income";
-Q.desc = Q.taxes["income"].desc !}
+Q.name = Q.taxes[Q.tax_changed].name.toUpperCase() !}
 new-page: true
 
-[+ desc +]
+= [+ name +]
+
+[+ taxes_income_desc +]
+
+Current revenue: [+ taxes_income_rev +]&nbsp;thousand crowns
+
+Current rate: [+ taxes_income_rate : tax_rates +]
+
+Current efficacy: [+ taxes_income_eff : tax_eff +]
 
 - @increase_tax: Increase rates
 - @decrease_tax: Decrease rates
@@ -154,10 +191,18 @@ new-page: true
 title: Adjust tax on goods
 view-if: {! Q.taxes["consum"].active !}
 on-arrival: {! Q.tax_changed = "consum";
-Q.desc = Q.taxes["consum"].desc !}
+Q.name = Q.taxes[Q.tax_changed].name.toUpperCase() !}
 new-page: true
 
-[+ desc +]
+= [+ name +]
+
+[+ taxes_consum_desc +]
+
+Current revenue: [+ taxes_consum_rev +]&nbsp;thousand crowns
+
+Current rate: [+ taxes_consum_rate : tax_rates +]
+
+Current efficacy: [+ taxes_consum_eff : tax_eff +]
 
 - @increase_tax: Increase rates
 - @decrease_tax: Decrease rates
@@ -177,7 +222,10 @@ Title: Introduce poll tax
 on-arrival: {! Q.desc = Q.taxes["poll"].desc !}
 view-if: {! Q.taxes["poll"].active == false !}
 
-[+ desc +]
+= Introduce [+ taxes_poll_name +]
+
+[+ taxes_poll_desc +]
+
 
 - @fiscal_policy: Back
 
@@ -186,7 +234,10 @@ Title: Introduce land tax
 on-arrival: {! Q.desc = Q.taxes["land"].desc !}
 view-if: {! Q.taxes["land"].active == false !}
 
-[+ desc +]
+= Introduce [+ taxes_land_name +]
+
+[+ taxes_land_desc +]
+
 
 - @fiscal_policy: Back
 
@@ -195,7 +246,10 @@ Title: Introduce window tax
 on-arrival: {! Q.desc = Q.taxes["houses"].desc !}
 view-if: {! Q.taxes["houses"].active == false !}
 
-[+ desc +]
+= Introduce [+ taxes_houses_name +]
+
+[+ taxes_houses_desc +]
+
 
 - @fiscal_policy: Back
 
@@ -204,7 +258,9 @@ Title: Introduce income tax
 on-arrival: {! Q.desc = Q.taxes["income"].desc !}
 view-if: {! Q.taxes["income"].active == false !}
 
-[+ desc +]
+= Introduce [+ taxes_income_name +]
+
+[+ taxes_income_desc +]
 
 - @fiscal_policy: Back
 
@@ -217,13 +273,21 @@ Title: Adjust tolls
 
 @novigrad_toll
 Title: Adjust Novigrad toll
-on-arrival: {!
-Q.desc = Q.taxes["toll_novigrad"].desc;
-Q.tax_changed = "toll_novigrad"
-!}
 view-if: {! Q.taxes["toll_novigrad"].active !}
+on-arrival: {!
+Q.tax_changed = "toll_novigrad"
+Q.name = Q.taxes[Q.tax_changed].name.toUpperCase() !}
+new-page: true
 
-[+ desc +]
+[+ name +]
+
+[+ taxes_toll_novigrad_desc +]
+
+Current revenue: [+ taxes_toll_novigrad_rev +]&nbsp;thousand crowns
+
+Current rate: [+ taxes_toll_novigrad_rate : tax_rates +]
+
+Current efficacy: [+ taxes_toll_novigrad_eff : tax_eff +]
 
 - @increase_tax: Increase rates
 - @decrease_tax: Decrease rates
@@ -232,12 +296,20 @@ view-if: {! Q.taxes["toll_novigrad"].active !}
 @other_tolls
 Title: Adjust Novigrad toll
 on-arrival: {!
-Q.desc = Q.taxes["tolls"].desc;
 Q.tax_changed = "tolls"
-!}
+Q.name = Q.taxes[Q.tax_changed].name.toUpperCase() !}
 view-if: {! Q.taxes["tolls"].active !}
+new-page: true
 
-[+ desc +]
+[+ name +]
+
+[+ taxes_tolls_desc +]
+
+Current revenue: [+ taxes_tolls_rev +]&nbsp;thousand crowns
+
+Current rate: [+ taxes_tolls_rate : tax_rates +]
+
+Current efficacy: [+ taxes_tolls_eff : tax_eff +]
 
 - @increase_tax: Increase rates
 - @decrease_tax: Decrease rates
@@ -248,11 +320,11 @@ title: Increase tax rate
 on-arrival: {! Q.taxes["Q.tax_changed"].rate += 0.1 !}
 go-to: change_taxes
 
-Tax on [+ tax_changed +] has been increased slightly.
+[+ name +] – slightly increased.
 
 @decrease_tax
 title: Decrease tax rate
 on-arrival: {! Q.taxes["Q.tax_changed"].rate -= 0.1 !}
 go-to: change_taxes
 
-Tax on [+ tax_changed +] has been decreased slightly.
+[+ name +] – slightly decreased.
