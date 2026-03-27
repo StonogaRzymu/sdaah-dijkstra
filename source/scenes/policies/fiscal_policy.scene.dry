@@ -79,6 +79,7 @@ new-page: true
 
 @vassals_tax
 title: Adjust feudal duties
+subtitle: Current rates: [+ taxes_vassals_rate: tax_rates +]
 view-if: taxes_vassals_active = true
 on-arrival: {! Q.tax_changed = "vassals";
 Q.name = Q.taxes[Q.tax_changed].name.toUpperCase() !}
@@ -100,6 +101,7 @@ Current efficacy: [+ taxes_vassals_eff : tax_eff +]
 
 @cities_tax
 title: Adjust city duties
+subtitle: Current rates: [+ taxes_cities_rate: tax_rates +]
 view-if: taxes_cities_active = true
 on-arrival: {! Q.tax_changed = "cities";
 Q.name = Q.taxes[Q.tax_changed].name.toUpperCase() !}
@@ -121,6 +123,7 @@ Current efficacy: [+ taxes_cities_eff : tax_eff +]
 
 @poll_tax
 title: Adjust poll tax
+subtitle: Current rates: [+ taxes_poll_rate: tax_rates +]
 view-if: taxes_poll_active = true
 on-arrival: {! Q.tax_changed = "poll";
 Q.name = Q.taxes[Q.tax_changed].name.toUpperCase() !}
@@ -138,6 +141,7 @@ Current efficacy: [+ taxes_poll_eff : tax_eff +]
 
 @land_tax
 title: Adjust land tax
+subtitle: Current rates: [+ taxes_land_rate: tax_rates +]
 view-if:taxes_land_active = true
 on-arrival: {! Q.tax_changed = "land";
 Q.name = Q.taxes[Q.tax_changed].name.toUpperCase() !}
@@ -155,6 +159,7 @@ Current efficacy: [+ taxes_land_eff : tax_eff +]
 
 @houses_tax
 title: Adjust window tax
+subtitle: Current rates: [+ taxes_houses_rate: tax_rates +]
 view-if: taxes_houses_active = true
 on-arrival: {! Q.tax_changed = "houses";
 Q.name = Q.taxes[Q.tax_changed].name.toUpperCase() !}
@@ -176,6 +181,7 @@ Current efficacy: [+ taxes_houses_eff : tax_eff +]
 
 @income_tax
 title: Adjust income tax
+subtitle: Current rates: [+ taxes_income_rate: tax_rates +]
 view-if: taxes_income_active = true
 on-arrival: {! Q.tax_changed = "income";
 Q.name = Q.taxes[Q.tax_changed].name.toUpperCase() !}
@@ -197,6 +203,7 @@ Current efficacy: [+ taxes_income_eff : tax_eff +]
 
 @consum_tax
 title: Adjust tax on goods
+subtitle: Current rates: [+ taxes_consum_rate: tax_rates +]
 view-if: taxes_consum_active = true
 on-arrival: {! Q.tax_changed = "consum";
 Q.name = Q.taxes[Q.tax_changed].name.toUpperCase() !}
@@ -285,6 +292,7 @@ new-page: true
 
 @novigrad_toll
 Title: Adjust Novigrad toll
+subtitle: Current rates: [+ taxes_toll_novigrad_rate: tax_rates +]
 view-if: taxes_toll_novigrad_active = true 
 on-arrival: {!
 Q.tax_changed = "toll_novigrad"
@@ -307,6 +315,7 @@ Current efficacy: [+ taxes_toll_novigrad_eff : tax_eff +]
 
 @other_tolls
 Title: Adjust Novigrad toll
+subtitle: Current rates: [+ taxes_tolls_rate: tax_rates +]
 on-arrival: {!
 Q.tax_changed = "tolls"
 Q.name = Q.taxes[Q.tax_changed].name.toUpperCase() !}
@@ -324,11 +333,61 @@ Current rate: [+ taxes_tolls_rate : tax_rates +]
 Current efficacy: [+ taxes_tolls_eff : tax_eff +]
 
 - @increase_tax: Increase rates
+- @increase_slightly_tax: Slightly increase rates
+- @decrease_slightly_tax: Slightly decrease rates
 - @decrease_tax: Decrease rates
 - @tolls: Back
 
 @increase_tax
 title: Increase tax rate
+subtitle: + 20%
+on-arrival: {!
+    Q.taxes[Q.tax_changed].rate += 0.2
+    
+    Q.budget_balance = 0
+
+    Object.entries(Q.taxes).forEach((tax_obj) => {
+        let tax = tax_obj[1]
+        if (tax.active) {
+            let base = 0;
+            Object.entries(Q.provinces).forEach((prov_obj) => {
+                let prov = prov_obj[1]
+                if (tax.metrics.includes("pop")){
+                    base += prov.pop * prov.control
+                }
+                if (tax.metrics.includes("land")){
+                    base += prov.land * prov.control
+                }
+                if (tax.metrics.includes("wealth")){
+                    base += prov.wealth * prov.control
+                }
+                if (tax.metrics.includes("trade")){
+                    base += prov.trade * prov.control
+                }
+                if (tax.metrics.includes("novigrad_trade") && ("novigrad_trade" in prov)){
+                    base += prov.novigrad_trade * prov.control
+                }
+            })
+            base /= tax.metrics.length  
+            rev = Math.round(base * tax.base * tax.rate * tax.eff) / 100
+
+            Q.taxes[tax_obj[0]].rev = rev
+
+            Q.budget_balance += rev
+
+        }
+    });
+
+    Q.budget_balance = Math.round(Q.budget_balance * 10) / 10;
+!}
+new-page: true
+go-to: change_taxes
+
+[+ name +] – significantly increased.
+
+@increase_slightly_tax
+title: Increase tax rate
+subtitle: + 10%
 on-arrival: {!
     Q.taxes[Q.tax_changed].rate += 0.1
     
@@ -375,6 +434,54 @@ go-to: change_taxes
 
 @decrease_tax
 title: Decrease tax rate
+subtitle: – 20%
+on-arrival: {!
+    Q.taxes[Q.tax_changed].rate -= 0.2
+    
+    Q.budget_balance = 0
+
+    Object.entries(Q.taxes).forEach((tax_obj) => {
+        let tax = tax_obj[1]
+        if (tax.active) {
+            let base = 0;
+            Object.entries(Q.provinces).forEach((prov_obj) => {
+                let prov = prov_obj[1]
+                if (tax.metrics.includes("pop")){
+                    base += prov.pop * prov.control
+                }
+                if (tax.metrics.includes("land")){
+                    base += prov.land * prov.control
+                }
+                if (tax.metrics.includes("wealth")){
+                    base += prov.wealth * prov.control
+                }
+                if (tax.metrics.includes("trade")){
+                    base += prov.trade * prov.control
+                }
+                if (tax.metrics.includes("novigrad_trade") && ("novigrad_trade" in prov)){
+                    base += prov.novigrad_trade * prov.control
+                }
+            })
+            base /= tax.metrics.length  
+            rev = Math.round(base * tax.base * tax.rate * tax.eff) / 100
+
+            Q.taxes[tax_obj[0]].rev = rev
+
+            Q.budget_balance += rev
+
+        }
+    });
+
+    Q.budget_balance = Math.round(Q.budget_balance * 10) / 10;
+!}
+new-page: true
+go-to: change_taxes
+
+[+ name +] – significantly decreased.
+
+@decrease_slightly_tax
+title: Decrease tax rate
+subtitle: – 10%
 on-arrival: {!
     Q.taxes[Q.tax_changed].rate -= 0.1
     
