@@ -265,9 +265,35 @@
       $('#qualities').append(dendryUI.contentToHTML.convert(displayContent));
   };
   
+  dendryUI.dendryEngine.state.qualities.deobjectify = function() {
+    let Q = dendryUI.dendryEngine.state.qualities;
+    
+    Object.entries(Q.estates).forEach((obj) => {
+        Object.entries(obj[1]).forEach((prop) => {
+            Object.defineProperty(dendryUI.dendryEngine.state.qualities, "estates_"+obj[0]+"_"+prop[0], {value: prop[1]})
+        });
+    });
+
+    Object.entries(Q.provinces).forEach((obj) => {
+        Object.entries(obj[1]).forEach((prop) => {
+            Object.defineProperty(dendryUI.dendryEngine.state.qualities, "estates_"+obj[0]+"_"+prop[0], {value: prop[1]})
+        });
+    });
+
+    Object.entries(Q.taxes).forEach((obj) => {
+        Object.entries(obj[1]).forEach((prop) => {
+            Object.defineProperty(dendryUI.dendryEngine.state.qualities, "estates_"+obj[0]+"_"+prop[0], {value: prop[1]})
+        });
+    });
+
+  };
+
   // This function runs on every new content display. Currently, all it does is update the sidebar.
   window.onDisplayContent = function() {
-      window.updateSidebar();
+    if (dendryUI.dendryEngine.state.qualities.initiated == true) {
+        dendryUI.dendryEngine.state.qualities.deobjectify();
+    }
+    window.updateSidebar();
   };
 
   window.dendryModifyUI = main;

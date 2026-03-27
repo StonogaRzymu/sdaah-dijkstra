@@ -202,5 +202,6 @@ Q.taxes["tolls"].eff     = 0.7
 Q.taxes["tolls"].rev     = 0
 Q.taxes["tolls"].desc = "Includes tolls on various royal roads and bridges, toll on Buina in Blaviken and toll on Braa in Vartburg"
 
+Q.initiated = true
 !}
 go-to: end_turn
