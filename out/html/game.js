@@ -265,24 +265,23 @@
       $('#qualities').append(dendryUI.contentToHTML.convert(displayContent));
   };
   
-  dendryUI.dendryEngine.state.qualities.deobjectify = function() {
-    let Q = dendryUI.dendryEngine.state.qualities;
+  window.dendryUI.dendryEngine.state.qualities.deobjectify = function() {
     
-    Object.entries(Q.estates).forEach((obj) => {
+    Object.entries(this.estates).forEach((obj) => {
         Object.entries(obj[1]).forEach((prop) => {
-            Object.defineProperty(dendryUI.dendryEngine.state.qualities, "estates_"+obj[0]+"_"+prop[0], {value: prop[1]})
+            Object.defineProperty(this, "estates_"+obj[0]+"_"+prop[0], {value: prop[1]})
         });
     });
 
-    Object.entries(Q.provinces).forEach((obj) => {
+    Object.entries(this.provinces).forEach((obj) => {
         Object.entries(obj[1]).forEach((prop) => {
-            Object.defineProperty(dendryUI.dendryEngine.state.qualities, "estates_"+obj[0]+"_"+prop[0], {value: prop[1]})
+            Object.defineProperty(this, "estates_"+obj[0]+"_"+prop[0], {value: prop[1]})
         });
     });
 
-    Object.entries(Q.taxes).forEach((obj) => {
+    Object.entries(this.taxes).forEach((obj) => {
         Object.entries(obj[1]).forEach((prop) => {
-            Object.defineProperty(dendryUI.dendryEngine.state.qualities, "estates_"+obj[0]+"_"+prop[0], {value: prop[1]})
+            Object.defineProperty(this, "estates_"+obj[0]+"_"+prop[0], {value: prop[1]})
         });
     });
 
@@ -290,8 +289,8 @@
 
   // This function runs on every new content display. Currently, all it does is update the sidebar.
   window.onDisplayContent = function() {
-    if (dendryUI.dendryEngine.state.qualities.initiated == true) {
-        dendryUI.dendryEngine.state.qualities.deobjectify();
+    if (window.dendryUI.dendryEngine.state.qualities.initiated == true) {
+        window.dendryUI.dendryEngine.state.qualities.deobjectify();
     }
     window.updateSidebar();
   };
