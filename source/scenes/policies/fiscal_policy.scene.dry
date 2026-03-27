@@ -2,10 +2,12 @@ title: Fiscal policy
 new-page: true
 on-arrival: {!
 
-Object.entries(Q.taxes).forEach((tax) => {
+Object.entries(Q.taxes).forEach((tax_obj) => {
+    let tax = tax_obj[1]
     if (tax.active) {
         let base = 0;
-        Object.entries(Q.provinces).forEach((prov) => {
+        Object.entries(Q.provinces).forEach((prov_obj) => {
+            let prov = prov_obj[1]
             if (tax.metrics.includes("pop")){
                 base += prov.pop * prov.control
             }
@@ -25,7 +27,7 @@ Object.entries(Q.taxes).forEach((tax) => {
         base /= tax.metrics.length  
         rev = Math.round(base * tax.base * tax.rate * tax.eff) / 100
         
-        Q.taxes[tax.id].rev = rev
+        Q.taxes[tax_obj[0]].rev = rev
         Q.budget_balance += rev
     }
 });
