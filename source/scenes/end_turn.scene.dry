@@ -53,5 +53,15 @@ Q.budget_balance = Math.round(Q.budget_balance * 10) / 10;
 
 Q.budget += Q.budget_balance;
 
+Q.has_event = 0;
+// check if there are any cards in #event, and then go to main if not.
+var scene = this.game.scenes['post_event.events_choice'];
+var choices = this._compileChoices(scene);
+if (choices && choices[0].title != "Continue...") {
+    Q.has_event = 1;
+} else {
+    has_event = 0;
+}
+
 !}
-go-to: main
+go-to: events_choice if has_event = 1; main if has_event = 0
