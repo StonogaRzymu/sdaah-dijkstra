@@ -22,8 +22,8 @@ Object.entries(Q.taxes).forEach((tax_obj) => {
             if (tax.metrics.includes("trade")){
                 base += prov.trade * prov.control
             }
-            if (tax.metrics.includes("novigrad-trade") && ("novigrad-trade" in prov)){
-                base += prov.novigrad-trade * prov.control
+            if (tax.metrics.includes("novigradtrade") && ("novigradtrade" in prov)){
+                base += prov.novigradtrade * prov.control
             }
         })
         base /= tax.metrics.length  
@@ -53,7 +53,7 @@ Q.budget_balance = Math.round(Q.budget_balance * 10) / 10;
 [? if taxes_income_active == 1 : <tr><td style="table-label"> Income tax</td><td style="table-value"> [+ taxes_income_rev +]&nbsp;thousand crowns</td></tr> ?]
 [? if taxes_tithe_active == 1 : <tr><td style="table-label"> Royal tithe</td><td style="table-value"> [+ taxes_tithe_rev +]&nbsp;thousand crowns</td></tr> ?]
 <tr><th>Current tolls:</th></tr>
-[? if taxes_toll-novigrad_active == 1 : <tr><td style="table-label"> Toll on Pontar river in Novigrad</td><td style="table-value"> [+ taxes_toll-novigrad_rev +]&nbsp;thousand crowns</td></tr> ?]
+[? if taxes_tollnovigrad_active == 1 : <tr><td style="table-label"> Toll on Pontar river in Novigrad</td><td style="table-value"> [+ taxes_tollnovigrad_rev +]&nbsp;thousand crowns</td></tr> ?]
 [? if taxes_tolls_active == 1 : <tr><td style="table-label"> Other tolls</td><td style="table-value"> [+ taxes_tolls_rev +]&nbsp;thousand crowns</td></tr> ?]
 </table>
 
@@ -314,22 +314,22 @@ new-page: true
 
 @novigrad_toll
 Title: Adjust Novigrad toll
-subtitle: Current rates: [+ taxes_toll-novigrad_rate: tax_rates +]
-view-if: taxes_toll-novigrad_active = true 
+subtitle: Current rates: [+ taxes_tollnovigrad_rate: tax_rates +]
+view-if: taxes_tollnovigrad_active = true 
 on-arrival: {!
-Q.tax_changed = "toll-novigrad"
+Q.tax_changed = "tollnovigrad"
 Q.name = Q.taxes[Q.tax_changed].name.toUpperCase() !}
 new-page: true
 
 [+ name +]
 
-[+ taxes_toll-novigrad_desc +]
+[+ taxes_tollnovigrad_desc +]
 
-Current revenue: [+ taxes_toll-novigrad_rev +]&nbsp;thousand crowns
+Current revenue: [+ taxes_tollnovigrad_rev +]&nbsp;thousand crowns
 
-Current rate: [+ taxes_toll-novigrad_rate : tax_rates +]
+Current rate: [+ taxes_tollnovigrad_rate : tax_rates +]
 
-Current efficacy: [+ taxes_toll-novigrad_eff : tax_eff +]
+Current efficacy: [+ taxes_tollnovigrad_eff : tax_eff +]
 
 - @increase_tax: Increase rates
 - @increase_slightly_tax: Slightly increase rates
@@ -388,8 +388,8 @@ on-arrival: {!
                 if (tax.metrics.includes("trade")){
                     base += prov.trade * prov.control
                 }
-                if (tax.metrics.includes("novigrad-trade") && ("novigrad-trade" in prov)){
-                    base += prov.novigrad-trade * prov.control
+                if (tax.metrics.includes("novigradtrade") && ("novigradtrade" in prov)){
+                    base += prov.novigradtrade * prov.control
                 }
             })
             base /= tax.metrics.length  
@@ -405,7 +405,7 @@ on-arrival: {!
     Q.budget_balance = Math.round(Q.budget_balance * 10) / 10;
 !}
 new-page: true
-go-to: tolls if tax_changed = "tolls" or tax_changed = "toll-novigrad"; change_taxes
+go-to: tolls if tax_changed = "tolls" or tax_changed = "tollnovigrad"; change_taxes
 
 [+ name +] – significantly increased.
 
@@ -435,8 +435,8 @@ on-arrival: {!
                 if (tax.metrics.includes("trade")){
                     base += prov.trade * prov.control
                 }
-                if (tax.metrics.includes("novigrad-trade") && ("novigrad-trade" in prov)){
-                    base += prov.novigrad-trade * prov.control
+                if (tax.metrics.includes("novigradtrade") && ("novigradtrade" in prov)){
+                    base += prov.novigradtrade * prov.control
                 }
             })
             base /= tax.metrics.length  
@@ -452,7 +452,7 @@ on-arrival: {!
     Q.budget_balance = Math.round(Q.budget_balance * 10) / 10;
 !}
 new-page: true
-go-to: tolls if tax_changed = "tolls" or tax_changed = "toll-novigrad"; change_taxes
+go-to: tolls if tax_changed = "tolls" or tax_changed = "tollnovigrad"; change_taxes
 
 [+ name +] – slightly increased.
 
@@ -482,8 +482,8 @@ on-arrival: {!
                 if (tax.metrics.includes("trade")){
                     base += prov.trade * prov.control
                 }
-                if (tax.metrics.includes("novigrad-trade") && ("novigrad-trade" in prov)){
-                    base += prov.novigrad-trade * prov.control
+                if (tax.metrics.includes("novigradtrade") && ("novigradtrade" in prov)){
+                    base += prov.novigradtrade * prov.control
                 }
             })
             base /= tax.metrics.length  
@@ -499,7 +499,7 @@ on-arrival: {!
     Q.budget_balance = Math.round(Q.budget_balance * 10) / 10;
 !}
 new-page: true
-go-to: tolls if tax_changed = "tolls" or tax_changed = "toll-novigrad"; change_taxes
+go-to: tolls if tax_changed = "tolls" or tax_changed = "tollnovigrad"; change_taxes
 
 [+ name +] – significantly decreased.
 
@@ -529,8 +529,8 @@ on-arrival: {!
                 if (tax.metrics.includes("trade")){
                     base += prov.trade * prov.control
                 }
-                if (tax.metrics.includes("novigrad-trade") && ("novigrad-trade" in prov)){
-                    base += prov.novigrad-trade * prov.control
+                if (tax.metrics.includes("novigradtrade") && ("novigradtrade" in prov)){
+                    base += prov.novigradtrade * prov.control
                 }
             })
             base /= tax.metrics.length  
@@ -546,6 +546,6 @@ on-arrival: {!
     Q.budget_balance = Math.round(Q.budget_balance * 10) / 10;
 !}
 new-page: true
-go-to: tolls if tax_changed = "tolls" or tax_changed = "toll-novigrad"; change_taxes
+go-to: tolls if tax_changed = "tolls" or tax_changed = "tollnovigrad"; change_taxes
 
 [+ name +] – slightly decreased.

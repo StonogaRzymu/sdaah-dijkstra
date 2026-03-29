@@ -35,8 +35,8 @@ Object.entries(Q.taxes).forEach((tax_obj) => {
             if (tax.metrics.includes("trade")){
                 base += prov.trade * prov.control
             }
-            if (tax.metrics.includes("novigrad-trade") && ("novigrad-trade" in prov)){
-                base += prov.novigrad-trade * prov.control
+            if (tax.metrics.includes("novigradtrade") && ("novigradtrade" in prov)){
+                base += prov.novigradtrade * prov.control
             }
         })
         base /= tax.metrics.length  
