@@ -11,7 +11,7 @@ Representatives of nobility, bourgeoisie and moderate clergy have appoached us w
 The currently proposed Assembly would be meant to formally recognise count Dijkstra as Royal Regent and settle other issues regarding rebuilding from the war. They won't say it out loud, but they see it as an opportunity to put a price on their loyalty instead of giving it up for free. We can expect, that they will expect some privileges and promises before they agree to vote for Dijkstra's regency. That price may be worth paying, especially as it would allow us to turn estates against each other.
 
 - @assembly_set_date: We respect rights of the estates and will call the Assembly
-- @assembly_set_date: We don't need their approval, but Assembly may be useful anyway
+- @assembly_set_date_2: We don't need their approval, but Assembly may be useful anyway
 - @assembly_reject: The things won't be as they were anymore - we won't call the Assembly
 
 @assembly_set_date
@@ -21,6 +21,9 @@ When should the Assembly gather? Calling it to meet this summer is what the esta
 
 - @assembly_set_1273: The sooner, the better
 - @assembly_set_1274: It's better to wait
+
+@assembly_set_date_2
+go-to: assembly_set_date
 
 @assembly_set_1273
 Title: Assembly will gather this year
