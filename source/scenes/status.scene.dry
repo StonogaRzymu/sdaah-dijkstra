@@ -52,8 +52,6 @@ Satisfaction: [+ estates_peasants_sat : sat +]
 
 </div>
 
-[? assembly_called = 1 : Next Assembly of the Realm will gather in the [+ next_assembly_season : season +] of [+ next_assembly_year +] ?]
-
 = Provinces
 
 <div class="sidebar-stat">
