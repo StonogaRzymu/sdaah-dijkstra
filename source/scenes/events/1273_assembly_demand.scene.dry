@@ -31,7 +31,8 @@ subtitle: Assembly will gather this year
 on-arrival: {! 
 Q.next_assembly_season = 3;
 Q.next_assembly_year = 1273;
-Q.assembly_called = 1
+Q.assembly_called = 1;
+Q.estates.addAll("sat", 10); 
 !}
 
 The Assembly of the Realm will gather in the [+ next_assembly_season : season +] of [+ next_assembly_year +] on the fields outside of Tretogor.
@@ -41,14 +42,20 @@ The estates are happy that we agreed so easily.
 @assembly_set_1274
 Title: Assembly will gather next year
 subtitle: Assembly will gather next year
-on-arrival: next_assembly_season = 1; next_assembly_year = 1274; assembly_called = 1
+on-arrival: {! 
+Q.next_assembly_season = 1;
+Q.next_assembly_year = 1274;
+Q.assembly_called = 1;
+Q.estates.addAll("sat", 5);
+!}
 
 The Assembly of the Realm will gather in the [+ next_assembly_season : season +] of [+ next_assembly_year +] on the fields outside of Tretogor.
 
-The estates are annoyed by that delay.
+The estates are happy that we've agreed, but slightly annoyed by that delay.
 
 @assembly_reject
 Title: Assembly won't be called
+on-arrival: {! Q.estates.addAll("sat",-10) !}
 
 The nobility and the Church still don't understand scope of our ambitions. The Redania will be reforged and we won't be asking them for permission.
 
