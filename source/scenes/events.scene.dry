@@ -4,7 +4,7 @@ on-arrival: {!
 
 Q.has_event = 0;
 // check if there are any cards in #event, and then go to main if not.
-var scene = this.game.scenes['end_turn.events_choice'];
+var scene = this.game.scenes['events.events_choice'];
 var choices = this._compileChoices(scene);
 if (choices && choices[0].title != "Continue...") {
     Q.has_event = 1;
