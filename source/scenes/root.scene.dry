@@ -1,11 +1,10 @@
 title: Root Scene
 new-page: true
-go-to: events if initiated = true; start_menu if initiated = false
+go-to: events if initiated = 1; start_menu if initiated = 0
 
 @start_menu
 title: Dijkstra Dry
 new-page: true
-on-arrival: initiated = false
 
 = Dijkstra Dry
 
