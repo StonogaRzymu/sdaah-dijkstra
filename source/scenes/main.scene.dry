@@ -6,10 +6,6 @@ max-cards: 3
 
 = [+ season : season +] of [+ year +]
 
-[? assembly_called = 1 : Assembly has been called! ?]
-
-Next Assembly of the Realm will gather in the [+ next_assembly_season : season +] of [+ next_assembly_year +]
-
 - @internal
 - @foreign
 - #cabinet
