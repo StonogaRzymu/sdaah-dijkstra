@@ -31,8 +31,7 @@ subtitle: Assembly will gather this year
 on-arrival: {! 
 Q.next_assembly_season = season + 1;
 Q.next_assembly_year = year;
-Q.assembly_called = 1;
-Q.estates["]
+Q.assembly_called = 1
 !}
 
 The Assembly of the Realm will gather in the [+ next_assembly_season : season +] of [+ next_assembly_year +] on the fields outside of Tretogor.

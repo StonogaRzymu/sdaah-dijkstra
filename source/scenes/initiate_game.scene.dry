@@ -11,6 +11,9 @@ Q.admin_cap = 100;
 Q.army = 50;
 Q.intel = 50;
 
+Q.assembly_called = 0;
+Q.next_assembly_season = 0;
+Q.next_assembly_year = 0;
 
 // estates
 
