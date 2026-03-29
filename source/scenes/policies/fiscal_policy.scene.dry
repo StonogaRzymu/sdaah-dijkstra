@@ -9,21 +9,23 @@ Object.entries(Q.taxes).forEach((tax_obj) => {
     if (tax.active) {
         let base = 0;
         Object.entries(Q.provinces).forEach((prov_obj) => {
-            let prov = prov_obj[1]
-            if (tax.metrics.includes("pop")){
-                base += prov.pop * prov.control
-            }
-            if (tax.metrics.includes("land")){
-                base += prov.land * prov.control
-            }
-            if (tax.metrics.includes("wealth")){
-                base += prov.wealth * prov.control
-            }
-            if (tax.metrics.includes("trade")){
-                base += prov.trade * prov.control
-            }
-            if (tax.metrics.includes("novigradtrade") && ("novigradtrade" in prov)){
-                base += prov.novigradtrade * prov.control
+            if (typeof prov_obj[1] !== 'function') {
+                let prov = prov_obj[1]
+                if (tax.metrics.includes("pop")){
+                    base += prov.pop * prov.control
+                }
+                if (tax.metrics.includes("land")){
+                    base += prov.land * prov.control
+                }
+                if (tax.metrics.includes("wealth")){
+                    base += prov.wealth * prov.control
+                }
+                if (tax.metrics.includes("trade")){
+                    base += prov.trade * prov.control
+                }
+                if (tax.metrics.includes("novigradtrade") && ("novigradtrade" in prov)){
+                    base += prov.novigradtrade * prov.control
+                }
             }
         })
         base /= tax.metrics.length  
@@ -375,21 +377,23 @@ on-arrival: {!
         if (tax.active) {
             let base = 0;
             Object.entries(Q.provinces).forEach((prov_obj) => {
-                let prov = prov_obj[1]
-                if (tax.metrics.includes("pop")){
-                    base += prov.pop * prov.control
-                }
-                if (tax.metrics.includes("land")){
-                    base += prov.land * prov.control
-                }
-                if (tax.metrics.includes("wealth")){
-                    base += prov.wealth * prov.control
-                }
-                if (tax.metrics.includes("trade")){
-                    base += prov.trade * prov.control
-                }
-                if (tax.metrics.includes("novigradtrade") && ("novigradtrade" in prov)){
-                    base += prov.novigradtrade * prov.control
+                if (typeof prov_obj[1] !== 'function') {
+                    let prov = prov_obj[1]
+                    if (tax.metrics.includes("pop")){
+                        base += prov.pop * prov.control
+                    }
+                    if (tax.metrics.includes("land")){
+                        base += prov.land * prov.control
+                    }
+                    if (tax.metrics.includes("wealth")){
+                        base += prov.wealth * prov.control
+                    }
+                    if (tax.metrics.includes("trade")){
+                        base += prov.trade * prov.control
+                    }
+                    if (tax.metrics.includes("novigradtrade") && ("novigradtrade" in prov)){
+                        base += prov.novigradtrade * prov.control
+                    }
                 }
             })
             base /= tax.metrics.length  
@@ -422,21 +426,23 @@ on-arrival: {!
         if (tax.active) {
             let base = 0;
             Object.entries(Q.provinces).forEach((prov_obj) => {
-                let prov = prov_obj[1]
-                if (tax.metrics.includes("pop")){
-                    base += prov.pop * prov.control
-                }
-                if (tax.metrics.includes("land")){
-                    base += prov.land * prov.control
-                }
-                if (tax.metrics.includes("wealth")){
-                    base += prov.wealth * prov.control
-                }
-                if (tax.metrics.includes("trade")){
-                    base += prov.trade * prov.control
-                }
-                if (tax.metrics.includes("novigradtrade") && ("novigradtrade" in prov)){
-                    base += prov.novigradtrade * prov.control
+                if (typeof prov_obj[1] !== 'function') {
+                    let prov = prov_obj[1]
+                    if (tax.metrics.includes("pop")){
+                        base += prov.pop * prov.control
+                    }
+                    if (tax.metrics.includes("land")){
+                        base += prov.land * prov.control
+                    }
+                    if (tax.metrics.includes("wealth")){
+                        base += prov.wealth * prov.control
+                    }
+                    if (tax.metrics.includes("trade")){
+                        base += prov.trade * prov.control
+                    }
+                    if (tax.metrics.includes("novigradtrade") && ("novigradtrade" in prov)){
+                        base += prov.novigradtrade * prov.control
+                    }
                 }
             })
             base /= tax.metrics.length  
@@ -469,21 +475,23 @@ on-arrival: {!
         if (tax.active) {
             let base = 0;
             Object.entries(Q.provinces).forEach((prov_obj) => {
-                let prov = prov_obj[1]
-                if (tax.metrics.includes("pop")){
-                    base += prov.pop * prov.control
-                }
-                if (tax.metrics.includes("land")){
-                    base += prov.land * prov.control
-                }
-                if (tax.metrics.includes("wealth")){
-                    base += prov.wealth * prov.control
-                }
-                if (tax.metrics.includes("trade")){
-                    base += prov.trade * prov.control
-                }
-                if (tax.metrics.includes("novigradtrade") && ("novigradtrade" in prov)){
-                    base += prov.novigradtrade * prov.control
+                if (typeof prov_obj[1] !== 'function') {
+                    let prov = prov_obj[1]
+                    if (tax.metrics.includes("pop")){
+                        base += prov.pop * prov.control
+                    }
+                    if (tax.metrics.includes("land")){
+                        base += prov.land * prov.control
+                    }
+                    if (tax.metrics.includes("wealth")){
+                        base += prov.wealth * prov.control
+                    }
+                    if (tax.metrics.includes("trade")){
+                        base += prov.trade * prov.control
+                    }
+                    if (tax.metrics.includes("novigradtrade") && ("novigradtrade" in prov)){
+                        base += prov.novigradtrade * prov.control
+                    }
                 }
             })
             base /= tax.metrics.length  
@@ -516,21 +524,23 @@ on-arrival: {!
         if (tax.active) {
             let base = 0;
             Object.entries(Q.provinces).forEach((prov_obj) => {
-                let prov = prov_obj[1]
-                if (tax.metrics.includes("pop")){
-                    base += prov.pop * prov.control
-                }
-                if (tax.metrics.includes("land")){
-                    base += prov.land * prov.control
-                }
-                if (tax.metrics.includes("wealth")){
-                    base += prov.wealth * prov.control
-                }
-                if (tax.metrics.includes("trade")){
-                    base += prov.trade * prov.control
-                }
-                if (tax.metrics.includes("novigradtrade") && ("novigradtrade" in prov)){
-                    base += prov.novigradtrade * prov.control
+                if (typeof prov_obj[1] !== 'function') {
+                    let prov = prov_obj[1]
+                    if (tax.metrics.includes("pop")){
+                        base += prov.pop * prov.control
+                    }
+                    if (tax.metrics.includes("land")){
+                        base += prov.land * prov.control
+                    }
+                    if (tax.metrics.includes("wealth")){
+                        base += prov.wealth * prov.control
+                    }
+                    if (tax.metrics.includes("trade")){
+                        base += prov.trade * prov.control
+                    }
+                    if (tax.metrics.includes("novigradtrade") && ("novigradtrade" in prov)){
+                        base += prov.novigradtrade * prov.control
+                    }
                 }
             })
             base /= tax.metrics.length  
