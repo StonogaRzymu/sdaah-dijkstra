@@ -13,6 +13,8 @@
     ui = dendryUI;
     game = ui.game;
 
+    window.dendryUI.dendryEngine.state.qualities.initiated = false;
+
     // Add your custom code here.
   };
 
