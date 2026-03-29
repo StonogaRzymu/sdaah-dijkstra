@@ -28,9 +28,9 @@ Satisfaction: [+ estates_aristocracy_sat : sat +]
 
 **Petty Nobility**
 
-Infuence:     [+ estates_petty_nobility_inf : inf +]
+Infuence:     [+ estates_petty-nobility_inf : inf +]
 
-Satisfaction: [+ estates_petty_nobility_sat : sat +]
+Satisfaction: [+ estates_petty-nobility_sat : sat +]
 
 **Church of the Eternal Fire**
 
@@ -58,32 +58,32 @@ Satisfaction: [+ estates_peasants_sat : sat +]
 
 **Lower Redania**
 
-Crown control: [+ prov_low_red_control +]
+Crown control: [+ prov_low-red_control : control +]
 
-Governor: [+ prov_low_red_governor +] ([+ prov_low_red_gov_allegiance +])
+Governor: [+ prov_low-red_governor +] ([+ prov_low-red_gov-allegiance +])
 
 **Upper Redania**
 
-Crown control: [+ prov_upp_red_cont: control +]
+Crown control: [+ prov_upp-red_control : control +]
 
-Governor: [+ prov_upp_red_governor +] ([+ prov_upp_red_gov_allegiance +])
+Governor: [+ prov_upp-red_governor +] ([+ prov_upp-red_gov-allegiance +])
 
 **Coast of Praxeda**
 
-Crown control: [+ prov_coast_cont: control +]
+Crown control: [+ prov_coast_control : control +]
 
-Governor: [+ prov_coast_governor +] ([+ prov_coast_gov_allegiance +])
+Governor: [+ prov_coast_governor +] ([+ prov_coast_gov-allegiance +])
 
 **Tridam Marshes**
 
-Crown control: [+ prov_tridam_cont: control +]
+Crown control: [+ prov_tridam_control : control +]
 
-Governor: [+ prov_tridam_governor +] ([+ prov_tridam_gov_allegiance +])
+Governor: [+ prov_tridam_governor +] ([+ prov_tridam_gov-allegiance +])
 
 **Ghelibol**
 
-Crown control: [+ prov_gelibol_cont: control +]
+Crown control: [+ prov_gelibol_control : control +]
 
-Governor: [+ prov_gelibol_governor +] ([+ prov_gelibol_gov_allegiance +])
+Governor: [+ prov_gelibol_governor +] ([+ prov_gelibol_gov-allegiance +])
 
 </div>

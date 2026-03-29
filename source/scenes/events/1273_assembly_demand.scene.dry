@@ -4,7 +4,7 @@ view-if: year = 1273 and season = 2
 max-visits: 1
 tags: event
 
-= Estates request calling parliament
+= Estates request calling the assembly
 
 Representatives of nobility, bourgeoisie and moderate clergy have appoached us with a motion regarding calling the Assembly of the Realm, a traditional convention of redanian estates. This institution historically has been used for all kinds of purposes, ranging from establishing new laws and taxes, gaining approval for starting wars to deciding matters of succession. It has no formally established procedure and is instead based on customary rules and historical precedents.
 
@@ -30,7 +30,7 @@ Title: Assembly will gather this year
 subtitle: Assembly will gather this year
 on-arrival: next_assembly_season = season + 1; next_assembly_year = year
 
-The Assembly of the Realm will gather in the [+ next_assembly_season +] of [+ next_assembly_year +] on the fields outside of Tretogor.
+The Assembly of the Realm will gather in the [+ next_assembly_season : season +] of [+ next_assembly_year +] on the fields outside of Tretogor.
 
 The estates are happy that we agreed so easily.
 
@@ -39,7 +39,7 @@ Title: Assembly will gather next year
 subtitle: Assembly will gather next year
 on-arrival: next_assembly_season = season; next_assembly_year = year + 1
 
-The Assembly of the Realm will gather in the [+ next_assembly_season +] of [+ next_assembly_year +] on the fields outside of Tretogor.
+The Assembly of the Realm will gather in the [+ next_assembly_season : season +] of [+ next_assembly_year +] on the fields outside of Tretogor.
 
 The estates are annoyed by that delay.
 

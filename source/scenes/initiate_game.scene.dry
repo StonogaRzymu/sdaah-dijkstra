@@ -16,20 +16,20 @@ Q.intel = 50;
 
 Q.estates = {
     aristocracy: {},
-    petty_nobility: {},
+    petty-nobility: {},
     guilds: {},
     church: {},
     peasants: {}
 };
 
 Q.estates["aristocracy"].inf    = 40;
-Q.estates["petty_nobility"].inf = 30;
+Q.estates["petty-nobility"].inf = 30;
 Q.estates["guilds"].inf         = 15;
 Q.estates["church"].inf         = 20;
 Q.estates["peasants"].inf       =  5;
 
 Q.estates["aristocracy"].sat    = 20;
-Q.estates["petty_nobility"].sat = 45;
+Q.estates["petty-nobility"].sat = 45;
 Q.estates["guilds"].sat         = 45;
 Q.estates["church"].sat         = 20;
 Q.estates["peasants"].sat       = 30;
@@ -37,56 +37,56 @@ Q.estates["peasants"].sat       = 30;
 // provinces
 
 Q.provinces = {
-    low_red: {},
-    upp_red: {},
+    low-red: {},
+    upp-red: {},
     coast: {},
     tridam: {},
     gelibol: {}
 };
 
-Q.provinces["low_red"].control = 0.50
-Q.provinces["upp_red"].control = 0.35
+Q.provinces["low-red"].control = 0.50
+Q.provinces["upp-red"].control = 0.35
 Q.provinces["coast"].control   = 0.30
 Q.provinces["tridam"].control  = 0.20
 Q.provinces["gelibol"].control = 0.50
 
-Q.provinces["low_red"].governor = "Adam"
-Q.provinces["upp_red"].governor = "Bertie"
+Q.provinces["low-red"].governor = "Adam"
+Q.provinces["upp-red"].governor = "Bertie"
 Q.provinces["coast"].governor   = "Charlie"
 Q.provinces["tridam"].governor  = "Denis"
 Q.provinces["gelibol"].governor = "Edmund"
 
-Q.provinces["low_red"].gov_allegiance = "Chancellor's Party"
-Q.provinces["upp_red"].gov_allegiance = "Aristocracy"
-Q.provinces["coast"].gov_allegiance   = "Guilds"
-Q.provinces["tridam"].gov_allegiance  = "Aristocracy"
-Q.provinces["gelibol"].gov_allegiance = "Aristocracy"
+Q.provinces["low-red"].gov-allegiance = "Chancellor's Party"
+Q.provinces["upp-red"].gov-allegiance = "Aristocracy"
+Q.provinces["coast"].gov-allegiance   = "Guilds"
+Q.provinces["tridam"].gov-allegiance  = "Aristocracy"
+Q.provinces["gelibol"].gov-allegiance = "Aristocracy"
 
-Q.provinces["low_red"].pop = 1400
-Q.provinces["upp_red"].pop = 1100
+Q.provinces["low-red"].pop = 1400
+Q.provinces["upp-red"].pop = 1100
 Q.provinces["coast"].pop   =  900
 Q.provinces["tridam"].pop  =  600
 Q.provinces["gelibol"].pop =  300
 
-Q.provinces["low_red"].land = 2140
-Q.provinces["upp_red"].land = 1690
+Q.provinces["low-red"].land = 2140
+Q.provinces["upp-red"].land = 1690
 Q.provinces["coast"].land   = 1250
 Q.provinces["tridam"].land  =  710
 Q.provinces["gelibol"].land =  280
 
-Q.provinces["low_red"].wealth = 1000
-Q.provinces["upp_red"].wealth =  250
+Q.provinces["low-red"].wealth = 1000
+Q.provinces["upp-red"].wealth =  250
 Q.provinces["coast"].wealth   =  200
 Q.provinces["tridam"].wealth  =  200
 Q.provinces["gelibol"].wealth =  300
 
-Q.provinces["low_red"].trade = 500
-Q.provinces["upp_red"].trade = 600
+Q.provinces["low-red"].trade = 500
+Q.provinces["upp-red"].trade = 600
 Q.provinces["coast"].trade   = 300
 Q.provinces["tridam"].trade  = 500
 Q.provinces["gelibol"].trade = 200
 
-Q.provinces["low_red"].novigrad_trade = 1500
+Q.provinces["low-red"].novigrad-trade = 1500
 
 // taxes
 
@@ -99,7 +99,7 @@ Q.taxes = {
     income: {},
     consum: {},
     tithe: {},
-    toll_novigrad: {},
+    toll-novigrad: {},
     tolls: {}
 };
 
@@ -183,15 +183,15 @@ Q.taxes["tithe"].eff     = 0.5
 Q.taxes["tithe"].rev     = 0
 Q.taxes["tithe"].desc = "Royal tithe, collected by the clergy of the Eternal Fire along the tithe <em>proper</em>. In the cities is levied by the Church as a primitive income tax, while in the country it is collected in nature by the holy men."
 
-Q.taxes["toll_novigrad"].id      = "toll_novigrad"
-Q.taxes["toll_novigrad"].name    = "Novigradian toll"
-Q.taxes["toll_novigrad"].active  = true
-Q.taxes["toll_novigrad"].base    = 0.5
-Q.taxes["toll_novigrad"].rate    = 1
-Q.taxes["toll_novigrad"].metrics = ["novigrad_trade"]
-Q.taxes["toll_novigrad"].eff     = 0.5
-Q.taxes["toll_novigrad"].rev     = 0
-Q.taxes["toll_novigrad"].desc = "Toll on Pontar river in Novigrad"
+Q.taxes["toll-novigrad"].id      = "toll-novigrad"
+Q.taxes["toll-novigrad"].name    = "Novigradian toll"
+Q.taxes["toll-novigrad"].active  = true
+Q.taxes["toll-novigrad"].base    = 0.5
+Q.taxes["toll-novigrad"].rate    = 1
+Q.taxes["toll-novigrad"].metrics = ["novigrad-trade"]
+Q.taxes["toll-novigrad"].eff     = 0.5
+Q.taxes["toll-novigrad"].rev     = 0
+Q.taxes["toll-novigrad"].desc = "Toll on Pontar river in Novigrad"
 
 Q.taxes["tolls"].id      = "tolls"
 Q.taxes["tolls"].name    = "other tolls"
