@@ -3,4 +3,10 @@ new-page: true
 
 = Armed forces
 
+Standing army: [+ mil_standing_units +]&nbsp;regiments
+
+Feudal banners: [+ mil_banners_units +]&nbsp;banners
+
+Navy: [+ mil_navy_units +]&nbsp;ships
+
 - @dijkstra: Back

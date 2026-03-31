@@ -39,13 +39,13 @@ Q.estates = {
 };
 
 Q.estates["aristocracy"].inf    = 40;
-Q.estates["pettynobility"].inf = 30;
+Q.estates["pettynobility"].inf  = 30;
 Q.estates["guilds"].inf         = 15;
 Q.estates["church"].inf         = 20;
 Q.estates["peasants"].inf       =  5;
 
 Q.estates["aristocracy"].sat    = 20;
-Q.estates["pettynobility"].sat = 45;
+Q.estates["pettynobility"].sat  = 45;
 Q.estates["guilds"].sat         = 45;
 Q.estates["church"].sat         = 20;
 Q.estates["peasants"].sat       = 30;
@@ -230,6 +230,27 @@ Q.taxes["tolls"].metrics = ["trade"]
 Q.taxes["tolls"].eff     = 0.7
 Q.taxes["tolls"].rev     = 0
 Q.taxes["tolls"].desc = "Include tolls on various royal roads and bridges, toll on Buina in Blaviken and toll on Braa in Vartburg"
+
+Q.mil = {
+    standing: {},
+    banners: {},
+    navy: {}
+}
+
+Q.mil["standing"].units = 20
+Q.mil["standing"].upkeep = 1
+Q.mil["standing"].fullupkeep = Q.mil["standing"].units * Q.mil["standing"].upkeep
+Q.mil["standing"].loyalty = 0.5
+
+Q.mil["banners"].units = 50
+Q.mil["banners"].upkeep = 0.5
+Q.mil["banners"].raised = 1
+Q.mil["banners"].fullupkeep = Q.mil["banners"].raised ? Q.mil["banners"].units * Q.mil["banners"].upkeep : 0
+
+Q.mil["navy"].units = 40
+Q.mil["navy"].upkeep = 0.25
+Q.mil["navy"].fullupkeep = Q.mil["navy"].units * Q.mil["navy"].upkeep
+Q.mil["navy"].loyalty = 0.5
 
 Q.initiated = 1
 !}

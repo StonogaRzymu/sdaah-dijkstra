@@ -285,6 +285,13 @@
         });
     });
 
+    Object.entries(window.dendryUI.dendryEngine.state.qualities.mil).forEach((obj) => {
+        Object.entries(obj[1]).forEach((prop) => {
+            Object.defineProperty(window.dendryUI.dendryEngine.state.mil, "mil_"+obj[0]+"_"+prop[0], {value: prop[1], configurable: true })
+        });
+    });
+
+
   };
 
   // This function runs on every new content display. Currently, all it does is update the sidebar.
