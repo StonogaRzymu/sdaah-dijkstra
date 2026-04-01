@@ -246,6 +246,7 @@ Q.mil["standing"].loyalty = 0.5
 Q.mil["banners"].units = 50
 Q.mil["banners"].upkeep = 0.5
 Q.mil["banners"].raised = 0
+Q.mil_banners_raised = 0
 Q.mil["banners"].fullupkeep = Q.mil["banners"].raised ? Q.mil["banners"].units * Q.mil["banners"].upkeep : 0
 
 Q.mil["navy"].units = 40
