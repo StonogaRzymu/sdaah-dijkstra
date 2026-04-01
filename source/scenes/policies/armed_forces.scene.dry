@@ -40,6 +40,7 @@ new-page: true
 @train_regiments
 title: Train new regiment
 subtitle: Cost: [+ mil_standing_cost +]&nbsp;thousand crowns
+choose-if: budget >= mil_standing_cost
 on-arrival: {!
     Q.mil["standing"].units += 1
     Q.mil["standing"].fullupkeep = Q.mil["standing"].units * Q.mil["standing"].upkeep
@@ -65,6 +66,8 @@ go-to: standing_army
 title: Raise banners!
 subtitle: Expected upkeep: [+ mil_banners_fullupkeep +]&nbsp;thousand crowns
 view-if: mil_banners_raised = 0
+choose-if: ( estates_aristocracy_sat + estates_pettynobility_sat ) / 2 >= 65
+unavailable-subtitle: We need further concessions to convince nobility to go to war
 on-arrival: {!
     Q.mil.banners.raised = 1
     Q.mil_banners_raised = 1
@@ -78,11 +81,11 @@ go-to: armed_forces
 title: Dismiss banners!
 view-if: mil_banners_raised = 1
 on-arrival: {!
-    Q.mil.banners.raised = 1
-    Q.mil_banners_raised = 1
-    Q.mil.banners.fullupkeep = Q.mil["banners"].units * Q.mil["banners"].upkeep
-    Q.mil_banners_fullupkeep = Q.mil["banners"].units * Q.mil["banners"].upkeep
-    Q.budget_balance -= Q.mil["banners"].fullupkeep
+    Q.mil.banners.raised = 0
+    Q.mil_banners_raised = 0
+    Q.budget_balance += Q.mil["banners"].fullupkeep
+    Q.mil.banners.fullupkeep = 0
+    Q.mil_banners_fullupkeep = 0
 !}
 go-to: armed_forces
 
@@ -109,6 +112,7 @@ new-page: true
 @commission_ships
 title: Commision new ship
 subtitle: Cost: [+ mil_navy_cost +]&nbsp;thousand crowns
+choose-if: budget >= mil_navy_cost
 on-arrival: {!
     Q.mil["navy"].units += 1
     Q.mil["navy"].fullupkeep = Q.mil["navy"].units * Q.mil["navy"].upkeep
@@ -122,7 +126,11 @@ go-to: navy
 @commandeer_ships
 title: Commandeer ships
 subtitle: This will anger the merchants!
+choose-if: estates_guilds_sat >= 15
+unavailable-subtitle: The merchants are too rebellious to allow it!
 on-arrival: {!
+    Q.estates["guilds"].sat -= 5
+    Q.estates_guilds_sat -= 5
     Q.mil["navy"].units += 5
     Q.mil["navy"].fullupkeep = Q.mil["navy"].units * Q.mil["navy"].upkeep
     Q.mil_navy_units += 5
