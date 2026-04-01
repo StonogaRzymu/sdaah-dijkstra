@@ -4,13 +4,13 @@ new-page: true
 = Internal security
 
 - @create_secret_service
-- @create_hounds: Establish Redanian Hounds, militarised branch of Secret Service
+- @create_hounds: Establish Redanian Hounds, militarised branch of Special Service
 - @expand_secret_service
 - @expand_hounds: Expand Redanian Hounds
 - @dijkstra: Back
 
 @create_secret_service
-title: Establish Secret Service
+title: Establish Special Service
 new-page: true
 view-if: sec_ss_level = 0
 choose-if: admin_cap >= sec_ss_establishcost
@@ -23,7 +23,7 @@ on-arrival: {!
 - @security: Back
 
 @expand_secret_service
-title: Expand Secret Service
+title: Expand Special Service
 new-page: true
 view-if: sec_ss_level >= 1
 choose-if: admin_cap >= sec_ss_expand
