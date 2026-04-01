@@ -41,6 +41,7 @@ new-page: true
 title: Train new regiment
 subtitle: Cost: [+ mil_standing_cost +]&nbsp;thousand crowns
 choose-if: budget >= mil_standing_cost
+unavailable-subtitle: We can't afford the costs!
 on-arrival: {!
     Q.mil["standing"].units += 1
     Q.mil["standing"].fullupkeep = Q.mil["standing"].units * Q.mil["standing"].upkeep
@@ -113,6 +114,7 @@ new-page: true
 title: Commision new ship
 subtitle: Cost: [+ mil_navy_cost +]&nbsp;thousand crowns
 choose-if: budget >= mil_navy_cost
+unavailable-subtitle: We can't afford the costs!
 on-arrival: {!
     Q.mil["navy"].units += 1
     Q.mil["navy"].fullupkeep = Q.mil["navy"].units * Q.mil["navy"].upkeep

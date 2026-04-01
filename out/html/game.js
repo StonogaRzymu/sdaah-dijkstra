@@ -290,7 +290,12 @@
             Object.defineProperty(window.dendryUI.dendryEngine.state.qualities, "mil_"+obj[0]+"_"+prop[0], {value: prop[1], configurable: true })
         });
     });
-
+    
+    Object.entries(window.dendryUI.dendryEngine.state.qualities.sec).forEach((obj) => {
+        Object.entries(obj[1]).forEach((prop) => {
+            Object.defineProperty(window.dendryUI.dendryEngine.state.qualities, "sec_"+obj[0]+"_"+prop[0], {value: prop[1], configurable: true })
+        });
+    });
 
   };
 

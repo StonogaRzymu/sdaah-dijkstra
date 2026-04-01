@@ -3,4 +3,60 @@ new-page: true
 
 = Internal security
 
+- @create_secret_service
+- @create_hounds: Establish Redanian Hounds, militarised branch of Secret Service
+- @expand_secret_service
+- @expand_hounds: Expand Redanian Hounds
 - @dijkstra: Back
+
+@create_secret_service
+title: Establish Secret Service
+new-page: true
+view-if: sec_ss_level = 0
+choose-if: admin_cap >= sec_ss_establishcost
+subtitle: Requires [+ sec_ss_establishcost +] bureaucratic effort
+unavailable-subtitle: We need better bureaucracy!
+on-arrival: {!
+    Q.sec_ss_level += 1
+!}
+
+- @security: Back
+
+@expand_secret_service
+title: Expand Secret Service
+new-page: true
+view-if: sec_ss_level >= 1
+choose-if: admin_cap >= sec_ss_expand
+subtitle: Requires [+ sec_ss_expand +] bureaucratic effort
+unavailable-subtitle: We need better bureaucracy!
+on-arrival: {!
+    Q.sec_ss_level += 1
+!}
+
+- @security: Back
+
+@create_hounds
+title: Create Royal Yeomanry
+new-page: true
+view-if: sec_hounds_established = 0
+choose-if: admin_cap >= sec_hounds_establishcost
+subtitle: Requires [+ sec_hounds_establishcost +] bureaucratic effort
+unavailable-subtitle: We need better bureaucracy!
+on-arrival: {!
+    Q.sec_hounds_level += 1
+!}
+
+- @security: Back
+
+@expand_hounds
+title: Expand Royal Yeomanry
+new-page: true
+view-if: sec_hounds_established >= 1
+choose-if: admin_cap >= sec_ss_establishcost
+subtitle: Requires [+ sec_ss_expand +] bureaucratic effort
+unavailable-subtitle: We need better bureaucracy!
+on-arrival: {!
+    Q.sec_hounds_level += 1    
+!}
+
+- @security: Back

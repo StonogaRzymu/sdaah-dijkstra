@@ -8,7 +8,6 @@ Q.season = 4;
 Q.budget = 0;
 Q.budget_balance = 0;
 Q.admin_cap = 100;
-Q.army = 50;
 Q.intel = 50;
 
 Q.assembly_called = 0;
@@ -254,6 +253,19 @@ Q.mil["navy"].cost = 1
 Q.mil["navy"].upkeep = 0.25
 Q.mil["navy"].fullupkeep = Q.mil["navy"].units * Q.mil["navy"].upkeep
 Q.mil["navy"].loyalty = 0.5
+
+Q.sec = {
+    secret_service: {
+        level: 0,
+        establishcost: 50,
+        expand: 10
+    },
+    hounds: {
+        level: 0,
+        establishcost: 50,
+        expand: 10
+    }
+}
 
 Q.initiated = 1
 !}
