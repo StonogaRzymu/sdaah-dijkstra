@@ -5,11 +5,60 @@ new-page: true
 
 <table>
 <tr><td>Standing army:</td><td style="table-value">[+ mil_standing_units +]&nbsp;regiments</td></tr>
-<tr><td><small>[+ mil_standing_fullupkeep +]&nbsp;thousand crowns</small></td></tr>
+<tr><td></td><td><small>[+ mil_standing_fullupkeep +]&nbsp;thousand crowns</small></td></tr>
 <tr><td>Feudal banners:</td><td style="table-value">[+ mil_banners_units +]&nbsp;banners</td></tr>
-<tr><td><small>[+ mil_banners_fullupkeep +]&nbsp;thousand crowns</small></td></tr>
+<tr><td></td><td><small>[+ mil_banners_fullupkeep +]&nbsp;thousand crowns</small></td></tr>
 <tr><td>Navy:</td><td style="table-value">[+ mil_navy_units +]&nbsp;ships</td></tr>
-<tr><td><small>[+ mil_navy_fullupkeep +]&nbsp;thousand crowns</small></td></tr>
+<tr><td></td><td><small>[+ mil_navy_fullupkeep +]&nbsp;thousand crowns</small></td></tr>
 </table>
 
+- @standing_army
+- @banners
+- @navy
 - @dijkstra: Back
+
+@standing_army
+Title: Manage standing army
+
+- @train_regiments
+- @disband_regiments
+- @armed_forces: Back
+
+@train_regiments
+Title: Train new regiment
+subtitle: Cost: [+ mil_standing_cost +]&nbsp;thousand crowns
+on-arrival: {!
+Q.mil["standing"].units += 1
+Q.mil["standing"].fullupkeep = Q.mil["standing"].units * Q.mil["standing"].upkeep
+Q.mil_standing_units += 1
+Q.mil_standing_fullupkeep = Q.mil["standing"].units * Q.mil["standing"].upkeep
+Q.budget -= Q.mil["standing"].cost
+Q.budget_balance -= Q.mil["standing"].upkeep
+!}
+go-to: standing_army
+
+@disband_regiments
+Title: Disband existing regiment
+on-arrival: {!
+Q.mil["standing"].units -= 1
+Q.mil["standing"].fullupkeep = Q.mil["standing"].units * Q.mil["standing"].upkeep
+Q.mil_standing_units -= 1
+Q.mil_standing_fullupkeep = Q.mil["standing"].units * Q.mil["standing"].upkeep
+Q.budget_balance += Q.mil["standing"].upkeep
+!}
+go-to: standing_army
+
+@banners
+Title: Manage banners
+
+# - @raise_banners
+# - @dismiss_banners
+- @armed_forces: Back
+
+@navy
+Title: Manage navy
+
+# - @commission_ships
+# - @commandeer_ships
+# - @scuttle_ships
+- @armed_forces: Back
