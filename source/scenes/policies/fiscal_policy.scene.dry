@@ -260,7 +260,7 @@ new-page: true
 - @fiscal_policy: Back
 
 @intro_poll_tax
-Title: Introduce poll tax
+title: Introduce poll tax
 view-if: taxes_poll_active = false
 
 = Introduce [+ taxes_poll_name +]
@@ -271,7 +271,7 @@ view-if: taxes_poll_active = false
 - @fiscal_policy: Back
 
 @intro_land_tax
-Title: Introduce land tax
+title: Introduce land tax
 view-if: taxes_land_active = false
 
 = Introduce [+ taxes_land_name +]
@@ -282,7 +282,7 @@ view-if: taxes_land_active = false
 - @fiscal_policy: Back
 
 @intro_houses_tax
-Title: Introduce window tax
+title: Introduce window tax
 on-arrival: {! Q.desc = Q.taxes["houses"].desc !}
 view-if: taxes_houses_active = false
 
@@ -294,7 +294,7 @@ view-if: taxes_houses_active = false
 - @fiscal_policy: Back
 
 @intro_income_tax
-Title: Introduce income tax
+title: Introduce income tax
 on-arrival: {! Q.desc = Q.taxes["income"].desc !}
 view-if: taxes_income_active = false
 
@@ -305,7 +305,7 @@ view-if: taxes_income_active = false
 - @fiscal_policy: Back
 
 @tolls
-Title: Adjust tolls
+title: Adjust tolls
 new-page: true
 
 = Fiscal policy
@@ -315,7 +315,7 @@ new-page: true
 - @fiscal_policy: Back
 
 @novigrad_toll
-Title: Adjust Novigrad toll
+title: Adjust Novigrad toll
 subtitle: Current rates: [+ taxes_tollnovigrad_rate: tax_rates +]
 view-if: taxes_tollnovigrad_active = true 
 on-arrival: {!
@@ -340,7 +340,7 @@ Current efficacy: [+ taxes_tollnovigrad_eff : tax_eff +]
 - @tolls: Back
 
 @other_tolls
-Title: Adjust Novigrad toll
+title: Adjust Novigrad toll
 subtitle: Current rates: [+ taxes_tolls_rate: tax_rates +]
 on-arrival: {!
 Q.tax_changed = "tolls"

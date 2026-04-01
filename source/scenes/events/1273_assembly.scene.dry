@@ -1,4 +1,4 @@
-Title: Assembly on Matter of the Regency
+title: Assembly on Matter of the Regency
 new-page: true
 view-if: year < 1275 and year = next_assembly_year and season = next_assembly_season
 max-visits: 1

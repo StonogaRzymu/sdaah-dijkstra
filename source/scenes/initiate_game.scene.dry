@@ -1,4 +1,4 @@
-Title: Initiate game
+title: Initiate game
 on-arrival: {!
 
 Q.time = 0;

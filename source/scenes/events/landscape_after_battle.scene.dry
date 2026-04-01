@@ -1,4 +1,4 @@
-Title: Landscape after the battle
+title: Landscape after the battle
 new-page: true
 view-if: year = 1273 and season = 1
 max-visits: 1

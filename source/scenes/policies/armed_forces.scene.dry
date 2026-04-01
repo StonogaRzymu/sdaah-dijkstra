@@ -18,7 +18,7 @@ new-page: true
 - @dijkstra: Back
 
 @standing_army
-Title: Manage standing army
+title: Manage standing army
 new-page: true
 
 = Armed forces
@@ -37,7 +37,7 @@ new-page: true
 - @armed_forces: Back
 
 @train_regiments
-Title: Train new regiment
+title: Train new regiment
 subtitle: Cost: [+ mil_standing_cost +]&nbsp;thousand crowns
 on-arrival: {!
 Q.mil["standing"].units += 1
@@ -50,7 +50,7 @@ Q.budget_balance -= Q.mil["standing"].upkeep
 go-to: standing_army
 
 @disband_regiments
-Title: Disband existing regiment
+title: Disband existing regiment
 on-arrival: {!
 Q.mil["standing"].units -= 1
 Q.mil["standing"].fullupkeep = Q.mil["standing"].units * Q.mil["standing"].upkeep
@@ -61,14 +61,17 @@ Q.budget_balance += Q.mil["standing"].upkeep
 go-to: standing_army
 
 @banners
-Title: Manage banners
+title: Manage banners
 
 # - @raise_banners
 # - @dismiss_banners
 - @armed_forces: Back
 
+# @raise_banners
+# title: Raise banners!
+
 @navy
-Title: Manage navy
+title: Manage navy
 
 # - @commission_ships
 # - @commandeer_ships

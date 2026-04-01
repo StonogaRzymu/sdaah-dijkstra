@@ -1,4 +1,4 @@
-Title: Estates request calling the Assembly
+title: Estates request calling the Assembly
 new-page: true
 view-if: year = 1273 and season = 2
 max-visits: 1
@@ -15,7 +15,7 @@ The currently proposed Assembly would be meant to formally recognise count Dijks
 - @assembly_reject: The things won't be as they were anymore - we won't call the Assembly
 
 @assembly_set_date
-Title: Set the date of the next Assembly of the Realm
+title: Set the date of the next Assembly of the Realm
 
 When should the Assembly gather? Calling it to meet this autumn is what the estates expect and would solve some issues right away. On the other hand we can delay it and call it to gather the next year, which would give us some time to prepare for this. This will annoy them, though.
 
@@ -26,7 +26,7 @@ When should the Assembly gather? Calling it to meet this autumn is what the esta
 go-to: assembly_set_date
 
 @assembly_set_1273
-Title: Assembly will gather this year
+title: Assembly will gather this year
 subtitle: Assembly will gather this year
 on-arrival: {! 
 Q.next_assembly_season = 3;
@@ -40,7 +40,7 @@ The Assembly of the Realm will gather in the [+ next_assembly_season : season +]
 The estates are happy that we agreed so easily.
 
 @assembly_set_1274
-Title: Assembly will gather next year
+title: Assembly will gather next year
 subtitle: Assembly will gather next year
 on-arrival: {! 
 Q.next_assembly_season = 1;
@@ -54,7 +54,7 @@ The Assembly of the Realm will gather in the [+ next_assembly_season : season +]
 The estates are happy that we've agreed, but slightly annoyed by that delay.
 
 @assembly_reject
-Title: Assembly won't be called
+title: Assembly won't be called
 on-arrival: {! Q.estates.addAll("sat",-10) !}
 
 The nobility and the Church still don't understand scope of our ambitions. The Redania will be reforged and we won't be asking them for permission.
