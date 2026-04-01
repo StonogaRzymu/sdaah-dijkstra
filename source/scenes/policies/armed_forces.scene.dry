@@ -7,7 +7,7 @@ new-page: true
 <tr><td>Standing army:</td><td style="table-value">[+ mil_standing_units +]&nbsp;regiments</td></tr>
 <tr><td></td><td><small>[+ mil_standing_fullupkeep +]&nbsp;thousand crowns</small></td></tr>
 <tr><td>Feudal banners:</td><td style="table-value">[+ mil_banners_units +]&nbsp;banners</td></tr>
-<tr><td></td><td><small>[+ mil_banners_fullupkeep +]&nbsp;thousand crowns</small></td></tr>
+<tr><td><small>[? if mil_banners_raised == 1 : raised ?][? if mil_banners_raised = 0 : not raised ?]</small></td><td><small>[+ mil_banners_fullupkeep +]&nbsp;thousand crowns</small></td></tr>
 <tr><td>Navy:</td><td style="table-value">[+ mil_navy_units +]&nbsp;ships</td></tr>
 <tr><td></td><td><small>[+ mil_navy_fullupkeep +]&nbsp;thousand crowns</small></td></tr>
 </table>
