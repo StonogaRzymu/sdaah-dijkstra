@@ -4,8 +4,8 @@ new-page: true
 = Internal security
 
 - @create_secret_service
-- @create_hounds: Establish Redanian Hounds, militarised branch of Special Service
 - @expand_secret_service
+- @create_hounds: Establish Redanian Hounds, militarised branch of Special Service
 - @expand_hounds: Expand Redanian Hounds
 - @dijkstra: Back
 
@@ -17,6 +17,7 @@ choose-if: admin_cap >= sec_ss_establishcost
 subtitle: Requires [+ sec_ss_establishcost +] bureaucratic effort
 unavailable-subtitle: We need better bureaucracy!
 on-arrival: {!
+    Q.sec.ss.level = 1
     Q.sec_ss_level = 1
 !}
 
@@ -30,6 +31,7 @@ choose-if: admin_cap >= sec_ss_expand
 subtitle: Requires [+ sec_ss_expand +] bureaucratic effort
 unavailable-subtitle: We need better bureaucracy!
 on-arrival: {!
+    Q.sec.ss.level += 1
     Q.sec_ss_level += 1
 !}
 
@@ -43,6 +45,7 @@ choose-if: admin_cap >= sec_hounds_establishcost
 subtitle: Requires [+ sec_hounds_establishcost +] bureaucratic effort
 unavailable-subtitle: We need better bureaucracy!
 on-arrival: {!
+    Q.sec.hounds.level = 
     Q.sec_hounds_level = 1
 !}
 
@@ -56,6 +59,7 @@ choose-if: admin_cap >= sec_ss_establishcost
 subtitle: Requires [+ sec_ss_expand +] bureaucratic effort
 unavailable-subtitle: We need better bureaucracy!
 on-arrival: {!
+    Q.sec.hounds.level += 1
     Q.sec_hounds_level += 1    
 !}
 
