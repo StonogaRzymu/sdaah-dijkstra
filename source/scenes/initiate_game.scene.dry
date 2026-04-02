@@ -7,13 +7,21 @@ Q.season = 4;
 
 Q.budget = 0;
 Q.budget_balance = 0;
-Q.admin_cap = 100;
 Q.intel = 50;
 
 Q.assembly_called = 0;
 Q.assembly_participants = ["aristocracy", "pettynobility", "church", "guilds"];
 Q.next_assembly_season = 0;
 Q.next_assembly_year = 0;
+
+// bureaucracy
+
+Q.admin_cap = 100;
+Q.cs_created = 0;
+Q.cs_salaries = 0;
+Q.cs_skill = 0;
+Q.cs_net_width = 0;
+Q.cs_clerical_influence = 0;
 
 // estates
 
@@ -188,7 +196,7 @@ Q.taxes["income"].rate    = 1
 Q.taxes["income"].metrics = ["wealth"]
 Q.taxes["income"].eff     = 0
 Q.taxes["income"].rev     = 0
-Q.taxes["income"].desc = "Incom tax"
+Q.taxes["income"].desc = "Income tax"
 
 Q.taxes["consum"].id      = "consum"
 Q.taxes["consum"].name    = "goods tax"
