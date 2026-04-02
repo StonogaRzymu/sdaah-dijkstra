@@ -1,0 +1,133 @@
+title: Create Civil Service
+new-page: true
+on-arrival: cs_created = 1
+go-to: cs_hiring
+
+= Create Civil Service
+
+Our country is in dire need of reshaping. Radovid did a lot for it's greatness, despite all his flaws. Still, a lot of work is needed to take what was built and remove all superstition and abuse. We have to continue strenghening and centralising the state, but at the same time make it modern and rational.
+
+For that purpose we need not only soldiers and knights - we need scribes, tax collectors, administrators and all other sorts of highly educated bureaucrats. This men are not easy to come by - a lot of them already works for Church or has their own enterprise, so recruiting them will be long and arduous process. Moreover we will have to decide between sending them to various branches of our bureaucracy, intelligence, diplomatic corp etc.
+
+@cs_hiring
+title: Civil Service - hiring
+
+How should we look for them?
+
+- @cs_hire_alumni: We should approach all alumni of Oxenfurt University
+# - @cs_hire_exams: We should establish official examination system
+- @cs_hire_nobles: We should offer post to various nobles
+- @cs_hire_church: We should employ priests of Eternal Fire
+- @cs_hire_cities: We should ask city councils and guilds to lend us their men
+- @cs_hire_soldiers: We should look amongst low-rank soldiers for ones with organisation skills
+- @cs_salaries: That should be enough
+
+@cs_hire_alumni
+title: Civil Service - hiring
+subtitle: This will increase opportunities for hiring and increase skills of our bureaucrats
+on-arrival: cs_net_width += 1; cs_skill += 1
+max-visits: 1
+go-to: cs_hiring
+
+We will hire all willing alumni of the Oxenfurt University
+
+@cs_hire_nobles
+title: Civil Service - hiring
+subtitle: This will increase opportunities for hiring, but decrease skills of our bureaucrats. Nobility will gain influence and satisfaction
+on-arrival: {!
+    Q.cs_net_width += 1;
+    Q.cs_skill -= 1;
+    Q.estates.aristocracy.inf += 3
+    Q.estates.aristocracy.sat += 3
+    Q.estates.pettynobility.inf += 3
+    Q.estates.pettynobility.sat += 3
+!}
+max-visits: 1
+go-to: cs_hiring
+
+We will offer posts to second and third sons of various nobles. What they lack in education they make up in virtue
+
+@cs_hire_church
+title: Civil Service - hiring
+subtitle: This will increase opportunities for hiring and skills of our bureaucrats. Church will gain influence and satisfaction and may interfere with our reforms 
+on-arrival: {!
+    Q.cs_net_width += 1;
+    Q.cs_skill += 1;
+    Q.cs_clerical_influence = 1;
+    Q.estates.church.inf += 3;
+    Q.estates.church.sat += 3
+!}
+max-visits: 1
+go-to: cs_hiring
+
+We will include priests and monks of Eternal Fire in the new apparatus. What they lack in loyalty they make up in piety
+
+@cs_hire_cities
+title: Civil Service - hiring
+subtitle: This will increase opportunities for hiring, but increase salaries of our bureaucrats. Guilds will gain influence and satisfaction
+on-arrival: {!
+    Q.cs_net_width += 1;
+    Q.cs_salaries += 1;
+    Q.estates.guilds.inf += 3;
+    Q.estates.guilds.sat += 3
+!}
+max-visits: 1
+go-to: cs_hiring
+
+We will make a deal with bourgeoisie to hire some of their clerks. We will have to pay extra for it
+
+@cs_hire_soldiers
+title: Civil Service - hiring
+subtitle: This will increase opportunities for hiring, but nobility will be offended by including such rabble in our administration.
+on-arrival: {!
+    Q.cs_net_width += 1;
+    Q.estates.aristocracy.sat -= 6
+    Q.estates.pettynobility.sat -= 6
+    Q.estates.peasants.sat += 3
+!}
+max-visits: 1
+go-to: cs_hiring
+
+We will recruit best and brightest veterans of the War, regardless of their birth 
+
+# What should we require of them?
+# 
+# - @cs_no_criminals: They mustn't have participated in Radovid's persecutions
+# - @cs_no_church: They can't be priest of the Eternal Fire
+# - @cs_only_nobles: They have to be of a noble birth
+# - @cs_only_humans: They have to be humans
+
+@cs_salaries
+title: Civil Service - salaries
+choose-if: cs_net_width > 0
+unavailable-subtitle: We have to choose at least one hiring strategy
+
+How much are ready to pay them?
+
+- @cs_high_salaries: We need best of the best - and have to pay accordingly
+- @cs_medium_salaries: We won't rely on money for encouragement - pay them ordinary salaries
+- @cs_low_salaries: We look for idealists - we can be as frugal as possible
+
+@cs_high_salaries
+title: Civil Service - salaries
+on-arrival: cs_salaries += 3
+
+We will introduce high salaries
+
+- @dijkstra: Continue...
+
+@cs_medium_salaries
+title: Civil Service - salaries
+on-arrival: cs_salaries += 2
+
+We will introduce medium salaries
+
+- @dijkstra: Continue...
+
+@cs_low_salaries
+title: Civil Service - salaries
+on-arrival: cs_salaries += 1
+
+We will introduce low salaries
+
+- @dijkstra: Continue...
