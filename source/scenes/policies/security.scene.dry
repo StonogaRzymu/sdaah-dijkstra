@@ -45,7 +45,7 @@ choose-if: admin_cap >= sec_hounds_establishcost
 subtitle: Requires [+ sec_hounds_establishcost +] bureaucratic effort
 unavailable-subtitle: We need better bureaucracy!
 on-arrival: {!
-    Q.sec.hounds.level = 
+    Q.sec.hounds.level = 1
     Q.sec_hounds_level = 1
 !}
 
