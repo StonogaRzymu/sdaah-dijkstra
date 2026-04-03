@@ -7,7 +7,6 @@ Q.season = 4;
 
 Q.budget = 0;
 Q.budget_balance = 0;
-Q.intel = 50;
 
 Q.assembly_called = 0;
 Q.assembly_participants = ["aristocracy", "pettynobility", "church", "guilds"];
