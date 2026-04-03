@@ -1,0 +1,45 @@
+@broy
+title: Eliezer Broy
+is-pinned-card: true
+view-if: cs_created = 1 and cs_minister = "Eliezer Broy"
+tags: cabinet
+card-image: img/dijkstra.jpg
+new-page: true
+
+= Eliezer Broy
+
+Broy is former intelligence operative and one of Dijkstra's stalwart loyalists.
+
+As a Minister of Civil service he enforces bureaucracy's loyalty and fosters cooperation with Special Service
+
+- @main: Back
+
+@heuvel
+title: Ferdinand van der Heuvel
+is-pinned-card: true
+view-if: cs_created = 1 and cs_minister = "Ferdinand van der Heuvel"
+tags: cabinet
+card-image: img/dijkstra.jpg
+new-page: true
+
+= Count Ferdinand van der Heuvel
+
+Count van der Heuvel is a seasoned bureaucrat whose career remembers times of Vizimir II the Just.
+
+As a Minister of Civil Service he allows as to compromise with aristocracy to achieve some of our goals 
+
+- @main: Back
+
+@carels
+title: Otto Carels
+is-pinned-card: true
+view-if: cs_created = 1 and cs_minister = "Otto Carels"
+tags: cabinet
+card-image: img/dijkstra.jpg
+new-page: true
+
+Otto Carels is a radical, who as a chief judge of Roggeveen tried to use city autonomy to protect victims of persecutions.
+
+As a Minister of Civil Service he leads a crusade against racism and superstition in our state.
+
+- @main: Back

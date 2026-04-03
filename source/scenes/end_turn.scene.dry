@@ -14,9 +14,17 @@ if (Q.season < 4) {
 
 Q.admin = Q.admin_cap
 
-// to-do: consumption taxes
+// evaluate income and financial reserves
 
 Q.budget_balance = 0
+
+// tax efficiencies for "feudal" taxes are directly correlated with estate satisfaction
+
+Q.taxes["vassals"].eff = ( Q.estates.pettynobility.sat + Q.estates.aristocracy.sat ) / 2 / 75
+Q.taxes["cities"].eff = Q.estates.guilds.sat / 75
+Q.taxes["tithe"].eff = Q.estates.church.sat / 75
+
+// tax revenue
 
 Object.entries(Q.taxes).forEach((tax_obj) => {
     let tax = tax_obj[1]

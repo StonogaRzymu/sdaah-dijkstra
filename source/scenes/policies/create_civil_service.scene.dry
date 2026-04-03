@@ -13,10 +13,10 @@ Our country is in dire need of reshaping. Radovid did a lot for it's greatness, 
 
 For that purpose we need not only soldiers and knights - we need scribes, tax collectors, administrators and all other sorts of highly educated bureaucrats. This men are not easy to come by - a lot of them already works for Church or has their own enterprise, so recruiting them will be long and arduous process. Moreover we will have to decide between sending them to various branches of our bureaucracy, intelligence, diplomatic corp etc.
 
+How should we look for them?
+
 @cs_hiring
 title: Civil Service - hiring
-
-How should we look for them?
 
 - @cs_hire_alumni: We should approach all alumni of Oxenfurt University
 # - @cs_hire_exams: We should establish official examination system
@@ -49,7 +49,7 @@ on-arrival: {!
 max-visits: 1
 go-to: cs_hiring
 
-We will offer posts to second and third sons of various nobles. What they lack in education they make up in virtue
+We will offer posts to second and third sons of various nobles. What they lack in education they make up in inherited virtue
 
 @cs_hire_church
 title: Civil Service - hiring
@@ -58,6 +58,7 @@ on-arrival: {!
     Q.cs_net_width += 1;
     Q.cs_skill += 1;
     Q.cs_clerical_influence = 1;
+    Q.cs_loyalty -= 1;
     Q.estates.church.inf += 3;
     Q.estates.church.sat += 3
 !}
@@ -68,10 +69,10 @@ We will include priests and monks of Eternal Fire in the new apparatus. What the
 
 @cs_hire_cities
 title: Civil Service - hiring
-subtitle: This will increase opportunities for hiring, but increase salaries of our bureaucrats. Guilds will gain influence and satisfaction
+subtitle: This will increase opportunities for hiring, but slightly increase salaries of our bureaucrats. Guilds will gain influence and satisfaction
 on-arrival: {!
     Q.cs_net_width += 1;
-    Q.cs_salaries += 1;
+    Q.cs_salaries += 0.5;
     Q.estates.guilds.inf += 3;
     Q.estates.guilds.sat += 3
 !}
@@ -85,6 +86,7 @@ title: Civil Service - hiring
 subtitle: This will increase opportunities for hiring, but nobility will be offended by including such rabble in our administration.
 on-arrival: {!
     Q.cs_net_width += 1;
+    Q.cs_loyalty += 1
     Q.estates.aristocracy.sat -= 6
     Q.estates.pettynobility.sat -= 6
     Q.estates.peasants.sat += 3
@@ -114,7 +116,8 @@ How much are ready to pay them?
 
 @cs_high_salaries
 title: Civil Service - salaries
-on-arrival: cs_salaries += 1
+subtitle: This will slightly increase opportunities for hiring and skills of our bureaucrats
+on-arrival: cs_salaries += 1; cs_net_width += 0.5; cs_skill += 0.5; cs_loyalty += 0.5
 
 We will introduce high salaries
 
@@ -130,19 +133,64 @@ We will introduce medium salaries
 
 @cs_low_salaries
 title: Civil Service - salaries
-on-arrival: cs_salaries -= 1
+subtitle: This will slightly decrease opportunities for hiring and skills of our bureaucrats
+on-arrival: cs_salaries -= 1; cs_net_width -= 0.5; cs_skill -= 0.5; cs_loyalty -= 0.5
 
 We will introduce low salaries
 
-- @cs_create_finish: Continue...
+- @cs_choose_minister: Continue...
+
+@cs_choose_minister
+title: Civil Service - minister
+
+[? if cs_minister = "" : One last thing remains - we have to decide who should manage expansion and daily operation of our new apparatus. There are several possible candidates. ?]
+
+**Eliezer Broy**
+
+We can obviously just give that job to one of our intelligence agents. We can expect him to ensure loyalty of the new bureaucracy, but he will have to learn details on the job.
+
+**Count Ferdinand van der Heuvel**
+
+To appease aristocracy we could consider appointment of a competent noble who already has experience in management of the Realm. He would be able to bring aboard some of his associates but that would prevent us from pushing for more egalitarian reforms.
+
+**Otto Carels**
+
+Introducing modern and proggressive laws requires men who are willing to execute them. For that purpose we could appoint a radical, who as a chief judge of Roggeveen tried to use city autonomy to protect victims of persecutions.
+
+- @cs_appoint_broy: We will appoint Eliezer Broy
+- @cs_appoint_heuvel: We will appoint Count van der Heuvel
+- @cs_appoint_carels: We will appoint judge Carels
+
+@cs_appoint_broy
+title: Civil Service - Minister Broy
+on-arrival: cs_minister = "Eliezer Broy"; cs_loyalty += 1
+go-to: cs_create_finish
+
+Eliezer Broy will oversee newly created Civil Service
+
+
+@cs_appoint_heuvel
+title: Civil Service - Minister van der Heuvel
+on-arrival: {! 
+    Q.cs_minister = "Ferdinand van der Heuvel"; Q.cs_net_width += 1; Q.estates.aristocracy.sat += 3; Q.estates.aristocracy.inf += 3
+!}
+go-to: cs_create_finish
+
+Count Ferdinand van der Heuvel will oversee newly created Civil Service
+
+
+@cs_appoint_carels
+title: Civil Service - Minister Carels
+on-arrival: cs_minister = "Otto Carels"; cs_loyalty += 1
+go-to: cs_create_finish
+
+Otto Carels will oversee newly created Civil Service
 
 @cs_create_finish
 title: Civil Service - created
 on-arrival: {!
-    Q.cs_size += Q.cs_net_width
     Q.cs_upkeep = Q.cs_size * (5 + Q.cs_salaries);
     Q.budget_balance -= Q.cs_upkeep;
-    Q.admin_cap = 25 + Q.cs_size * (10 + 5 * Q.cs_skill);
-    Q.admin += Q.cs_size * (10 + 5 * Q.cs_skill);
+    Q.admin_cap = 25 + Q.cs_size * (10 + 5 * Q.cs_skill)
 !}
 go-to: dijkstra
