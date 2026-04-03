@@ -118,27 +118,24 @@ How much are ready to pay them?
 title: Civil Service - salaries
 subtitle: This will slightly increase opportunities for hiring and skills of our bureaucrats
 on-arrival: cs_salaries += 1; cs_net_width += 0.5; cs_skill += 0.5; cs_loyalty += 0.5
+go-to: cs_choose_minister
 
 We will introduce high salaries
-
-- @cs_choose_minister: Continue...
 
 @cs_medium_salaries
 title: Civil Service - salaries
 on-arrival: cs_salaries += 0
+go-to: cs_choose_minister
 
 We will introduce medium salaries
-
-- @cs_choose_minister: Continue...
 
 @cs_low_salaries
 title: Civil Service - salaries
 subtitle: This will slightly decrease opportunities for hiring and skills of our bureaucrats
 on-arrival: cs_salaries -= 1; cs_net_width -= 0.5; cs_skill -= 0.5; cs_loyalty -= 0.5
+go-to: cs_choose_minister
 
 We will introduce low salaries
-
-- @cs_choose_minister: Continue...
 
 @cs_choose_minister
 title: Civil Service - minister
@@ -166,9 +163,6 @@ title: Civil Service - Minister Broy
 on-arrival: cs_minister = "Eliezer Broy"; cs_loyalty += 1
 go-to: cs_create_finish
 
-Eliezer Broy will oversee newly created Civil Service
-
-
 @cs_appoint_heuvel
 title: Civil Service - Minister van der Heuvel
 on-arrival: {! 
@@ -176,15 +170,10 @@ on-arrival: {!
 !}
 go-to: cs_create_finish
 
-Count Ferdinand van der Heuvel will oversee newly created Civil Service
-
-
 @cs_appoint_carels
 title: Civil Service - Minister Carels
 on-arrival: cs_minister = "Otto Carels"; cs_loyalty += 1
 go-to: cs_create_finish
-
-Otto Carels will oversee newly created Civil Service
 
 @cs_create_finish
 title: Civil Service - created
@@ -193,4 +182,7 @@ on-arrival: {!
     Q.budget_balance -= Q.cs_upkeep;
     Q.admin_cap = 25 + Q.cs_size * (10 + 5 * Q.cs_skill)
 !}
-go-to: dijkstra
+
+[+ cs_minister +] will oversee newly created Civil Service
+
+- @main: Continue...
