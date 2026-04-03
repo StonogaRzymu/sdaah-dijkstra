@@ -13,12 +13,13 @@ new-page: true
 title: Establish Special Service
 new-page: true
 view-if: sec_ss_level = 0
-choose-if: admin_cap >= sec_ss_establishcost
-subtitle: Requires [+ sec_ss_establishcost +] bureaucratic effort
-unavailable-subtitle: We need better bureaucracy!
+choose-if: admin >= sec_ss_establishcost
+subtitle: Requires [+ sec_ss_establishcost : effort +] bureaucratic effort
+unavailable-subtitle: Requires [+ sec_ss_establishcost : effort +] bureaucratic effort!
 on-arrival: {!
     Q.sec.ss.level = 1
     Q.sec_ss_level = 1
+    Q.admin -= Q.sec_ss_establishcost
 !}
 
 - @security: Back
@@ -27,12 +28,13 @@ on-arrival: {!
 title: Expand Special Service
 new-page: true
 view-if: sec_ss_level >= 1
-choose-if: admin_cap >= sec_ss_expand
-subtitle: Requires [+ sec_ss_expand +] bureaucratic effort
-unavailable-subtitle: We need better bureaucracy!
+choose-if: admin >= sec_ss_expand
+subtitle: Requires [+ sec_ss_expand : effort +] bureaucratic effort
+unavailable-subtitle: Requires [+ sec_ss_expand : effort +] bureaucratic effort!
 on-arrival: {!
     Q.sec.ss.level += 1
     Q.sec_ss_level += 1
+    Q.admin -= Q.sec_ss_expand
 !}
 
 - @security: Back
@@ -41,12 +43,13 @@ on-arrival: {!
 title: Create Royal Yeomanry
 new-page: true
 view-if: sec_hounds_level = 0
-choose-if: admin_cap >= sec_hounds_establishcost
-subtitle: Requires [+ sec_hounds_establishcost +] bureaucratic effort
-unavailable-subtitle: We need better bureaucracy!
+choose-if: admin >= sec_hounds_establishcost
+subtitle: Requires [+ sec_hounds_establishcost : effort +] bureaucratic effort
+unavailable-subtitle: Requires [+ sec_hounds_establishcost : effort +] bureaucratic effort!
 on-arrival: {!
     Q.sec.hounds.level = 1
     Q.sec_hounds_level = 1
+    Q.admin -= Q.sec_hounds_establishcost
 !}
 
 - @security: Back
@@ -55,12 +58,13 @@ on-arrival: {!
 title: Expand Royal Yeomanry
 new-page: true
 view-if: sec_hounds_level >= 1
-choose-if: admin_cap >= sec_ss_establishcost
-subtitle: Requires [+ sec_ss_expand +] bureaucratic effort
-unavailable-subtitle: We need better bureaucracy!
+choose-if: admin >= sec_hounds_expand
+subtitle: Requires [+ sec_hounds_expand : effort +] bureaucratic effort
+unavailable-subtitle: Requires [+ sec_hounds_expand : effort +] bureaucratic effort!
 on-arrival: {!
     Q.sec.hounds.level += 1
     Q.sec_hounds_level += 1    
+    Q.admin -= Q.sec_hounds_expand
 !}
 
 - @security: Back

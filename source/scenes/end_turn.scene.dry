@@ -12,7 +12,8 @@ if (Q.season < 4) {
     Q.year += 1;
 }
 
-// assign values to revenue
+Q.admin = Q.admin_cap
+
 // to-do: consumption taxes
 
 Q.budget_balance = 0
@@ -51,7 +52,9 @@ Object.entries(Q.taxes).forEach((tax_obj) => {
     }
 });
 
-Q.budget_balance = Math.round(Q.budget_balance * 10) / 10;
+let upkeeps = Q.cs_upkeep + Q.mil.standing.fullupkeep + Q.mil.banners.fullupkeep + Q.mil.navy.fullupkeep
+
+Q.budget_balance = Math.round(Q.budget_balance - upkeeps * 10) / 10;
 
 Q.budget += Q.budget_balance;
 

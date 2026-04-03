@@ -14,14 +14,17 @@ Q.assembly_participants = ["aristocracy", "pettynobility", "church", "guilds"];
 Q.next_assembly_season = 0;
 Q.next_assembly_year = 0;
 
-// bureaucracy
+// bureaucracy and civil service
 
-Q.admin_cap = 100;
 Q.cs_created = 0;
 Q.cs_salaries = 0;
 Q.cs_skill = 0;
 Q.cs_net_width = 0;
 Q.cs_clerical_influence = 0;
+Q.cs_size = 0;
+Q.cs_upkeep = Q.cs_size * (5 + Q.cs_salaries);
+Q.admin_cap = 25 + Q.cs_size * (10 + 5 * Q.cs_skill);
+Q.admin = Q.admin_cap;
 
 // estates
 
@@ -265,13 +268,13 @@ Q.mil["navy"].loyalty = 0.5
 Q.sec = {
     ss: {
         level: 0,
-        establishcost: 50,
-        expand: 10
+        establishcost: 25,
+        expand: 20
     },
     hounds: {
         level: 0,
-        establishcost: 50,
-        expand: 10
+        establishcost: 25,
+        expand: 20
     }
 }
 

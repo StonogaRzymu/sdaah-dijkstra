@@ -8,11 +8,11 @@ Budget: [+ budget +] thousand crowns
 
 Budget balance: [+ budget_balance +]&nbsp;thousand crowns
 
-Administrative capacity: [+ admin_cap +]
+Bureacratic capacity: [+ admin +]/[+ admin_cap +]
 
 Royal Redanian Army: [+ mil_standing_units +]&nbsp;regiments
 
-Dijkstra's intelligence: [+ intel +]
+# Dijkstra's intelligence: [+ intel +]
 
 @estates
 

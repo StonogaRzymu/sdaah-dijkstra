@@ -1,6 +1,7 @@
 title: Create Civil Service
 new-page: true
-on-arrival: cs_created = 1
+subtitle: Requires enormous bureaucratic effort
+on-arrival: cs_created = 1; admin -= 25
 go-to: cs_hiring
 
 = Create Civil Service
@@ -110,24 +111,35 @@ How much are ready to pay them?
 
 @cs_high_salaries
 title: Civil Service - salaries
-on-arrival: cs_salaries += 3
+on-arrival: cs_salaries += 1
 
 We will introduce high salaries
 
-- @dijkstra: Continue...
+- @cs_create_finish: Continue...
 
 @cs_medium_salaries
 title: Civil Service - salaries
-on-arrival: cs_salaries += 2
+on-arrival: cs_salaries += 0
 
 We will introduce medium salaries
 
-- @dijkstra: Continue...
+- @cs_create_finish: Continue...
 
 @cs_low_salaries
 title: Civil Service - salaries
-on-arrival: cs_salaries += 1
+on-arrival: cs_salaries -= 1
 
 We will introduce low salaries
 
-- @dijkstra: Continue...
+- @cs_create_finish: Continue...
+
+@cs_create_finish
+title: Civil Service - created
+on-arrival: {!
+    Q.cs_size += Q.cs_net_width
+    Q.cs_upkeep = Q.cs_size * (5 + Q.cs_salaries);
+    Q.budget_balance -= Q.cs_upkeep;
+    Q.admin_cap = 25 + Q.cs_size * (10 + 5 * Q.cs_skill);
+    Q.admin += Q.cs_size * (10 + 5 * Q.cs_skill);
+!}
+go-to: dijkstra
