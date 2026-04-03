@@ -55,7 +55,7 @@ Object.entries(Q.taxes).forEach((tax_obj) => {
 let upkeeps = Q.cs_upkeep + Q.mil.standing.fullupkeep + Q.mil.banners.fullupkeep + Q.mil.navy.fullupkeep
 console.log(Q.budget_balance + " - " + upkeeps)
 
-Q.budget_balance = Math.round(Q.budget_balance - upkeeps * 10) / 10;
+Q.budget_balance = Math.round(Q.budget_balance - upkeeps);
 
 Q.budget += Q.budget_balance;
 

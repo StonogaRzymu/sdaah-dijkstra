@@ -5,7 +5,7 @@ Q.time = 0;
 Q.year = 1272;
 Q.season = 4;
 
-Q.budget = 0;
+Q.budget = 10;
 Q.budget_balance = 0;
 
 Q.assembly_called = 0;
