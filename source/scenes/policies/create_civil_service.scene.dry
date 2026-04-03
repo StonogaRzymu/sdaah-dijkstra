@@ -121,7 +121,7 @@ on-arrival: cs_salaries += 1; cs_net_width += 0.5; cs_skill += 0.5; cs_loyalty +
 
 We will introduce high salaries
 
-- @cs_create_finish: Continue...
+- @cs_choose_minister: Continue...
 
 @cs_medium_salaries
 title: Civil Service - salaries
@@ -129,7 +129,7 @@ on-arrival: cs_salaries += 0
 
 We will introduce medium salaries
 
-- @cs_create_finish: Continue...
+- @cs_choose_minister: Continue...
 
 @cs_low_salaries
 title: Civil Service - salaries

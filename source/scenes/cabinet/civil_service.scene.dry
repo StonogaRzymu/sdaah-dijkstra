@@ -3,7 +3,7 @@ title: Eliezer Broy
 is-pinned-card: true
 view-if: cs_created = 1 and cs_minister = "Eliezer Broy"
 tags: cabinet
-card-image: img/dijkstra.jpg
+card-image: img/broy.jpg
 new-page: true
 
 = Eliezer Broy
@@ -19,7 +19,7 @@ title: Ferdinand van der Heuvel
 is-pinned-card: true
 view-if: cs_created = 1 and cs_minister = "Ferdinand van der Heuvel"
 tags: cabinet
-card-image: img/dijkstra.jpg
+card-image: img/heuvel.jpg
 new-page: true
 
 = Count Ferdinand van der Heuvel
@@ -35,7 +35,7 @@ title: Otto Carels
 is-pinned-card: true
 view-if: cs_created = 1 and cs_minister = "Otto Carels"
 tags: cabinet
-card-image: img/dijkstra.jpg
+card-image: img/carels.jpg
 new-page: true
 
 Otto Carels is a radical, who as a chief judge of Roggeveen tried to use city autonomy to protect victims of persecutions.
