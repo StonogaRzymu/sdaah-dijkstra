@@ -40,7 +40,7 @@ on-arrival: {!
 @create_hounds
 title: Create Royal Yeomanry
 new-page: true
-view-if: sec_hounds_established = 0
+view-if: sec_hounds_level = 0
 choose-if: admin_cap >= sec_hounds_establishcost
 subtitle: Requires [+ sec_hounds_establishcost +] bureaucratic effort
 unavailable-subtitle: We need better bureaucracy!
@@ -54,7 +54,7 @@ on-arrival: {!
 @expand_hounds
 title: Expand Royal Yeomanry
 new-page: true
-view-if: sec_hounds_established >= 1
+view-if: sec_hounds_level >= 1
 choose-if: admin_cap >= sec_ss_establishcost
 subtitle: Requires [+ sec_ss_expand +] bureaucratic effort
 unavailable-subtitle: We need better bureaucracy!
