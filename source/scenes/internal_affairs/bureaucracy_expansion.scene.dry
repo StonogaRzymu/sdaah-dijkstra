@@ -4,7 +4,7 @@ is-card: true
 card-image: img/bureaucracy.jpg
 tags: internal_affairs
 view-if: cs_created = 1 and bureaucracy_expansion_timer = 0
-on-arrival: bureaucracy_expansion_timer = (6 - cs_net_width); mini_actions = 0
+on-arrival: bureaucracy_expansion_timer = (6 - cs_net_width) and mini_actions = 0
 go-to: cs_expansion_choices
 
 = Bureaucracy Expansion
@@ -35,7 +35,7 @@ Our Civil Service expands. This will help our agenda.
 
 @cs_add_nobles
 subtitle: This will increase opportunities for hiring, but decrease skills of our bureaucrats. Nobility will gain influence and satisfaction
-view-if: cs_hire_nobles = 0; mini_actions = 0
+view-if: cs_hire_nobles = 0 and mini_actions = 0
 on-arrival: {!
     Q.cs_net_width += 1;
     Q.cs_skill -= 1;
@@ -52,7 +52,7 @@ We will offer posts to second and third sons of various nobles. What they lack i
 
 @cs_remove_nobles
 subtitle: This will decrease opportunities for hiring, but increase skills of our bureaucrats. Nobility will be dissatisfied
-view-if: cs_hire_nobles = 1; mini_actions = 0
+view-if: cs_hire_nobles = 1 and mini_actions = 0
 on-arrival: {!
     Q.cs_net_width -= 1;
     Q.cs_skill += 1;
@@ -69,7 +69,7 @@ We shouldn't pretend noble birth makes someone good bureaucrat
 
 @cs_add_church
 subtitle: This will increase opportunities for hiring and skills of our bureaucrats. Church will gain influence and satisfaction and may interfere with our reforms 
-view-if: cs_hire_church = 0; mini_actions = 0
+view-if: cs_hire_church = 0 and mini_actions = 0
 on-arrival: {!
     Q.cs_net_width += 1;
     Q.cs_skill += 1;
@@ -85,7 +85,7 @@ We will include priests and monks of Eternal Fire in the new apparatus. What the
 
 @cs_remove_church
 subtitle: This will decrease opportunities for hiring and skills of our bureaucrats. Church will be dissatisfied
-view-if: cs_hire_church = 1; mini_actions = 0
+view-if: cs_hire_church = 1 and mini_actions = 0
 on-arrival: {!
     Q.cs_net_width -= 1;
     Q.cs_skill -= 1;
@@ -101,7 +101,7 @@ We should get rid of the Eternal Fire clergy in our Civil Service.
 
 @cs_add_cities
 subtitle: This will increase opportunities for hiring, but slightly increase salaries of our bureaucrats. Guilds will gain influence and satisfaction
-view-if: cs_hire_cities = 0; mini_actions = 0
+view-if: cs_hire_cities = 0 and mini_actions = 0
 on-arrival: {!
     Q.cs_net_width += 1;
     Q.cs_salaries += 0.5;
@@ -116,7 +116,7 @@ We will make a deal with bourgeoisie to hire some of their clerks. We will have 
 
 @cs_remove_cities
 subtitle: This will decrease opportunities for hiring, but slightly decrease salaries of our bureaucrats. Guilds will be dissatisfied
-view-if: cs_hire_cities = 1; mini_actions = 0
+view-if: cs_hire_cities = 1 and mini_actions = 0
 on-arrival: {!
     Q.cs_net_width -= 1;
     Q.cs_salaries -= 0.5;
@@ -131,7 +131,7 @@ We won't pay extra for hiring officials from cities and guilds any longer
 
 @cs_add_soldiers
 subtitle: This will increase opportunities for hiring, but nobility will be offended by including such rabble in our administration.
-view-if: cs_hire_soldiers = 0; mini_actions = 0
+view-if: cs_hire_soldiers = 0 and mini_actions = 0
 on-arrival: {!
     Q.cs_net_width += 1;
     Q.cs_hire_admin += 5;
@@ -148,7 +148,7 @@ We will recruit best and brightest veterans of the War, regardless of their birt
 
 @cs_remove_soldiers
 subtitle: This will decrease opportunities for hiring, but nobility will be glad we ensured officials come from proper milieu.
-view-if: cs_hire_soldiers = 1; mini_actions = 0
+view-if: cs_hire_soldiers = 1 and mini_actions = 0
 on-arrival: {!
     Q.cs_net_width -= 1;
     Q.cs_hire_admin -= 5;
