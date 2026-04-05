@@ -14,7 +14,7 @@ Q.timers_list = [
 ]
 
 Q.timers_list.forEach((timer) => {
-    Object.defineProperty(Q, timer, {value: 0, configurable: true })
+    Object.defineProperty(Q, timer, {value: 1, configurable: true })
 })
 
 Q.mini_actions = 0

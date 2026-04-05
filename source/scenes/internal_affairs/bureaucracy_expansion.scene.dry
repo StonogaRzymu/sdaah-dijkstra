@@ -4,7 +4,7 @@ is-card: true
 card-image: img/bureaucracy.jpg
 tags: internal_affairs
 view-if: cs_created = 1 and bureaucracy_expansion_timer = 0
-on-arrival: bureaucracy_expansion_timer = (6 - cs_net_width); mini_actions = 0
+on-arrival: bureaucracy_expansion_timer = (6-cs_net_width); mini_actions = 0
 go-to: cs_expansion_choices
 
 = Bureaucracy Expansion
