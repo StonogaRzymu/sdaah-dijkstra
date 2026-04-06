@@ -12,6 +12,9 @@ Broy is former intelligence operative and one of Dijkstra's stalwart loyalists.
 
 As a Minister of Civil service he enforces bureaucracy's loyalty and fosters cooperation with Special Service
 
+- cs_hiring
+- cs_start_expansion
+- cs_stop_expansion
 - @main: Back
 
 @heuvel
@@ -28,6 +31,9 @@ Count van der Heuvel is a seasoned bureaucrat whose career remembers times of Vi
 
 As a Minister of Civil Service he allows as to compromise with aristocracy to achieve some of our goals 
 
+- cs_hiring
+- cs_start_expansion
+- cs_stop_expansion
 - @main: Back
 
 @carels
@@ -42,4 +48,164 @@ Otto Carels is a radical, who as a chief judge of Roggeveen tried to use city au
 
 As a Minister of Civil Service he leads a crusade against racism and superstition in our state.
 
+- cs_hiring
+- cs_start_expansion
+- cs_stop_expansion
 - @main: Back
+
+@start_expansion
+title: Expansion Civil Service has to be continued
+view-if: cs_expansion = 0
+on-arrival: cs_expansion = 1
+
+@stop_expansion
+title: Expansion of Civil Service has 
+view-if: cs_expansion = 1
+on-arrival: cs_expansion = 0
+
+@cs_hiring
+title: Change hiring practices
+
+- @cs_add_nobles: We should offer post to various nobles
+- @cs_remove_nobles: We shouldn't pretend noble birth makes someone good bureaucrat 
+- @cs_add_church: We should employ priests of Eternal Fire
+- @cs_remove_church: We should get rid of the Eternal Fire clergy
+- @cs_add_cities: We should ask city councils and guilds to lend us their men
+- @cs_remove_cities: We won't pay extra for officials from cities and guilds any longer 
+- @cs_add_soldiers: We should look amongst low-rank soldiers for ones with organisation skills
+- @cs_remove_soldiers: We don't need rabble among our officials
+- @main: We have to wait with further expansion
+
+@cs_add_nobles
+subtitle: This will increase opportunities for hiring, but decrease skills of our bureaucrats. Nobility will gain influence and satisfaction
+view-if: cs_hire_nobles = 0 and mini_actions = 0
+on-arrival: {!
+    Q.cs_net_width += 1;
+    Q.cs_skill -= 1;
+    Q.cs_hire_nobles = 1
+    Q.estates.aristocracy.inf += 3
+    Q.estates.aristocracy.sat += 3
+    Q.estates.pettynobility.inf += 3
+    Q.estates.pettynobility.sat += 3
+    Q.mini_actions += 1
+!}
+go-to: cs_expansion_choices
+
+We will offer posts to second and third sons of various nobles. What they lack in education they make up in inherited virtue
+
+@cs_remove_nobles
+subtitle: This will decrease opportunities for hiring, but increase skills of our bureaucrats. Nobility will be dissatisfied
+view-if: cs_hire_nobles = 1 and mini_actions = 0
+on-arrival: {!
+    Q.cs_net_width -= 1;
+    Q.cs_skill += 1;
+    Q.cs_hire_nobles = 0
+    Q.estates.aristocracy.inf -= 2
+    Q.estates.aristocracy.sat -= 6
+    Q.estates.pettynobility.inf -= 2
+    Q.estates.pettynobility.sat -= 6
+    Q.mini_actions += 1
+!}
+go-to: cs_expansion_choices
+
+We shouldn't pretend noble birth makes someone good bureaucrat 
+
+@cs_add_church
+subtitle: This will increase opportunities for hiring and skills of our bureaucrats. Church will gain influence and satisfaction and may interfere with our reforms 
+view-if: cs_hire_church = 0 and mini_actions = 0
+on-arrival: {!
+    Q.cs_net_width += 1;
+    Q.cs_skill += 1;
+    Q.cs_hire_church = 1;
+    Q.cs_loyalty -= 1;
+    Q.estates.church.inf += 3;
+    Q.estates.church.sat += 3
+    Q.mini_actions += 1
+!}
+go-to: cs_expansion_choices
+
+We will include priests and monks of Eternal Fire in the new apparatus. What they lack in loyalty they make up in piety
+
+@cs_remove_church
+subtitle: This will decrease opportunities for hiring and skills of our bureaucrats. Church will be dissatisfied
+view-if: cs_hire_church = 1 and mini_actions = 0
+on-arrival: {!
+    Q.cs_net_width -= 1;
+    Q.cs_skill -= 1;
+    Q.cs_hire_church = 0;
+    Q.cs_loyalty += 1;
+    Q.estates.church.inf -= 2;
+    Q.estates.church.sat -= 6
+    Q.mini_actions += 1
+!}
+go-to: cs_expansion_choices
+
+We should get rid of the Eternal Fire clergy in our Civil Service. 
+
+@cs_add_cities
+subtitle: This will increase opportunities for hiring, but slightly increase salaries of our bureaucrats. Guilds will gain influence and satisfaction
+view-if: cs_hire_cities = 0 and mini_actions = 0
+on-arrival: {!
+    Q.cs_net_width += 1;
+    Q.cs_salaries += 0.5;
+    Q.cs_hire_gold = 2 * (2 + Q.cs_salaries);
+    Q.cs_hire_cities = 1
+    Q.estates.guilds.inf += 3;
+    Q.estates.guilds.sat += 3
+    Q.mini_actions += 1
+!}
+go-to: cs_expansion_choices
+
+We will make a deal with bourgeoisie to hire some of their clerks. We will have to pay extra for it
+
+@cs_remove_cities
+subtitle: This will decrease opportunities for hiring, but slightly decrease salaries of our bureaucrats. Guilds will be dissatisfied
+view-if: cs_hire_cities = 1 and mini_actions = 0
+on-arrival: {!
+    Q.cs_net_width -= 1;
+    Q.cs_salaries -= 0.5;
+    Q.cs_hire_gold = 2 * (2 + Q.cs_salaries);
+    Q.cs_hire_cities = 0
+    Q.estates.guilds.inf -= 2;
+    Q.estates.guilds.sat -= 6
+    Q.mini_actions += 1
+!}
+go-to: cs_expansion_choices
+
+We won't pay extra for hiring officials from cities and guilds any longer 
+
+@cs_add_soldiers
+subtitle: This will increase opportunities for hiring, but nobility will be offended by including such rabble in our administration.
+view-if: cs_hire_soldiers = 0 and mini_actions = 0
+on-arrival: {!
+    Q.cs_net_width += 1;
+    Q.cs_hire_admin += 5;
+    Q.cs_loyalty += 1
+    Q.cs_hire_soldiers = 1
+    Q.estates.aristocracy.sat -= 6
+    Q.estates.pettynobility.sat -= 6
+    Q.estates.peasants.sat += 3
+    Q.mini_actions += 1
+!}
+go-to: cs_expansion_choices
+
+We will recruit best and brightest veterans of the War, regardless of their birth 
+
+@cs_remove_soldiers
+subtitle: This will decrease opportunities for hiring, but nobility will be glad we ensured officials come from proper milieu.
+view-if: cs_hire_soldiers = 1 and mini_actions = 0
+on-arrival: {!
+    Q.cs_net_width -= 1;
+    Q.cs_hire_admin -= 5;
+    Q.cs_loyalty -= 1
+    Q.cs_hire_soldiers = 0
+    Q.estates.aristocracy.sat += 3
+    Q.estates.pettynobility.sat += 3
+    Q.estates.peasants.sat -= 6
+    Q.mini_actions += 1
+!}
+go-to: cs_expansion_choices
+
+We don't need rabble among our officials
+
+

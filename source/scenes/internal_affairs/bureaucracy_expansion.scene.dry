@@ -3,170 +3,34 @@ new-page: true
 is-card: true
 card-image: img/bureaucracy.jpg
 tags: internal_affairs
-view-if: cs_created = 1 and bureaucracy_expansion_timer = 0
+view-if: cs_expansion = 1 and bureaucracy_expansion_timer = 0
 on-arrival: {!
     Q.bureaucracy_expansion_timer = 6 - Q.cs_net_width;
     console.log("Timer: "+Q.bureaucracy_expansion_timer)
     console.log("Q.cs_net_width: "+Q.cs_net_width)
     Q.mini_actions = 0
 !}
-go-to: cs_expansion_choices
 
 = Bureaucracy Expansion
 
 Our efforts to create Civil Service and hire competent clerks and bureaucrats have to continue.
 
-@cs_expansion_choices
-
-- @cs_hire_as_usual: We should follow our current hiring practices
-- @cs_add_nobles: We should offer post to various nobles
-- @cs_remove_nobles: We shouldn't pretend noble birth makes someone good bureaucrat 
-- @cs_add_church: We should employ priests of Eternal Fire
-- @cs_remove_church: We should get rid of the Eternal Fire clergy
-- @cs_add_cities: We should ask city councils and guilds to lend us their men
-- @cs_remove_cities: We won't pay extra for officials from cities and guilds any longer 
-- @cs_add_soldiers: We should look amongst low-rank soldiers for ones with organisation skills
-- @cs_remove_soldiers: We don't need rabble among our officials
+- @cs_hire_full: We should follow our current hiring practices
+- @cs_hire_partial: We can only afford partial expansion
 - @main: We have to wait with further expansion
 
-@cs_hire_as_usual
+@cs_hire_full
 subtitle: Cost: [+ cs_hire_gold +] thousand crowns. Requires [+ cs_hire_admin : effort +] administrative effort
 choose-if: budget >= cs_hire_gold and admin >= cs_hire_admin
 on-arrival: cs_size += 1; budget -= cs_hire_gold; admin -= cs_hire_admin; cs_upkeep = cs_size * (2 + cs_salaries); budget_balance -= cs_upkeep; admin_cap = 25 + cs_size * (10 + 5 * cs_skill)
 
 Our Civil Service expands. This will help our agenda.
 
+@cs_hire_partial
+subtitle: Cost: [+ cs_hire_gold/2 +] thousand crowns. Requires [+ cs_hire_admin/2 : effort +] administrative effort
+choose-if: budget >= (cs_hire_gold/2) and admin >= (cs_hire_admin/2)
+on-arrival: cs_size += 0.5; budget -= cs_hire_gold/2; admin -= cs_hire_admin/2; cs_upkeep = cs_size * (2 + cs_salaries); budget_balance -= cs_upkeep; admin_cap = 25 + cs_size * (10 + 5 * cs_skill)
+
+We can't afford to expand as planned, but we can do at least something.
+
 - @main: Continue...
-
-@cs_add_nobles
-subtitle: This will increase opportunities for hiring, but decrease skills of our bureaucrats. Nobility will gain influence and satisfaction
-view-if: cs_hire_nobles = 0 and mini_actions = 0
-on-arrival: {!
-    Q.cs_net_width += 1;
-    Q.cs_skill -= 1;
-    Q.cs_hire_nobles = 1
-    Q.estates.aristocracy.inf += 3
-    Q.estates.aristocracy.sat += 3
-    Q.estates.pettynobility.inf += 3
-    Q.estates.pettynobility.sat += 3
-    Q.mini_actions += 1
-!}
-go-to: cs_expansion_choices
-
-We will offer posts to second and third sons of various nobles. What they lack in education they make up in inherited virtue
-
-@cs_remove_nobles
-subtitle: This will decrease opportunities for hiring, but increase skills of our bureaucrats. Nobility will be dissatisfied
-view-if: cs_hire_nobles = 1 and mini_actions = 0
-on-arrival: {!
-    Q.cs_net_width -= 1;
-    Q.cs_skill += 1;
-    Q.cs_hire_nobles = 0
-    Q.estates.aristocracy.inf -= 2
-    Q.estates.aristocracy.sat -= 6
-    Q.estates.pettynobility.inf -= 2
-    Q.estates.pettynobility.sat -= 6
-    Q.mini_actions += 1
-!}
-go-to: cs_expansion_choices
-
-We shouldn't pretend noble birth makes someone good bureaucrat 
-
-@cs_add_church
-subtitle: This will increase opportunities for hiring and skills of our bureaucrats. Church will gain influence and satisfaction and may interfere with our reforms 
-view-if: cs_hire_church = 0 and mini_actions = 0
-on-arrival: {!
-    Q.cs_net_width += 1;
-    Q.cs_skill += 1;
-    Q.cs_hire_church = 1;
-    Q.cs_loyalty -= 1;
-    Q.estates.church.inf += 3;
-    Q.estates.church.sat += 3
-    Q.mini_actions += 1
-!}
-go-to: cs_expansion_choices
-
-We will include priests and monks of Eternal Fire in the new apparatus. What they lack in loyalty they make up in piety
-
-@cs_remove_church
-subtitle: This will decrease opportunities for hiring and skills of our bureaucrats. Church will be dissatisfied
-view-if: cs_hire_church = 1 and mini_actions = 0
-on-arrival: {!
-    Q.cs_net_width -= 1;
-    Q.cs_skill -= 1;
-    Q.cs_hire_church = 0;
-    Q.cs_loyalty += 1;
-    Q.estates.church.inf -= 2;
-    Q.estates.church.sat -= 6
-    Q.mini_actions += 1
-!}
-go-to: cs_expansion_choices
-
-We should get rid of the Eternal Fire clergy in our Civil Service. 
-
-@cs_add_cities
-subtitle: This will increase opportunities for hiring, but slightly increase salaries of our bureaucrats. Guilds will gain influence and satisfaction
-view-if: cs_hire_cities = 0 and mini_actions = 0
-on-arrival: {!
-    Q.cs_net_width += 1;
-    Q.cs_salaries += 0.5;
-    Q.cs_hire_gold = 2 * (2 + Q.cs_salaries);
-    Q.cs_hire_cities = 1
-    Q.estates.guilds.inf += 3;
-    Q.estates.guilds.sat += 3
-    Q.mini_actions += 1
-!}
-go-to: cs_expansion_choices
-
-We will make a deal with bourgeoisie to hire some of their clerks. We will have to pay extra for it
-
-@cs_remove_cities
-subtitle: This will decrease opportunities for hiring, but slightly decrease salaries of our bureaucrats. Guilds will be dissatisfied
-view-if: cs_hire_cities = 1 and mini_actions = 0
-on-arrival: {!
-    Q.cs_net_width -= 1;
-    Q.cs_salaries -= 0.5;
-    Q.cs_hire_gold = 2 * (2 + Q.cs_salaries);
-    Q.cs_hire_cities = 0
-    Q.estates.guilds.inf -= 2;
-    Q.estates.guilds.sat -= 6
-    Q.mini_actions += 1
-!}
-go-to: cs_expansion_choices
-
-We won't pay extra for hiring officials from cities and guilds any longer 
-
-@cs_add_soldiers
-subtitle: This will increase opportunities for hiring, but nobility will be offended by including such rabble in our administration.
-view-if: cs_hire_soldiers = 0 and mini_actions = 0
-on-arrival: {!
-    Q.cs_net_width += 1;
-    Q.cs_hire_admin += 5;
-    Q.cs_loyalty += 1
-    Q.cs_hire_soldiers = 1
-    Q.estates.aristocracy.sat -= 6
-    Q.estates.pettynobility.sat -= 6
-    Q.estates.peasants.sat += 3
-    Q.mini_actions += 1
-!}
-go-to: cs_expansion_choices
-
-We will recruit best and brightest veterans of the War, regardless of their birth 
-
-@cs_remove_soldiers
-subtitle: This will decrease opportunities for hiring, but nobility will be glad we ensured officials come from proper milieu.
-view-if: cs_hire_soldiers = 1 and mini_actions = 0
-on-arrival: {!
-    Q.cs_net_width -= 1;
-    Q.cs_hire_admin -= 5;
-    Q.cs_loyalty -= 1
-    Q.cs_hire_soldiers = 0
-    Q.estates.aristocracy.sat += 3
-    Q.estates.pettynobility.sat += 3
-    Q.estates.peasants.sat -= 6
-    Q.mini_actions += 1
-!}
-go-to: cs_expansion_choices
-
-We don't need rabble among our officials
-
