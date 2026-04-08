@@ -54,7 +54,9 @@ Satisfaction: [+ estates_peasants_sat : sat +]</div>
 
 = Provinces
 
-<div class="sidebar-stat">**Lower Redania**
+<div class="sidebar-stat">
+
+**Lower Redania**
 
 Crown control: [+ prov_lowred_control : control +]
 

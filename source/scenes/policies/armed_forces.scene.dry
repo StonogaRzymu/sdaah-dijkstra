@@ -39,8 +39,8 @@ new-page: true
 
 @train_regiments
 title: Train new regiment
-subtitle: Cost: [+ mil_standing_cost +]&nbsp;thousand crowns
 choose-if: budget >= mil_standing_cost
+subtitle: Cost: [+ mil_standing_cost +]&nbsp;thousand crowns
 unavailable-subtitle: We can't afford the costs!
 on-arrival: {!
     Q.mil["standing"].units += 1

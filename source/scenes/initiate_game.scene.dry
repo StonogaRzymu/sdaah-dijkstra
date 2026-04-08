@@ -27,6 +27,19 @@ Q.assembly_participants = ["aristocracy", "pettynobility", "church", "guilds"];
 Q.next_assembly_season = 0;
 Q.next_assembly_year = 0;
 
+// societal "values"
+
+// racism vs tolerance
+Q.racism = 80
+// fanaticism vs secularism
+Q.fanaticism = 60
+
+// economy growth
+
+Q.trade = 0
+Q.industry = 0
+Q.agriculture = 0
+
 // bureaucracy and civil service
 
 Q.cs_created = 0;
@@ -292,14 +305,14 @@ Q.sec_ss_level = 0
 Q.sec_hounds_level = 0
 Q.sec = {
     ss: {
-        level: 0,
         establishcost: 25,
-        expand: 20
+        expand: 20,
+        cooldown: 6
     },
     hounds: {
-        level: 0,
         establishcost: 25,
-        expand: 20
+        expand: 20,
+        cooldown: 6
     }
 }
 

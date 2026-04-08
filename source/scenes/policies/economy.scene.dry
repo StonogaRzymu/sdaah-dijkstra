@@ -3,4 +3,39 @@ new-page: true
 
 = Economic policy
 
+Current state of economy:
+
+trade: [+ trade : investment +]
+
+agriculture: [+ agriculture : investment +]
+
+industry: [+ industry : investment +]
+
+- @eco_trade
+- @eco_agriculture
+- @eco_industry
 - @dijkstra: Back
+
+@eco_trade
+title: Invest in infrastructure to facilitate trade
+subtitle: Cost: [+ 5 + 2.5 * trade +]&nbsp;thousand crowns. Requires moderate bureaucratic effort.
+unavailable-subtitle: [? if budget < (5 + 2.5 * trade) : We can't afford [+ 5 + 2.5 * trade +]&nbsp;thousand crowns. ?] [? if admin < 15 : Requires moderate bureaucratic effort! ?]
+choose-if: budget >= (5 + 2.5 * trade) and admin >= 15
+on-arrival: budget -= (5 + 2.5 * trade); admin -= 15; trade += 1
+go-to: economy
+
+@eco_agriculture
+title: Invest in grain-producing latifundies and estates
+subtitle: Cost: [+ 5 + 2.5 * agriculture +]&nbsp;thousand crowns. Requires moderate bureaucratic effort.
+unavailable-subtitle: [? if budget < (5 + 2.5 * agriculture) : We can't afford [+ 5 + 2.5 * agriculture +]&nbsp;thousand crowns. ?] [? if admin < 15 : Requires moderate bureaucratic effort! ?]
+choose-if: budget >= (5 + 2.5 * agriculture) and admin >= 15
+on-arrival: budget -= (5 + 2.5 * agriculture); admin -= 15; agriculture += 1
+go-to: economy
+
+@eco_industry
+title: Invest in artisanry and industry 
+subtitle: Cost: [+ 5 + 2.5 * industry +]&nbsp;thousand crowns. Requires moderate bureaucratic effort.
+unavailable-subtitle: [? if budget < (5 + 2.5 * industry) : We can't afford [+ 5 + 2.5 * industry +]&nbsp;thousand crowns. ?] [? if admin < 15 : Requires moderate bureaucratic effort! ?]
+choose-if: budget >= (5 + 2.5 * industry) and admin >= 15
+on-arrival: budget -= (5 + 2.5 * industry); admin -= 15; industry += 1
+go-to: economy

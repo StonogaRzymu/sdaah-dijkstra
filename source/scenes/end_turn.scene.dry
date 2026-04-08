@@ -22,6 +22,17 @@ if (Q.season < 4) {
 
 Q.admin = Q.admin_cap
 
+// grow economy
+
+ Object.entries(Q.provinces).forEach((prov_obj) => {
+            if (typeof prov_obj[1] !== 'function') {
+                let prov = prov_obj[1]
+                prov.trade = Math.round(Q.pro.trade * (1 + Q.trade/100))
+                prov.wealth = Math.round(Q.pro.wealth * (1 + Q.industry/100))
+                prov.land = Math.round(Q.pro.land * (1 + Q.agriculture/100))
+            }
+        })
+
 // evaluate income and financial reserves
 
 Q.budget_balance = 0
