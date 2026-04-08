@@ -12,7 +12,7 @@ Our efforts to create Civil Service and hire competent clerks and bureaucrats ha
 
 - @cs_hire_full: We should follow our current hiring practices
 - @cs_hire_partial: We can only afford partial expansion
-- @main: We have to wait with further expansion
+- @return
 
 @cs_hire_full
 subtitle: Cost: [+ cs_hire_gold +] thousand crowns. Requires [+ cs_hire_admin : effort +] administrative effort
@@ -20,6 +20,8 @@ choose-if: budget >= cs_hire_gold and admin >= cs_hire_admin
 on-arrival: cs_size += 1; budget -= cs_hire_gold; admin -= cs_hire_admin; cs_upkeep = cs_size * (2 + cs_salaries); budget_balance -= cs_upkeep; admin_cap = 25 + cs_size * (10 + 5 * cs_skill)
 
 Our Civil Service expands. This will help our agenda.
+
+- @main: Continue...
 
 @cs_hire_partial
 subtitle: Cost: [+ cs_hire_gold/2 +] thousand crowns. Requires [+ cs_hire_admin/2 : effort +] administrative effort

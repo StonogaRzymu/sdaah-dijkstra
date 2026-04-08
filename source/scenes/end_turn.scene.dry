@@ -15,12 +15,10 @@ if (Q.season < 4) {
 // decrease timers
 
  Q.timers_list.forEach((timer) => {
-     Q[timer] -= 1
+    if (Q[timer] > 0) {
+        Q[timer] -= 1
+     }
  })
-
-// Q.bureaucracy_expansion_timer -= 1
-// Q.racial_unrest_timer -= 1
-// Q.ng_envoy_timer -= 1
 
 Q.admin = Q.admin_cap
 
