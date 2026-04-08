@@ -5,10 +5,9 @@ card-image: img/bureaucracy.jpg
 tags: internal_affairs
 view-if: cs_expansion == 1 and bureaucracy_expansion_timer == 0
 on-arrival: {!
-    Q.bureaucracy_expansion_timer = 6 - Q.cs_net_width;
+    Q.bureaucracy_expansion_timer = Q.cs_cooldown;
     console.log("Timer: "+Q.bureaucracy_expansion_timer)
-    console.log("Q.cs_net_width: "+Q.cs_net_width)
-    Q.mini_actions = 0
+    console.log("Q.cs_cooldown: "+Q.cs_cooldown)
 !}
 
 = Bureaucracy Expansion

@@ -83,7 +83,7 @@ title: Change hiring practices
 subtitle: This will increase opportunities for hiring, but decrease skills of our bureaucrats. Nobility will gain influence and satisfaction
 view-if: cs_hire_nobles = 0
 on-arrival: {!
-    Q.cs_net_width += 1;
+    Q.cs_cooldown -= 1;
     Q.cs_skill -= 1;
     Q.cs_hire_nobles = 1
     Q.estates.aristocracy.inf += 3
@@ -99,7 +99,7 @@ We will offer posts to second and third sons of various nobles. What they lack i
 subtitle: This will decrease opportunities for hiring, but increase skills of our bureaucrats. Nobility will be dissatisfied
 view-if: cs_hire_nobles = 1
 on-arrival: {!
-    Q.cs_net_width -= 1;
+    Q.cs_cooldown += 1;
     Q.cs_skill += 1;
     Q.cs_hire_nobles = 0
     Q.estates.aristocracy.inf -= 2
@@ -115,7 +115,7 @@ We shouldn't pretend noble birth makes someone good bureaucrat
 subtitle: This will increase opportunities for hiring and skills of our bureaucrats. Church will gain influence and satisfaction and may interfere with our reforms 
 view-if: cs_hire_church = 0
 on-arrival: {!
-    Q.cs_net_width += 1;
+    Q.cs_cooldown -= 1;
     Q.cs_skill += 1;
     Q.cs_hire_church = 1;
     Q.cs_loyalty -= 1;
@@ -130,7 +130,7 @@ We will include priests and monks of Eternal Fire in the new apparatus. What the
 subtitle: This will decrease opportunities for hiring and skills of our bureaucrats. Church will be dissatisfied
 view-if: cs_hire_church = 1
 on-arrival: {!
-    Q.cs_net_width -= 1;
+    Q.cs_cooldown += 1;
     Q.cs_skill -= 1;
     Q.cs_hire_church = 0;
     Q.cs_loyalty += 1;
@@ -145,7 +145,7 @@ We should get rid of the Eternal Fire clergy in our Civil Service.
 subtitle: This will increase opportunities for hiring, but slightly increase salaries of our bureaucrats. Guilds will gain influence and satisfaction
 view-if: cs_hire_cities = 0
 on-arrival: {!
-    Q.cs_net_width += 1;
+    Q.cs_cooldown -= 1;
     Q.cs_salaries += 0.5;
     Q.cs_hire_gold = 2 * (2 + Q.cs_salaries);
     Q.cs_hire_cities = 1
@@ -160,7 +160,7 @@ We will make a deal with bourgeoisie to hire some of their clerks. We will have 
 subtitle: This will decrease opportunities for hiring, but slightly decrease salaries of our bureaucrats. Guilds will be dissatisfied
 view-if: cs_hire_cities = 1
 on-arrival: {!
-    Q.cs_net_width -= 1;
+    Q.cs_cooldown += 1;
     Q.cs_salaries -= 0.5;
     Q.cs_hire_gold = 2 * (2 + Q.cs_salaries);
     Q.cs_hire_cities = 0
@@ -175,7 +175,7 @@ We won't pay extra for hiring officials from cities and guilds any longer
 subtitle: This will increase opportunities for hiring, but nobility will be offended by including such rabble in our administration.
 view-if: cs_hire_soldiers = 0
 on-arrival: {!
-    Q.cs_net_width += 1;
+    Q.cs_cooldown -= 1;
     Q.cs_hire_admin += 5;
     Q.cs_loyalty += 1
     Q.cs_hire_soldiers = 1
@@ -191,7 +191,7 @@ We will recruit best and brightest veterans of the War, regardless of their birt
 subtitle: This will decrease opportunities for hiring, but nobility will be glad we ensured officials come from proper milieu.
 view-if: cs_hire_soldiers = 1
 on-arrival: {!
-    Q.cs_net_width -= 1;
+    Q.cs_cooldown += 1;
     Q.cs_hire_admin -= 5;
     Q.cs_loyalty -= 1
     Q.cs_hire_soldiers = 0

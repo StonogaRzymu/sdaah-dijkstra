@@ -29,7 +29,7 @@ title: Civil Service - hiring
 @cs_hire_alumni
 title: Civil Service - hiring
 subtitle: This will increase opportunities for hiring and increase skills of our bureaucrats
-on-arrival: cs_net_width += 1; cs_skill += 1; cs_hire_alumni = 1; cs_hire_admin += 5
+on-arrival: cs_cooldown -= 1; cs_skill += 1; cs_hire_alumni = 1; cs_hire_admin += 5
 max-visits: 1
 go-to: cs_hiring
 
@@ -39,7 +39,7 @@ We will hire all willing alumni of the Oxenfurt University
 title: Civil Service - hiring
 subtitle: This will increase opportunities for hiring, but decrease skills of our bureaucrats. Nobility will gain influence and satisfaction
 on-arrival: {!
-    Q.cs_net_width += 1;
+    Q.cs_cooldown -= 1;
     Q.cs_skill -= 1;
     Q.cs_hire_nobles = 1
     Q.estates.aristocracy.inf += 3
@@ -56,7 +56,7 @@ We will offer posts to second and third sons of various nobles. What they lack i
 title: Civil Service - hiring
 subtitle: This will increase opportunities for hiring and skills of our bureaucrats. Church will gain influence and satisfaction and may interfere with our reforms 
 on-arrival: {!
-    Q.cs_net_width += 1;
+    Q.cs_cooldown -= 1;
     Q.cs_skill += 1;
     Q.cs_hire_church = 1;
     Q.cs_loyalty -= 1;
@@ -72,7 +72,7 @@ We will include priests and monks of Eternal Fire in the new apparatus. What the
 title: Civil Service - hiring
 subtitle: This will increase opportunities for hiring, but slightly increase salaries of our bureaucrats. Guilds will gain influence and satisfaction
 on-arrival: {!
-    Q.cs_net_width += 1;
+    Q.cs_cooldown -= 1;
     Q.cs_salaries += 0.5;
     Q.cs_hire_cities = 1
     Q.estates.guilds.inf += 3;
@@ -87,7 +87,7 @@ We will make a deal with bourgeoisie to hire some of their clerks. We will have 
 title: Civil Service - hiring
 subtitle: This will increase opportunities for hiring, but nobility will be offended by including such rabble in our administration.
 on-arrival: {!
-    Q.cs_net_width += 1;
+    Q.cs_cooldown -= 1;
     Q.cs_hire_admin += 5;
     Q.cs_loyalty += 1
     Q.cs_hire_soldiers = 1
@@ -109,7 +109,7 @@ We will recruit best and brightest veterans of the War, regardless of their birt
 
 @cs_salaries
 title: Civil Service - salaries
-choose-if: cs_net_width > 0
+choose-if: cs_cooldown > 0
 unavailable-subtitle: We have to choose at least one hiring strategy
 
 How much are ready to pay them?
@@ -121,7 +121,7 @@ How much are ready to pay them?
 @cs_high_salaries
 title: Civil Service - salaries
 subtitle: This will slightly increase opportunities for hiring and skills of our bureaucrats
-on-arrival: cs_salaries += 1; cs_net_width += 1; cs_skill += 0.5; cs_loyalty += 0.5
+on-arrival: cs_salaries += 1; cs_cooldown -= 1; cs_skill += 0.5; cs_loyalty += 0.5
 go-to: cs_choose_minister
 
 We will introduce high salaries
@@ -136,7 +136,7 @@ We will introduce medium salaries
 @cs_low_salaries
 title: Civil Service - salaries
 subtitle: This will slightly decrease opportunities for hiring and skills of our bureaucrats
-on-arrival: cs_salaries -= 1; cs_net_width -= 1; cs_skill -= 0.5; cs_loyalty -= 0.5
+on-arrival: cs_salaries -= 1; cs_cooldown += 1; cs_skill -= 0.5; cs_loyalty -= 0.5
 go-to: cs_choose_minister
 
 We will introduce low salaries
@@ -170,7 +170,7 @@ go-to: cs_create_finish
 @cs_appoint_heuvel
 title: Civil Service - Minister van der Heuvel
 on-arrival: {! 
-    Q.cs_minister = "Ferdinand van der Heuvel"; Q.cs_net_width += 1; Q.estates.aristocracy.sat += 3; Q.estates.aristocracy.inf += 3
+    Q.cs_minister = "Ferdinand van der Heuvel"; Q.cs_cooldown -= 1; Q.estates.aristocracy.sat += 3; Q.estates.aristocracy.inf += 3
 !}
 go-to: cs_create_finish
 
