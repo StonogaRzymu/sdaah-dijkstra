@@ -1,5 +1,10 @@
 title: Economy
 new-page: true
+on-arrival: {!
+    Q.trade_inv_cost = 5 + 2.5 * Q.trade
+    Q.agriculture_inv_cost = 5 + 2.5 * Q.agriculture
+    Q.industry_inv_cost = 5 + 2.5 * Q.industry
+!}
 
 = Economic policy
 
@@ -18,24 +23,24 @@ industry: [+ industry : investment +]
 
 @eco_trade
 title: Invest in infrastructure to facilitate trade
-subtitle: Cost: [+ 5 + 2.5 * trade +]&nbsp;thousand crowns. Requires moderate bureaucratic effort.
-unavailable-subtitle: [? if budget < (5 + 2.5 * trade) : We can't afford [+ 5 + 2.5 * trade +]&nbsp;thousand crowns. ?] [? if admin < 15 : Requires moderate bureaucratic effort! ?]
-choose-if: budget >= (5 + 2.5 * trade) and admin >= 15
-on-arrival: budget -= (5 + 2.5 * trade); admin -= 15; trade += 1
+subtitle: Cost: [+ trade_inv_cost +]&nbsp;thousand crowns. Requires moderate bureaucratic effort.
+unavailable-subtitle: [? if budget < trade_inv_cost : We can't afford [+ trade_inv_cost +]&nbsp;thousand crowns. ?] [? if admin < 15 : Requires moderate bureaucratic effort! ?]
+choose-if: budget >= trade_inv_cost and admin >= 15
+on-arrival: budget -= trade_inv_cost; admin -= 15; trade += 1
 go-to: economy
 
 @eco_agriculture
 title: Invest in grain-producing latifundies and estates
-subtitle: Cost: [+ 5 + 2.5 * agriculture +]&nbsp;thousand crowns. Requires moderate bureaucratic effort.
-unavailable-subtitle: [? if budget < (5 + 2.5 * agriculture) : We can't afford [+ 5 + 2.5 * agriculture +]&nbsp;thousand crowns. ?] [? if admin < 15 : Requires moderate bureaucratic effort! ?]
-choose-if: budget >= (5 + 2.5 * agriculture) and admin >= 15
-on-arrival: budget -= (5 + 2.5 * agriculture); admin -= 15; agriculture += 1
+subtitle: Cost: [+ agriculture_inv_cost +]&nbsp;thousand crowns. Requires moderate bureaucratic effort.
+unavailable-subtitle: [? if budget < agriculture_inv_cost : We can't afford [+ agriculture_inv_cost +]&nbsp;thousand crowns. ?] [? if admin < 15 : Requires moderate bureaucratic effort! ?]
+choose-if: budget >= agriculture_inv_cost and admin >= 15
+on-arrival: budget -= agriculture_inv_cost; admin -= 15; agriculture += 1
 go-to: economy
 
 @eco_industry
 title: Invest in artisanry and industry 
-subtitle: Cost: [+ 5 + 2.5 * industry +]&nbsp;thousand crowns. Requires moderate bureaucratic effort.
-unavailable-subtitle: [? if budget < (5 + 2.5 * industry) : We can't afford [+ 5 + 2.5 * industry +]&nbsp;thousand crowns. ?] [? if admin < 15 : Requires moderate bureaucratic effort! ?]
-choose-if: budget >= (5 + 2.5 * industry) and admin >= 15
-on-arrival: budget -= (5 + 2.5 * industry); admin -= 15; industry += 1
+subtitle: Cost: [+ industry_inv_cost +]&nbsp;thousand crowns. Requires moderate bureaucratic effort.
+unavailable-subtitle: [? if budget < industry_inv_cost : We can't afford [+ industry_inv_cost +]&nbsp;thousand crowns. ?] [? if admin < 15 : Requires moderate bureaucratic effort! ?]
+choose-if: budget >= industry_inv_cost and admin >= 15
+on-arrival: budget -= industry_inv_cost; admin -= 15; industry += 1
 go-to: economy
