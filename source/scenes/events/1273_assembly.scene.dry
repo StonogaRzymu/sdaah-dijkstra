@@ -1,3 +1,32 @@
+title: Assembly on Matter of the Regency
+new-page: true
+view-if: year < 1275 and year = next_assembly_year and season = next_assembly_season
+max-visits: 1
+tags: event
+on-arrival: {!
+    Q.assembly_name = "Assembly on Matter of the Regency"
+    Q.first_gains = 0
+    Q.first_concessions = 0
+    Q.second_gains = 0
+    Q.second_concessions = 0
+    Q.third_gains = 0
+    Q.third_concessions = 0
+!}
+
+= Assembly on Matter of the Regency
+
+Representatives of the redanian estates have gathered on the fields outside of Tretogor to officially legitimise regency of count Sigismund Dijkstra. There are some other topics which require discussion – they include, among others, plans for rebuilding the Realm, relations with Radovid loyalists and new policies on race, magic and religion.
+
+Redanian Assembly has similar structure as Temerian or Aedirnian parliaments. It consists of three diets or sub-assemblies for each of the estates.
+
+The First Estate diet includes the most significant temples and monasteries of the Eternal Fire in the country with their representatives usually appointed by the Hierarch or, in case of some monasteries, by the priests themselves.
+
+The Second Estate diet consists of the nobility, both grand and small. Unlike in Temeria or Aedirn, where kings summon only members of oldest and most noble houses, in Redania nobles of every parish choose their envoy freely from themselves.
+
+The Third Estate is comprised of the representatives of the cities and bourgeoisie, who are usually chosen by the city councils. Radovid&nbsp;V did a lot to limit the influence of this diet and now only some of the largest and richest cities retain its delegates. This include places like Oxenfurt, Blaviken, Roggeven, Tridam, Rinde, Murivel or Egremont.
+
+- @assembly_main: Start the Assembly!
+
 @1273_assembly_demand
 title: Estates request calling the Assembly
 new-page: true
@@ -61,33 +90,3 @@ on-arrival: {! Q.estates.addAll("sat",-6) !}
 The nobility and the Church still don't understand scope of our ambitions. The Redania will be reforged and we won't be asking them for permission.
 
 The estates are deeply worried that Dijkstra may have autocratic tendencies. We have to be careful, for if they are pushed too hard, they may simply rebel. 
-
-@1273_assembly
-title: Assembly on Matter of the Regency
-new-page: true
-view-if: year < 1275 and year = next_assembly_year and season = next_assembly_season
-max-visits: 1
-tags: event
-on-arrival: {!
-    Q.assembly_name = "Assembly on Matter of the Regency"
-    Q.first_gains = 0
-    Q.first_concessions = 0
-    Q.second_gains = 0
-    Q.second_concessions = 0
-    Q.third_gains = 0
-    Q.third_concessions = 0
-!}
-
-= Assembly on Matter of the Regency
-
-Representatives of the redanian estates have gathered on the fields outside of Tretogor to officially legitimise regency of count Sigismund Dijkstra. There are some other topics which require discussion – they include, among others, plans for rebuilding the Realm, relations with Radovid loyalists and new policies on race, magic and religion.
-
-Redanian Assembly has similar structure as Temerian or Aedirnian parliaments. It consists of three diets or sub-assemblies for each of the estates.
-
-The First Estate diet includes the most significant temples and monasteries of the Eternal Fire in the country with their representatives usually appointed by the Hierarch or, in case of some monasteries, by the priests themselves.
-
-The Second Estate diet consists of the nobility, both grand and small. Unlike in Temeria or Aedirn, where kings summon only members of oldest and most noble houses, in Redania nobles of every parish choose their envoy freely from themselves.
-
-The Third Estate is comprised of the representatives of the cities and bourgeoisie, who are usually chosen by the city councils. Radovid&nbsp;V did a lot to limit the influence of this diet and now only some of the largest and richest cities retain its delegates. This include places like Oxenfurt, Blaviken, Roggeven, Tridam, Rinde, Murivel or Egremont.
-
-- @assembly_main: Start the Assembly!
