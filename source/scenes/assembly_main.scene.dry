@@ -5,7 +5,7 @@ new-page: true
 # is-pinned-card: true
 on-arrival: {!
     Q.first_members = ['aristocracy', 'pettynobility']
-    Q.first_goodwill = ( (Q.estates['aristocracy'].sat - 50) * Q.estates['aristocracy'].inf + (Q.estates['pettynobility'].sat - 50) * Q.estates['pettynobility'].inf ) / (Q.estates['aristocracy'].inf + Q.estates['pettynobility'].inf)
+    Q.first_goodwill = Math.round( ( (Q.estates['aristocracy'].sat - 50) * Q.estates['aristocracy'].inf + (Q.estates['pettynobility'].sat - 50) * Q.estates['pettynobility'].inf ) / (Q.estates['aristocracy'].inf + Q.estates['pettynobility'].inf) )
     Q.first_balance = Q.first_goodwill - Q.first_gains + Q.first_concessions
     // Q.first_
     
